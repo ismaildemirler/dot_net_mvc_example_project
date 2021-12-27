@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+@using Domain.Web.Areas.User.Models.Brand;
+@model BrandApplicationViewModel
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>MARKA HIZLI BAŞVURU SONUCU</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home")">Ana Sayfa</a> <i>/</i>
+            Patent
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid wf py-5">
+    <div class="row justify-content-center py-3 px-5">
+        <div class="col-xs-12 col-lg-10 col-xl-8 px-4">
+            <div class="alert alert-success" style="background-color: #0595ad;border-color: #0595ad;" role="alert">
+                <h4 class="alert-heading" style="font-size:26px"> Başvurunuz Alındı <span class="fa fa-check" style="font-size:36px"></span> </h4>
+                <br />
+                <p style="font-size:16px">
+                    Marka hızlı başvurunuzu tamamlamış bulunmaktasınız.
+                    Yetkililerimiz sizinle iletişime geçecektir.
+                    Aşağıdaki kodunuzu sizi aradığımızda bize bildirebilmeniz için lütfen saklayınız.
+                </p>
+                <hr style="border-top-color: #ffffff; margin:20px 0px">
+                <p class="mb-0 text-center"> <span class="badge badge-secondary" style="font-size:24px; padding-top: 0.8rem; padding-bottom: 0.8rem;"> @Model.CustomerApplication.AnonymousApplicationCode </span> </p>
+            </div>
+        </div>
+    </div>
+</div>

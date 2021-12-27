@@ -1,0 +1,71 @@
+﻿@using Domain.Web.Areas.User.Models.IndustrialDesign
+@using Domain.Web.Models.Attachment
+@using KOSGEB.YKBS.Business.DependencyResolver.Ninject
+@using Domain.Business.Abstract.Attachment
+@using Domain.Entity.ComplexType
+@model IndustrialDesignApplicationViewModel
+@{
+    ViewBag.Title = Model.IndustrialDesignApplicationDetail.Title.ToUpper();
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    var attachmentService = DependencyResolver<IAttachmentService>.Resolve();
+    var imageData = attachmentService.GetAttachments(
+            new AttachmentComplexType
+            {
+                RelatedEntityId = Model.IndustrialDesignApplicationDetail.IndustrialDesignApplicationDetailId,
+                FormType = EnumFormType.Endustriyel_Tasarim_Fotograf_Dosyasi
+            }
+        ).FirstOrDefault();
+
+    var imagesData = attachmentService.GetAttachments(
+            new AttachmentComplexType
+            {
+                RelatedEntityId = Model.IndustrialDesignApplicationDetail.IndustrialDesignApplicationDetailId,
+                FormType = EnumFormType.Endustriyel_Tasarim_Coklu_Fotograf_Dosyasi
+            }
+        );
+
+    //var imgSrc = String.Format("data:image/jpeg;base64,{0}", imageData.AttachmentData);
+}
+@Html.AntiForgeryToken()
+<div class="m-content" style="padding:0px;">
+    <!--Begin::Main Portlet-->
+    <div class="m-portlet">
+        <!--end: Portlet Head-->
+        <!--begin: Portlet Body-->
+        <div class="m-portlet__body m-portlet__body--no-padding">
+            <!--begin: Form Wizard-->
+            <div class="m-wizard m-wizard--4 m-wizard--brand m-wizard--step-between" id="m_wizard">
+                <div class="row m-row--no-padding">
+                    <div class="col-xl-12 col-lg-12">
+                        @Html.Domain().Button("NewApplication").SetType(ButtonType.link).SetActionUrl(Url.Action("NewApplication", "IndustrialDesign")).SetTitle("Yeni Tasarım Ekle").SetIcon("fa fa-plus").SetStyle(ButtonStyle.primary)
+                    </div>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="col-md-6" style="float:left;">
+                            @if (imageData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(imageData.AttachmentData)" style="width:400px;" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/App_Themes/images/no-image.png")" style="width:400px;" />
+                            }
+                        </div>
+                        <div class="col-sm-6" style="float:left; text-align:left; margin-top:10px;">
+                            <h5>@Model.IndustrialDesignApplicationDetail.Title.ToUpper()</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end: Form Wizard-->
+        </div>
+        <!--end: Portlet Body-->
+    </div>
+    <!--End::Main Portlet-->
+</div>
+@Html.Partial("_MultipleAttachment", new MultipleAttachmentViewModel
+    {
+        FormType = EnumFormType.Endustriyel_Tasarim_Coklu_Fotograf_Dosyasi,
+        RelatedEntity = EnumRelatedEntity.IndustrialDesignApplicationDetail,
+        RelatedEntityId = Model.IndustrialDesignApplicationDetail.IndustrialDesignApplicationDetailId
+    })

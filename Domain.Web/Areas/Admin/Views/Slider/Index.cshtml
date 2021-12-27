@@ -1,0 +1,35 @@
+﻿@using Domain.Web.Models.Slider
+@using Domain.WebHelpers.Infrastructre
+@model SliderContentViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Anasayfa Slider İçerik Yönetimi";
+    ViewBag.IsViewUseDatatable = true;
+}
+
+@section filter
+{
+    @using (Html.Domain().FilterContainer("filter"))
+    {
+        @Html.DomainFor().FilterInputFor(model => model.Header).SetInputType(FilterGroupType.Like)
+        @Html.DomainFor().FilterInputFor(model => model.Topic).SetInputType(FilterGroupType.Like)
+    }
+}
+
+@(Html.Domain()
+    .Grid<SliderContentViewModel>("tblSlider")
+    .SetColumns(columns =>
+    {
+        columns.Add(c => c.Buttons).SetClassName("grdIslemler");
+        columns.Add(c => c.Header);
+        columns.Add(c => c.Topic);
+        columns.Add(c => c.HasPriceSectionDesc);
+        columns.Add(c => c.CreationDate).SetDateFormat();
+        columns.Add(c => c.StateDesc);
+    })
+    .SetToolbarButtons(buttons => {
+        buttons.Add(GridButtonType.insert).SetActionUrl(Url.Action("Update")).SetTitle("Yeni Kayıt").SetIcon("fa fa-plus");
+    })
+    .SetDefaultOrder(3, Enums.EnumSortType.desc)
+    .SetAjaxUrl(Url.Action("GetSliderContentPagedList", "Slider", new { area = "Admin" }))
+    .SetHeaderVisible(true).SetTitle("Kayıtlı Slider İçerikleri"))

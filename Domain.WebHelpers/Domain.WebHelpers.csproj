@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{840FCCEB-61B2-4AE4-8851-9465751646E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.WebHelpers</RootNamespace>
+    <AssemblyName>Domain.WebHelpers</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=4.2.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Filters\CustomHandleErrorAttribute.cs" />
+    <Compile Include="Filters\EncryptedActionParameterAttribute.cs" />
+    <Compile Include="Filters\HandleAntiforgeryTokenErrorAttribute.cs" />
+    <Compile Include="Filters\NoCacheAttribute .cs" />
+    <Compile Include="HtmlHelpers\Accordion\AccordionItem\BSAccordionItem.cs" />
+    <Compile Include="HtmlHelpers\Accordion\AccordionItem\Enum\EnumAccordiomItemStyles.cs" />
+    <Compile Include="HtmlHelpers\Accordion\AccordionItem\IBSAccordionItem.cs" />
+    <Compile Include="HtmlHelpers\Accordion\BSAccordion.cs" />
+    <Compile Include="HtmlHelpers\Accordion\Enum\EnumAccordionStyles.cs" />
+    <Compile Include="HtmlHelpers\Accordion\IBSAccordion.cs" />
+    <Compile Include="HtmlHelpers\AutoCompleteHelper.cs" />
+    <Compile Include="HtmlHelpers\ButtonHelpers.cs" />
+    <Compile Include="HtmlHelpers\CheckBoxHelper.cs" />
+    <Compile Include="HtmlHelpers\Core\ActionAttribute.cs" />
+    <Compile Include="HtmlHelpers\Core\Util.cs" />
+    <Compile Include="HtmlHelpers\DateInputHelper.cs" />
+    <Compile Include="HtmlHelpers\DropDownHelper.cs" />
+    <Compile Include="HtmlHelpers\EncryptedActionLink.cs" />
+    <Compile Include="HtmlHelpers\Enum\LayoutType.cs" />
+    <Compile Include="HtmlHelpers\Grid\BSGrid.cs" />
+    <Compile Include="HtmlHelpers\Grid\Button\GridButton.cs" />
+    <Compile Include="HtmlHelpers\Grid\Button\GridButtonBuilder.cs" />
+    <Compile Include="HtmlHelpers\Grid\Button\GridButtonType.cs" />
+    <Compile Include="HtmlHelpers\Grid\Button\IGridButton.cs" />
+    <Compile Include="HtmlHelpers\Grid\ColumnBase\GridColumn.cs" />
+    <Compile Include="HtmlHelpers\Grid\ColumnBase\GridColumnBuilder.cs" />
+    <Compile Include="HtmlHelpers\Grid\ColumnBase\IGridColumn.cs" />
+    <Compile Include="HtmlHelpers\Grid\Column\Enum\Direction.cs" />
+    <Compile Include="HtmlHelpers\Grid\Column\GridColumn.cs" />
+    <Compile Include="HtmlHelpers\Grid\Column\GridColumnBuilder.cs" />
+    <Compile Include="HtmlHelpers\Grid\Column\IGridColumn.cs" />
+    <Compile Include="HtmlHelpers\Grid\Enum\EnumGridSelectionType.cs" />
+    <Compile Include="HtmlHelpers\Grid\IBSGrid.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Container\BSFilter.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Container\IBSFilter.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Enum\FilterGroupType.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Base\BSFilterCheckList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Base\BSFilterCheckListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Base\IBSFilterCheckList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Base\IBSFilterCheckListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Cascading\BSFilterCascadingCheckList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Cascading\BSFilterCascadingCheckListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Cascading\IBSFilterCascadingCheckList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Cascading\IBSFilterCascadingCheckListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Enum\BSFilterEnumCheckList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Enum\BSFilterEnumCheckListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Enum\IBSFilterEnumCheckList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\CheckList\Enum\IBSFilterEnumCheckListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\RadioList\Base\BSFilterRadioList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\RadioList\Base\BSFilterRadioListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\RadioList\Base\IBSFilterRadioList.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\RadioList\Base\IBSFilterRadioListFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Range\BSFilterRange.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Range\BSFilterRangeFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Range\IBSFilterRange.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Range\IBSFilterRangeFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Text\BSFilterInput.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Text\BSFilterInputFor.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Text\IBSFilterInput.cs" />
+    <Compile Include="HtmlHelpers\Grid\SearchFilter\Input\Text\IBSFilterInputFor.cs" />
+    <Compile Include="HtmlHelpers\HtmlEditorHelper.cs" />
+    <Compile Include="HtmlHelpers\Input\AutoComplete\BSAutoComplete.cs" />
+    <Compile Include="HtmlHelpers\Input\AutoComplete\BSAutoCompleteButton.cs" />
+    <Compile Include="HtmlHelpers\Input\AutoComplete\BSAutoCompleteFor.cs" />
+    <Compile Include="HtmlHelpers\Input\AutoComplete\IBSAutoComplete.cs" />
+    <Compile Include="HtmlHelpers\Input\AutoComplete\IBSAutoCompleteFor.cs" />
+    <Compile Include="HtmlHelpers\Input\BasicFileUpload\BSBasicFileUpload.cs" />
+    <Compile Include="HtmlHelpers\Input\BasicFileUpload\BSBasicFileUploadFor.cs" />
+    <Compile Include="HtmlHelpers\Input\BasicFileUpload\IBSBasicFileUpload.cs" />
+    <Compile Include="HtmlHelpers\Input\BasicFileUpload\IBSBasicFileUploadFor.cs" />
+    <Compile Include="HtmlHelpers\Input\Button\BSButton.cs" />
+    <Compile Include="HtmlHelpers\Input\Button\Enum\ButtonIconAlignment.cs" />
+    <Compile Include="HtmlHelpers\Input\Button\Enum\ButtonSize.cs" />
+    <Compile Include="HtmlHelpers\Input\Button\Enum\ButtonStyle.cs" />
+    <Compile Include="HtmlHelpers\Input\Button\Enum\ButtonType.cs" />
+    <Compile Include="HtmlHelpers\Input\Button\IBSButton.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\BSCheckBox.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\BSCheckBoxContainer.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\BSCheckBoxFor.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\Enum\StateType.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\IBSCheckBox.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\IBSCheckBoxContainer.cs" />
+    <Compile Include="HtmlHelpers\Input\Checkbox\IBSCheckBoxFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DateRangePicker\BSDateRangePicker.cs" />
+    <Compile Include="HtmlHelpers\Input\DateRangePicker\BSDateRangePickerFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DateRangePicker\IBSDateRangePicker.cs" />
+    <Compile Include="HtmlHelpers\Input\DateRangePicker\IBSDateRangePickerFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DatetimePicker\BSDateTimePicker.cs" />
+    <Compile Include="HtmlHelpers\Input\DatetimePicker\BSDateTimePickerFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DatetimePicker\Enum\DateType.cs" />
+    <Compile Include="HtmlHelpers\Input\DatetimePicker\IBSDatetimePicker.cs" />
+    <Compile Include="HtmlHelpers\Input\DatetimePicker\IBSDatetimePickerFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Base\BSDropDownList.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Base\BSDropDownListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Base\IBSDropDownList.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Base\IBSDropDownListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Enum\BSEnumDropDownList.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Enum\BSEnumDropDownListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Enum\IBSEnumDropDownList.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Enum\IBSEnumDropDownListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Numeric\BSNumericDropDownList.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Numeric\BSNumericDropDownListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Numeric\IBSNumericDropDownList.cs" />
+    <Compile Include="HtmlHelpers\Input\DropdownList\Numeric\IBSNumericDropDownListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\FileUpload\BSFileUploader.cs" />
+    <Compile Include="HtmlHelpers\Input\FileUpload\FileUploader.cs" />
+    <Compile Include="HtmlHelpers\Input\FileUpload\IBSFileUploader.cs" />
+    <Compile Include="HtmlHelpers\Input\MultiSelectList\BSMultiSelectList.cs" />
+    <Compile Include="HtmlHelpers\Input\MultiSelectList\BSMultiSelectListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\MultiSelectList\IBSMultiSelectList.cs" />
+    <Compile Include="HtmlHelpers\Input\MultiSelectList\IBSMultiSelectListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\NumberBox\BSNumberBox.cs" />
+    <Compile Include="HtmlHelpers\Input\NumberBox\BSNumberBoxFor.cs" />
+    <Compile Include="HtmlHelpers\Input\NumberBox\IBSNumberBox.cs" />
+    <Compile Include="HtmlHelpers\Input\NumberBox\IBSNumberBoxFor.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\BSRadioButton.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\BSRadioButtonBuilder.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\BSRadioButtonList.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\BSRadioButtonListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\IBSRadioButton.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\IBSRadioButtonList.cs" />
+    <Compile Include="HtmlHelpers\Input\RadioButton\IBSRadioButtonListFor.cs" />
+    <Compile Include="HtmlHelpers\Input\TextArea\BSTextArea.cs" />
+    <Compile Include="HtmlHelpers\Input\TextArea\BSTextAreaFor.cs" />
+    <Compile Include="HtmlHelpers\Input\TextArea\IBSTextArea.cs" />
+    <Compile Include="HtmlHelpers\Input\TextArea\IBSTextAreaFor.cs" />
+    <Compile Include="HtmlHelpers\Input\TextBox\BSTextBox.cs" />
+    <Compile Include="HtmlHelpers\Input\TextBox\BSTextBoxFor.cs" />
+    <Compile Include="HtmlHelpers\Input\TextBox\Enum\CharacterType.cs" />
+    <Compile Include="HtmlHelpers\Input\TextBox\Enum\MaskType.cs" />
+    <Compile Include="HtmlHelpers\Input\TextBox\IBSTextBox.cs" />
+    <Compile Include="HtmlHelpers\Input\TextBox\IBSTextBoxFor.cs" />
+    <Compile Include="HtmlHelpers\DomainHelper\IDomain.cs" />
+    <Compile Include="HtmlHelpers\DomainHelper\Domain.cs" />
+    <Compile Include="HtmlHelpers\DomainHelper\DomainHelper.cs" />
+    <Compile Include="HtmlHelpers\MultiSelectHelper.cs" />
+    <Compile Include="HtmlHelpers\RadioButtonHelper.cs" />
+    <Compile Include="HtmlHelpers\Tab\BSTab.cs" />
+    <Compile Include="HtmlHelpers\Tab\Enum\EnumTabStyles.cs" />
+    <Compile Include="HtmlHelpers\Tab\IBSTab.cs" />
+    <Compile Include="HtmlHelpers\Tab\TabItem\BSTabItem.cs" />
+    <Compile Include="HtmlHelpers\Tab\TabItem\IBSTabItem.cs" />
+    <Compile Include="HtmlHelpers\UrlHelpers.cs" />
+    <Compile Include="HtmlHelpers\WrapHelper.cs" />
+    <Compile Include="Infrastructre\BaseController.cs" />
+    <Compile Include="Infrastructre\CacheManager.cs" />
+    <Compile Include="Infrastructre\Enums.cs" />
+    <Compile Include="Infrastructre\ErrorLogger.cs" />
+    <Compile Include="Infrastructre\Message.cs" />
+    <Compile Include="Infrastructre\PartialViewModal.cs" />
+    <Compile Include="ModelBinders\DtModelBinder.cs" />
+    <Compile Include="ModelBinders\MDtModelBinder.cs" />
+    <Compile Include="Models\Shared\AjaxSonuc.cs" />
+    <Compile Include="Models\Shared\AutoCompleteData.cs" />
+    <Compile Include="Models\Shared\JsTreeData.cs" />
+    <Compile Include="Models\Shared\MDtParameterModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HtmlHelpers\Container\Modal\" />
+    <Folder Include="HtmlHelpers\Container\Panel\" />
+    <Folder Include="HtmlHelpers\Container\Portlet\" />
+    <Folder Include="HtmlHelpers\Tab\TabItem\Enum\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Business\Domain.Business.csproj">
+      <Project>{7A42260A-F532-4156-9690-17BA93D7C591}</Project>
+      <Name>Domain.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entity\Domain.Entity.csproj">
+      <Project>{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}</Project>
+      <Name>Domain.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Infrastructure\Domain.Infrastructure.csproj">
+      <Project>{b9c87fbf-d88b-4303-bd30-1dc8171f41ce}</Project>
+      <Name>Domain.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

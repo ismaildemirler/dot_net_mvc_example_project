@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Basket Page";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>SEPETTEKİ ÜRÜNLER</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home")">
+                Ana Sayfa
+            </a> <i>/</i> <a href="#">Sepet</a> <i>/</i> Sepetteki Ürünler
+        </div>
+    </div>
+</div><!-- end page title -->
+<div class="container-fluid wf py-5">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="divBasket">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(function () {
+            getBasketView();
+        });
+
+        function getBasketView() {
+            if ($("#divBasket").length > 0) {
+                getPartialView("@Url.Action("_BasketItems")", null, "divBasket");
+            }
+        }
+
+    </script>
+
+}

@@ -1,0 +1,188 @@
+﻿@using Domain.Web.Areas.User.Models.Brand
+@{
+    ViewBag.Title = "ŞAHIS VEYA ŞAHIS ŞİRKETLER ADINA MARKA TESCİL BAŞVURUSU";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model BrandWatchingApplicationViewModel
+<div class="m-content" style="padding:0">
+    <!--Begin::Main Portlet-->
+    <div class="m-portlet">
+        <!--end: Portlet Head-->
+        <!--begin: Portlet Body-->
+        <div class="m-portlet__body m-portlet__body--no-padding">
+            <!--begin: Form Wizard-->
+            <div class="m-wizard m-wizard--4 m-wizard--brand m-wizard--step-between" id="m_wizard">
+                <div class="row m-row--no-padding">
+                    <div class="col-xl-12 col-lg-12" style="background-color: #4d516d;">
+                        <!--begin: Form Wizard Head -->
+                        <div class="m-wizard__head">
+                            <!--begin: Form Wizard Nav -->
+                            <div class="m-wizard__nav">
+                                <div class="m-wizard__steps">
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--done" style="float:left;" m-wizard-target="m_wizard_form_step_1">
+                                        <div class="m-wizard__step-info">
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                            <a href="@Url.Action("WatchingApplicationStep1")" class="m-wizard__step-number">
+                                                <span><span>1</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Marka Sahibine İlişkin Bilgiler
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--current" style="float:left;" m-wizard-target="m_wizard_form_step_2">
+                                        <div class="m-wizard__step-info">
+                                            <a href="@Url.Action("WatchingApplicationStep2")" class="m-wizard__step-number">
+                                                <span style="background-color: #e7e9f7;"><span>2</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Marka Bilgileri
+                                            </div>
+                                            @*<div class="m-wizard__step-icon"><i class="la la-check"></i></div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end: Form Wizard Nav -->
+                        </div>
+                        <!--end: Form Wizard Head -->
+                    </div>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="m-portlet">
+                            <div class="row px-4">
+                                <div class="col-12">
+                                    @if (Model.BrandForWatchings.Any())
+                                    {
+                                        <div id="local_data" class="col-sm-12 m-form p-2 mt-3">
+                                            <table class="table table-striped table-bordered w-100 table-hover">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>
+                                                            <span>Marka İsmi</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Firma İsmi</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Marka Sınıfları</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Başvuru / Tescil No</span>
+                                                        </th>
+                                                        <th data-field="Edit">
+                                                            <span></span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var brand in Model.BrandForWatchings)
+                                                    {
+                                                        <tr data-row="0">
+                                                            <td>
+                                                                <span>@brand.BrandName</span>
+                                                            </td>
+                                                            <td>
+                                                                <span>@brand.FirmName</span>
+                                                            </td>
+                                                            <td>
+                                                                <span>@brand.ClassesToWatch</span>
+                                                            </td>
+                                                            <td>
+                                                                <span>@brand.RegistryNumber</span>
+                                                            </td>
+                                                            <td data-field="Edit">
+                                                                <span style="overflow: visible; position: relative;">
+                                                                    @Html.Domain().Button("btnDelete").SetType(ButtonType.button).SetActionUrl(Url.Action("DeleteBrandForWatchingItem", "Brand", new { area = "User", brandForWatchingId = brand.BrandForWatchingId })).SetStyle(ButtonStyle.danger).SetTitle("Sil").SetCustomClasses("tbl-btn-delete").SetIcon("la la-trash")
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-portlet">
+                            @using (Html.BeginForm("WatchingApplicationStep2", "Brand", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="m-portlet__body">
+
+                                    @Html.HiddenFor(m => m.BrandForWatching.BrandForWatchingId)
+                                    @Html.HiddenFor(m => m.BrandForWatching.BrandWatchingApplicationDetailId)
+
+                                    <div id="tabs">
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="home-tab1" data-toggle="tab" href="#tab1" role="tab"><i class="fa fa-plus"></i> Marka Ekle</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="home-tab2" data-toggle="tab" href="#tab2" role="tab"><i class="fa fa-search"></i> Marka Seç</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="tab1" class="tab-pane fade show active">
+                                                <div class="row px-4">
+                                                    <div class="col-12"></div>
+                                                    @Html.DomainFor().TextBoxFor(m => m.BrandForWatching.BrandName).SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                                    @Html.DomainFor().TextBoxFor(m => m.BrandForWatching.FirmName).SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                                    <div class="col-12"></div>
+                                                    @Html.DomainFor().TextBoxFor(m => m.BrandForWatching.ClassesToWatch).SetParentCss("col-12 col-md-6 col-lg-6")
+                                                    @Html.DomainFor().TextBoxFor(m => m.BrandForWatching.RegistryNumber).SetParentCss("col-12 col-md-6 col-lg-6")
+
+                                                    <div class="col-12 mt-3">
+                                                    @Html.Domain().Button("btnSave").SetType(ButtonType.submit).SetIcon("fa fa-plus").SetIconAlignment(ButtonIconAlignment.left).SetStyle(ButtonStyle.submit).SetTitle("Ekle")
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div id="tab2" class="tab-pane fade">
+                                                @{ Html.RenderPartial("_BrandApi", true); }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="m-portlet">
+                            <div class="m-portlet__foot text-right">
+                                @Html.Domain().Button("btnPrevious").SetType(ButtonType.link).SetIcon("fa fa-arrow-circle-left").SetIconAlignment(ButtonIconAlignment.left).SetStyle(ButtonStyle.go_back).SetTitle("Geri").SetActionUrl("/User/Brand/WatchingApplicationStep1")
+                                @if (Model.BrandForWatchings.Any())
+                                {
+                                    @Html.Domain().Button("btnSave").SetType(ButtonType.link).SetIcon("fa fa-arrow-circle-right").SetIconAlignment(ButtonIconAlignment.right).SetStyle(ButtonStyle.submit).SetTitle("Kaydı Tamamla").SetActionUrl("/User/Brand/FinishWatchingApplication")
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end: Form Wizard-->
+        </div>
+        <!--end: Portlet Body-->
+    </div>
+    <!--End::Main Portlet-->
+</div>
+<script type="text/javascript">
+    $('#addbrandmanually').css({ 'display': 'block' });
+    $('#addbrandbysearch').css({ 'display': 'none' });
+    $('#btnAddDiv').css({ 'display': 'block' });
+    $('#addbrand').addClass("selected");
+    $('#addbrand').click(function () {
+        $('#addbrandmanually').css({ 'display': 'block' });
+        $('#addbrandbysearch').css({ 'display': 'none' });
+        $('#btnAddDiv').css({ 'display': 'block' });
+    });
+    $('#choosebrand').click(function () {
+        $('#addbrandmanually').css({ 'display': 'none' });
+        $('#addbrandbysearch').css({ 'display': 'block' });
+        $('#btnAddDiv').css({ 'display': 'none' });
+    });
+    $('.brandapplicationType').click(function () {
+        $(this).addClass("selected");
+        $('.brandapplicationType').not(this).each(function () {
+            $(this).removeClass("selected");
+        });
+    });
+</script>

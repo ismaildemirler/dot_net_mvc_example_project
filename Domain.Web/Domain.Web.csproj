@@ -1,0 +1,1495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0C7F09F-78E2-4456-8177-81BE9DA2E988}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.Web</RootNamespace>
+    <AssemblyName>Domain.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
+    <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <DontImportPostSharp>True</DontImportPostSharp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Extensions.Microsoft.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=e767ac9c89543656, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Extensions.Microsoft.DependencyInjection.8.0.1\lib\netstandard2.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.3.5.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.3.5\lib\net45\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.2\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Api.ClientApi">
+      <HintPath>..\Domain.Infrastructure\RequiredDlls\Olipso\Olipso.Api.ClientApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Core">
+      <HintPath>..\Domain.Infrastructure\RequiredDlls\Olipso\Olipso.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Test.Api.ClientApi">
+      <HintPath>..\..\domainapis\ASP.NET\bin\Release\Olipso.Test.Api.ClientApi.exe</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Test.WinForms.Core">
+      <HintPath>..\Domain.Infrastructure\RequiredDlls\Olipso\Olipso.Test.WinForms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=4.2.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.4.2.17\lib\net35-client\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.5.8.0\lib\net45\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.5.8.0\lib\net45\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.5.8.0\lib\net45\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.6.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DomainController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DomainPriceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManagementPanelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReferenceFirmController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ParameterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Model\ReferenceFirm\ReferenceFirmViewModel.cs" />
+    <Compile Include="Areas\Admin\Model\Brand\BrandInfoViewModel.cs" />
+    <Compile Include="Areas\Admin\Model\ManagementPanel\AboutPageViewModel.cs" />
+    <Compile Include="Areas\Admin\Model\ManagementPanel\ContactPageViewModel.cs" />
+    <Compile Include="Areas\Admin\Model\Parameter\DomainPriceViewModel.cs" />
+    <Compile Include="Areas\Admin\Model\Parameter\TLDTypeViewModel.cs" />
+    <Compile Include="Areas\Admin\Model\User\SystemUserViewModel.cs" />
+    <Compile Include="Areas\User\Controllers\DomainController.cs" />
+    <Compile Include="Areas\User\Controllers\IndustrialDesignController.cs" />
+    <Compile Include="Areas\User\Controllers\PatentController.cs" />
+    <Compile Include="Areas\User\Controllers\BrandController.cs" />
+    <Compile Include="Areas\User\Controllers\HomeController.cs" />
+    <Compile Include="Areas\User\Dto\Brand\BrandForWatchingDto.cs" />
+    <Compile Include="Areas\User\Models\Brand\BrandForWatchingApplicationInfoViewModel.cs" />
+    <Compile Include="Areas\User\Models\Brand\OtherBrandApplicationViewModel.cs" />
+    <Compile Include="Areas\User\Models\Brand\BrandWatchingApplicationViewModel.cs" />
+    <Compile Include="Areas\User\Models\Brand\BrandInfoViewModel.cs" />
+    <Compile Include="Areas\User\Models\IndustrialDesign\IndustrialDesignApplicationViewModel.cs" />
+    <Compile Include="Areas\User\Models\IndustrialDesign\IndustrialDesignInfoViewModel.cs" />
+    <Compile Include="Areas\User\Models\Patent\PatentInfoViewModel.cs" />
+    <Compile Include="Areas\User\Models\Patent\PatentApplicationViewModel.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\PatentController.cs" />
+    <Compile Include="Controllers\ReferenceFirmController.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\DomainController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\DomainBaseController.cs" />
+    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Infrastructure\UserViews.cs" />
+    <Compile Include="Models\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\Attachment\MultipleAttachmentItemsViewModel.cs" />
+    <Compile Include="Models\Attachment\AttachmentItemsViewModel.cs" />
+    <Compile Include="Models\Attachment\MultipleAttachmentListViewModel.cs" />
+    <Compile Include="Models\Attachment\AttachmentListViewModel.cs" />
+    <Compile Include="Models\Attachment\MultipleAttachmentViewModel.cs" />
+    <Compile Include="Models\Attachment\AttachmentViewModel.cs" />
+    <Compile Include="Models\Basket\BasketItemViewModel.cs" />
+    <Compile Include="Models\Account\RegisterViewModel.cs" />
+    <Compile Include="Models\Account\LoginViewModel.cs" />
+    <Compile Include="Areas\User\Models\Brand\BrandApplicationViewModel.cs" />
+    <Compile Include="Models\Blog\BlogContentViewModel.cs" />
+    <Compile Include="Models\Contact\ContactUsViewModel.cs" />
+    <Compile Include="Models\Domain\DomainApiResponseInfoViewModel.cs" />
+    <Compile Include="Models\Domain\DomainApiResponseInfoListViewModel.cs" />
+    <Compile Include="Models\Domain\DomainApplication\DomainApplicationDetailViewModel.cs" />
+    <Compile Include="Models\Domain\DomainApplication\DomainApplicationWrapperViewModel.cs" />
+    <Compile Include="Models\Domain\DomainApplication\DomainSaleDetailViewModel.cs" />
+    <Compile Include="Models\Domain\DomainSearchViewModel.cs" />
+    <Compile Include="Models\Log\ErrorLogViewModel.cs" />
+    <Compile Include="Models\Slider\SliderContentDetailViewModel.cs" />
+    <Compile Include="Models\Slider\SliderContentViewModel.cs" />
+    <Compile Include="Models\UserAccount\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\UserAccount\UserAccountInfoViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-default.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-eight.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-five.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-four.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-nine.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-one.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-seven.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-six.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-three.css" />
+    <Content Include="App_Themes\assets\airhosting\css\bg-patterns\pattern-two.css" />
+    <Content Include="App_Themes\assets\airhosting\css\blog.css" />
+    <Content Include="App_Themes\assets\airhosting\css\colors\blue.css" />
+    <Content Include="App_Themes\assets\airhosting\css\colors\darkgray.css" />
+    <Content Include="App_Themes\assets\airhosting\css\colors\red.css" />
+    <Content Include="App_Themes\assets\airhosting\css\domainquery\main.css" />
+    <Content Include="App_Themes\assets\airhosting\css\form.css" />
+    <Content Include="App_Themes\assets\airhosting\css\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="App_Themes\assets\airhosting\css\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="App_Themes\assets\airhosting\css\reset.css" />
+    <Content Include="App_Themes\assets\airhosting\css\responsive-leyouts.css" />
+    <Content Include="App_Themes\assets\airhosting\css\style.css" />
+    <Content Include="App_Themes\assets\airhosting\images\accordion-ico.png" />
+    <Content Include="App_Themes\assets\airhosting\images\ad-banner-big.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-02.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-03.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-04.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-05.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-06.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow-07.png" />
+    <Content Include="App_Themes\assets\airhosting\images\arrow_left.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\avatar.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\facebook.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\flickr.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\google-plus.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\icon-by-user.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\icon-category.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\icon-comments.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\linkedin.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\people_img.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\rss.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\twitter.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\vimeo-logo.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\vimeo.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\yahoo.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\youtube-logo.png" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\youtube.png" />
+    <Content Include="App_Themes\assets\airhosting\images\but-bg-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\but-bg-02.png" />
+    <Content Include="App_Themes\assets\airhosting\images\but-bg-03.png" />
+    <Content Include="App_Themes\assets\airhosting\images\but-bg-04.png" />
+    <Content Include="App_Themes\assets\airhosting\images\but-bg-05.png" />
+    <Content Include="App_Themes\assets\airhosting\images\clock-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\blue\accordion-ico.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\blue\menu-drop-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\blue\sidebar-title-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\blue\slider-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\blue\testi-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\darkgray\accordion-ico.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\darkgray\menu-drop-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\darkgray\sidebar-title-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\darkgray\slider-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\darkgray\testi-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\red\accordion-ico.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\red\menu-drop-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\red\sidebar-title-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\red\slider-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\red\testi-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\dark-gray-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\dot.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\book.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\bookmark.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\calendar.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\camera.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\chat.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\check.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\coffe_cup.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\cogwheel.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\download.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\dropcap_gray.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\edit.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\envelope.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\exclamation_mark.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\file.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\folder_open.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\globe.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\hand_right.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\hospital.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-cart.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-chat.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-chevron-right.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-heart.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-ok.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-play-button.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-remove.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-right-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-star.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\icon-user.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\info.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\lock.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\minus.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\music.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\new_window.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\ok_2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-eight.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-five.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-four.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-nine.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-one.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-seven.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-six.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-three.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pattern-two.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pdf.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\pencil.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\phone.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\play_button.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\plus.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\question_mark.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\remove_2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\search.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\settings.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\shopping_cart.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\star.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\table.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\tag.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\thumbs_down.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\thumbs_up.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\user.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\warning_sign.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\wifi.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\woman.png" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\word_doc.png" />
+    <Content Include="App_Themes\assets\airhosting\images\email-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon5.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon6.png" />
+    <Content Include="App_Themes\assets\airhosting\images\features-icon7.png" />
+    <Content Include="App_Themes\assets\airhosting\images\footer-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-01.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-02.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-03.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-04.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-05.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-06.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-07.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-08.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-09.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\free-install-script-10.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\gray-but-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\gray-full-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\h-dotted-lines.png" />
+    <Content Include="App_Themes\assets\airhosting\images\h-line-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\helight-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\host-plan-price-bg1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\host-plan-price-bg2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\host-plan-price-bg3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\host-plan-price-bg4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\icon-remove.png" />
+    <Content Include="App_Themes\assets\airhosting\images\line-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\logo-dots.png" />
+    <Content Include="App_Themes\assets\airhosting\images\menu-divedar.png" />
+    <Content Include="App_Themes\assets\airhosting\images\menu-drop-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\newsletter-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\offer-box-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\offer-box-title.png" />
+    <Content Include="App_Themes\assets\airhosting\images\opacity-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\payments-logo1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\payments-logo2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\payments-logo3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\payments-logo4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\payments-logo5.png" />
+    <Content Include="App_Themes\assets\airhosting\images\payments-logo6.png" />
+    <Content Include="App_Themes\assets\airhosting\images\phone-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\products-img1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\products-img2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\products-img3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\products-img4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\project2.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\quote_subfix.gif" />
+    <Content Include="App_Themes\assets\airhosting\images\sample-ad-banner.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\save-big-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sbut-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sbut-02.png" />
+    <Content Include="App_Themes\assets\airhosting\images\scroll-top-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\shadow-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\shadow-02.png" />
+    <Content Include="App_Themes\assets\airhosting\images\shadow-03.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sidebar-title-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon10.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon5.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon6.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon7.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon8.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-icon9.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-img-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-img-02.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\site-img-03.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\site-img-04.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\site-img-05.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-img-13.png" />
+    <Content Include="App_Themes\assets\airhosting\images\site-search-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\slider-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\slider-img.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\arrows-01.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\check.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\round-1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\round-2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\selector-shadow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\slide-selector-arrow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\slider-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\slider2-next-buts.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\revolution\check.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\revolution\round-1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\revolution\round-2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\revolution\slider-bg.jpg" />
+    <Content Include="App_Themes\assets\airhosting\images\spacer.gif" />
+    <Content Include="App_Themes\assets\airhosting\images\testi-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\tickmark-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\tickmark.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-chat-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-mail-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-phone-icon.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si-bg-hover.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si-bg.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si1.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si2.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si3.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si4.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si5.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si6.png" />
+    <Content Include="App_Themes\assets\airhosting\images\top-si7.png" />
+    <Content Include="App_Themes\assets\airhosting\images\v-shadow.png" />
+    <Content Include="App_Themes\assets\airhosting\images\waves-graph.png" />
+    <Content Include="App_Themes\assets\airhosting\js\accordion\accordion.css" />
+    <Content Include="App_Themes\assets\airhosting\js\accordion\custom.js" />
+    <Content Include="App_Themes\assets\airhosting\js\domainquery\choices.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\common.css" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_lib\jquery-1.4.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_lib\jquery-1.7.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_lib\jquery-1.8.2.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_lib\jquery.easing-1.3.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_src\custom.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_src\jquery.iosslider.js" />
+    <Content Include="App_Themes\assets\airhosting\js\iosslider\_src\jquery.iosslider.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\arrow-left.png" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\arrow-right.png" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\jquery-1.4.2.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\jquery.jcarousel.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\next-horizontal.png" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\prev-horizontal.png" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\skin.css" />
+    <Content Include="App_Themes\assets\airhosting\js\mainmenu\ddsmoothmenu.js" />
+    <Content Include="App_Themes\assets\airhosting\js\mainmenu\jquery-1.7.1.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\mainmenu\scripts.js" />
+    <Content Include="App_Themes\assets\airhosting\js\mainmenu\selectnav.js" />
+    <Content Include="App_Themes\assets\airhosting\js\owl\owl-carousel.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\lib\jquery-1.9.0.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\blank.gif" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\fancybox_loading.gif" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\fancybox_overlay.png" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\fancybox_sprite.png" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\fancybox_buttons.png" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\jquery.fancybox.css" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\jquery.fancybox.js" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\jquery.fancybox.pack.js" />
+    <Content Include="App_Themes\assets\airhosting\js\progressbar\progress.js" />
+    <Content Include="App_Themes\assets\airhosting\js\progressbar\ui.progress-bar.css" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\css\fullwidth.css" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\accordionswitch.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\bgtile.jpg" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\bullets_boxed.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\bullets_round.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\bullets_square.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\buynow.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\check.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\dragnotch.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\dragsliderbg.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\logo.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\minishadow.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\minishadow2.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\minishadow3.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\preview1.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\preview2.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\preview3.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\radio.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\selectpreview.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\shadow3_large.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\sliderconfigheadline.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_3dch.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_3dcv.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_bg.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_boxes.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_cubic.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_curtainone.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_curtainthree.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_curtaintwo.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_custom.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_fade.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_flyin.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_mixed.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_papercut.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slidedown.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slideleft.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slideright.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slideup.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slotfadehorizontal.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slotfadevertical.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slotslidehorizontal.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slotslidevertical.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slotzoomhorizontal.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_slotzoomvertical.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\transition_turnoff.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrowleft.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrowright.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrow_large_left.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrow_large_right.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrow_left.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrow_left2.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrow_right.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\arrow_right2.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\black50.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\boxed_bgtile.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\bullet.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\bullets.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\bullets2.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\bullet_boxed.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\coloredbg.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\grain.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\large_left.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\large_right.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\loader.gif" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\loader2.gif" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\navigdots.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\navigdots_bgtile.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\shadow1.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\shadow2.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\shadow3.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\small_left.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\small_left_boxed.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\small_right.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\small_right_boxed.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\timer.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\timerdot.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\transparent.jpg" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\white50.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\css\settings.css" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\decor_inside.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\decor_inside_white.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\decor_testimonial.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\gradient\g30.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\gradient\g40.png" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\js\jquery.themepunch.plugins.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\js\jquery.themepunch.revolution.js" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="App_Themes\assets\airhosting\js\style-switcher\color-switcher.css" />
+    <Content Include="App_Themes\assets\airhosting\js\style-switcher\colors-swi.png" />
+    <Content Include="App_Themes\assets\airhosting\js\style-switcher\jquery-1.js" />
+    <Content Include="App_Themes\assets\airhosting\js\style-switcher\styleselector.js" />
+    <Content Include="App_Themes\assets\airhosting\js\style-switcher\styleswitcher.js" />
+    <Content Include="App_Themes\assets\airhosting\js\tabs\tabs-style2.css" />
+    <Content Include="App_Themes\assets\airhosting\js\tabs\tabs-style2.js" />
+    <Content Include="App_Themes\assets\airhosting\js\tabs\tabs.css" />
+    <Content Include="App_Themes\assets\airhosting\js\tabs\tabs.js" />
+    <Content Include="App_Themes\assets\airhosting\js\universal\jquery.js" />
+    <Content Include="App_Themes\assets\bs4\bootstrap-notify.js" />
+    <Content Include="App_Themes\assets\bs4\common.css" />
+    <Content Include="App_Themes\assets\bs4\dashboard.js" />
+    <Content Include="App_Themes\assets\bs4\fonts\flaticon\Flaticon.svg" />
+    <Content Include="App_Themes\assets\bs4\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="App_Themes\assets\bs4\fonts\line-awesome\line-awesome.svg" />
+    <Content Include="App_Themes\assets\bs4\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg" />
+    <Content Include="App_Themes\assets\bs4\fonts\socicon\socicon.svg" />
+    <Content Include="App_Themes\assets\bs4\login.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\back_disabled.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\back_enabled.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\back_enabled_hover.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\forward_disabled.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\forward_enabled.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\forward_enabled_hover.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\sort_asc.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\sort_asc_disabled.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\sort_both.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\sort_desc.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\DataTables-1.10.12\images\sort_desc_disabled.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\datatables.all.min.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\datatables.min.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\datatables.min.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\plugins\bootstrap\datatables.bootstrap.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\plugins\bootstrap\datatables.bootstrap.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\datatables\plugins\input-paging\input.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\datetimepicker\js\moment-with-locales.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\fullcalendar\css\fullcalendar.bundle.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\fullcalendar\css\fullcalendar.print.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\fullcalendar\js\fullcalendar.bundle.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\fullcalendar\js\tr.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\initValues.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\m2.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\m3.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\m4.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\mapHeat.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\mapNumbersClick.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\mapNumbersZoom.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\markerclusterer.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\markermanager.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\googlemap\markerwithlabel.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\highchart\highchart.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\highchart\series-label.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\jquery.inputmask\js\jquery.inputmask.bundle.min.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\accordion.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\all.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\aspb.selectfilter.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\autocomplete.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\base.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\button.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\core.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\datepicker.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\dialog.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\draggable.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_444444_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_555555_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_777620_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_777777_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\jquery-ui.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\jquery-ui.min.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\menu.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\progressbar.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\resizable.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\selectable.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\selectmenu.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\slider.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\sortable.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\spinner.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\tabs.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\theme.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\jqueryui\css\tooltip.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\portlets\portlet.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\select2\css\select2-bootstrap.min.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\select2\css\select2.min.css" />
+    <Content Include="App_Themes\assets\bs4\plugins\select2\js\select2.full.min.js" />
+    <Content Include="App_Themes\assets\bs4\plugins\select2\js\tr.js" />
+    <Content Include="App_Themes\assets\bs4\scripts.bundle.js" />
+    <Content Include="App_Themes\assets\bs4\scripts.bundle_.js" />
+    <Content Include="App_Themes\assets\bs4\style.bundle.css" />
+    <Content Include="App_Themes\assets\bs4\vendors.bundle.css" />
+    <Content Include="App_Themes\assets\bs4\vendors.bundle.js" />
+    <Content Include="App_Themes\assets\bs4\vendors.bundle_.js" />
+    <Content Include="App_Themes\assets\ckeditor\adapters\jquery.js" />
+    <Content Include="App_Themes\assets\ckeditor\build-config.js" />
+    <Content Include="App_Themes\assets\ckeditor\ckeditor.js" />
+    <Content Include="App_Themes\assets\ckeditor\config.js" />
+    <Content Include="App_Themes\assets\ckeditor\contents.css" />
+    <Content Include="App_Themes\assets\ckeditor\lang\af.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ar.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\az.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\bg.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\bn.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\bs.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\cs.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\cy.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\da.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\de-ch.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\de.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\el.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\en-au.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\en.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\eo.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\es-mx.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\es.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\et.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\eu.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\fa.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\fi.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\fo.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\fr.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\gl.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\gu.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\he.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\hi.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\hr.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\hu.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\id.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\is.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\it.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ja.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ka.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\km.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ko.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ku.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\lt.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\lv.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\mk.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\mn.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ms.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\nb.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\nl.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\no.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\oc.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\pl.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\pt.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ro.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ru.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\si.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\sk.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\sl.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\sq.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\sr.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\sv.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\th.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\tr.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\tt.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\ug.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\uk.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\vi.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="App_Themes\assets\ckeditor\lang\zh.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\dialog\styles\dialog.css" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\icons.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\pastefromgdocs\filter\default.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\pastetools\filter\common.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\pastetools\filter\image.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\skins\moono-lisa\wsc.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\css\samples.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\img\github-top.png" />
+    <Content Include="App_Themes\assets\ckeditor\samples\img\header-bg.png" />
+    <Content Include="App_Themes\assets\ckeditor\samples\img\header-separator.png" />
+    <Content Include="App_Themes\assets\ckeditor\samples\img\logo.png" />
+    <Content Include="App_Themes\assets\ckeditor\samples\img\logo.svg" />
+    <Content Include="App_Themes\assets\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="App_Themes\assets\ckeditor\samples\index.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\js\sample.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\js\sf.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\ajax.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\api.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\appendto.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\divreplace.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\index.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\inlineall.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\jquery.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\readonly.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\sample.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\sample.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\tabindex.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\uicolor.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="App_Themes\assets\ckeditor\styles.js" />
+    <Content Include="App_Themes\assets\ckeditor\vendor\promise.js" />
+    <Content Include="App_Themes\css\Animate.css" />
+    <Content Include="App_Themes\css\aspb.error.css" />
+    <Content Include="App_Themes\css\AutoComplete.css" />
+    <Content Include="App_Themes\css\BrandApi\awesome-bootstrap-checkbox.css" />
+    <Content Include="App_Themes\css\BrandApi\bootstrap.css" />
+    <Content Include="App_Themes\css\BrandApi\dataTables.bootstrap.css" />
+    <Content Include="App_Themes\css\BrandApi\dataTables.responsive.css" />
+    <Content Include="App_Themes\css\BrandApi\marka-arastirma-style.css" />
+    <Content Include="App_Themes\css\BrandApi\sweetalert2.min.css" />
+    <Content Include="App_Themes\css\dropzone.css" />
+    <Content Include="App_Themes\css\Error.css" />
+    <Content Include="App_Themes\css\Giris.css" />
+    <Content Include="App_Themes\css\OpenSans.css" />
+    <Content Include="App_Themes\css\Ortak.css" />
+    <Content Include="App_Themes\css\Popup.css" />
+    <Content Include="App_Themes\css\Print.css" />
+    <Content Include="App_Themes\css\PrintA4.css" />
+    <Content Include="App_Themes\css\responsive.css" />
+    <Content Include="App_Themes\images\blog.jpg" />
+    <Content Include="App_Themes\images\domain.jpg" />
+    <Content Include="App_Themes\images\DomainSearch.png" />
+    <Content Include="App_Themes\images\errorbg.png" />
+    <Content Include="App_Themes\images\loading.gif" />
+    <Content Include="App_Themes\images\loadingtext.gif" />
+    <Content Include="App_Themes\images\no-image.png" />
+    <Content Include="App_Themes\images\Patent.png" />
+    <Content Include="App_Themes\images\Patent2.png" />
+    <Content Include="App_Themes\images\Patent3.png" />
+    <Content Include="App_Themes\images\patentbg.png" />
+    <Content Include="App_Themes\images\trademark-registration.jpeg" />
+    <Content Include="App_Themes\images\Trademark.png" />
+    <Content Include="App_Themes\images\Trademark2.png" />
+    <Content Include="App_Themes\images\Trademark3.png" />
+    <Content Include="App_Themes\images\Trademark4.png" />
+    <Content Include="App_Themes\images\trademarkbg.jpg" />
+    <Content Include="App_Themes\images\user_profile_bg.jpg" />
+    <Content Include="configuration.txt" />
+    <Content Include="Content\aspb.selectfilter.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DomainDBScript.sql" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-fullscreen.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-fullscreen.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-indicator.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-indicator.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-video.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-video.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-vimeo.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-vimeo.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-youtube.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-youtube.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-helper.js" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-helper.min.js" />
+    <Content Include="Scripts\BlueimpGallery\js\jquery.blueimp-gallery.js" />
+    <Content Include="Scripts\BlueimpGallery\js\jquery.blueimp-gallery.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.tr.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\app_DEV.config" />
+    <Content Include="App_Data\connections_DEV.config" />
+    <Content Include="App_Themes\assets\bs4\fonts\flaticon\Flaticon.eot" />
+    <Content Include="App_Themes\assets\bs4\fonts\flaticon\Flaticon.ttf" />
+    <Content Include="App_Themes\assets\bs4\fonts\flaticon\Flaticon.woff" />
+    <Content Include="App_Themes\assets\bs4\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="App_Themes\assets\bs4\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="App_Themes\assets\bs4\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="App_Themes\assets\bs4\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="App_Themes\assets\bs4\fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="App_Themes\assets\bs4\fonts\line-awesome\line-awesome.eot" />
+    <Content Include="App_Themes\assets\bs4\fonts\line-awesome\line-awesome.ttf" />
+    <Content Include="App_Themes\assets\bs4\fonts\line-awesome\line-awesome.woff" />
+    <Content Include="App_Themes\assets\bs4\fonts\line-awesome\line-awesome.woff2" />
+    <Content Include="App_Themes\assets\bs4\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot" />
+    <Content Include="App_Themes\assets\bs4\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf" />
+    <Content Include="App_Themes\assets\bs4\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff" />
+    <Content Include="App_Themes\assets\bs4\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2" />
+    <Content Include="App_Themes\assets\bs4\fonts\socicon\socicon.eot" />
+    <Content Include="App_Themes\assets\bs4\fonts\socicon\socicon.ttf" />
+    <Content Include="App_Themes\assets\bs4\fonts\socicon\socicon.woff" />
+    <Content Include="App_Themes\assets\bs4\fonts\summernote\summernote.eot" />
+    <Content Include="App_Themes\assets\bs4\fonts\summernote\summernote.ttf" />
+    <Content Include="App_Themes\assets\bs4\fonts\summernote\summernote.woff" />
+    <Content Include="Dockerfile" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-fullscreen.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-indicator.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-video.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-vimeo.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery-youtube.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-gallery.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\blueimp-helper.min.js.map" />
+    <Content Include="Scripts\BlueimpGallery\js\jquery.blueimp-gallery.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\BrandApi\bootstrap.min.js" />
+    <Content Include="Scripts\BrandApi\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\BrandApi\dataTables.responsive.min.js" />
+    <Content Include="Scripts\BrandApi\jquery-migrate-1.4.1.js" />
+    <Content Include="Scripts\BrandApi\jquery.dataTables.min.js" />
+    <Content Include="Scripts\BrandApi\jquery.min.js" />
+    <Content Include="Scripts\BrandApi\sweetalert2.min.js" />
+    <Content Include="Scripts\dropzone.js" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\hostplan\custom.js" />
+    <Content Include="Scripts\hostplan\google-map-init-multilocation.js" />
+    <Content Include="Scripts\hostplan\jquery-plugin-collection.js" />
+    <Content Include="Scripts\hostplan\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="libman.json" />
+    <Content Include="App_Themes\assets\airhosting\css\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="App_Themes\assets\airhosting\css\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="App_Themes\assets\airhosting\css\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="App_Themes\assets\airhosting\css\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="App_Themes\assets\airhosting\images\blog\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\blue\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\darkgray\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\colors\red\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\elements\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\iosslider\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\revolution\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\sliders\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\images\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\jcarousel\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\helpers\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\portfolio\source\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\images\tiles\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\assets\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\gradient\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\revolutionslider\rs-plugin\images\Thumbs.db" />
+    <Content Include="App_Themes\assets\airhosting\js\style-switcher\Thumbs.db" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\User\Views\Brand\WatchingApplicationList.cshtml" />
+    <Content Include="Areas\User\Views\Brand\ApplicationStep1.cshtml" />
+    <Content Include="Areas\User\Views\Brand\ApplicationStep2.cshtml" />
+    <Content Include="Areas\User\Views\Brand\ApplicationStep3.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Parameter\TLDTypes.cshtml" />
+    <Content Include="Areas\Admin\Views\Parameter\_UpdateTLDType.cshtml" />
+    <Content Include="App_Themes\assets\ckeditor\CHANGES.md" />
+    <Content Include="App_Themes\assets\ckeditor\LICENSE.md" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\scayt\README.md" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="App_Themes\assets\ckeditor\plugins\wsc\README.md" />
+    <Content Include="App_Themes\assets\ckeditor\README.md" />
+    <Content Include="App_Themes\assets\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="App_Themes\assets\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="App_Themes\assets\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\ManagementPanel\AboutPage.cshtml" />
+    <Content Include="Areas\Admin\Views\DomainPrice\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DomainPrice\_Update.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagementPanel\ContactPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\User\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\User\Views\Home\Index.cshtml" />
+    <Content Include="Areas\User\Views\Brand\WatchingApplicationIndex.cshtml" />
+    <Content Include="Areas\User\Views\Brand\WatchingApplicationStep1.cshtml" />
+    <Content Include="Areas\User\Views\Brand\WatchingApplicationStep2.cshtml" />
+    <Content Include="Areas\User\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\User\Views\Brand\OtherApplicationStep1.cshtml" />
+    <Content Include="Areas\User\Views\Brand\OtherApplicationStep2.cshtml" />
+    <Content Include="Areas\User\Views\Brand\OtherApplicationStep3.cshtml" />
+    <Content Include="Areas\User\Views\Brand\OtherApplicationStep4.cshtml" />
+    <Content Include="Areas\User\Views\Brand\OtherApplicationList.cshtml" />
+    <Content Include="Areas\User\Views\Patent\ApplicationStep1.cshtml" />
+    <Content Include="Areas\User\Views\Patent\ApplicationStep2.cshtml" />
+    <Content Include="Areas\User\Views\Patent\ApplicationStep3.cshtml" />
+    <Content Include="Areas\User\Views\Patent\Index.cshtml" />
+    <Content Include="Areas\User\Views\Brand\ApplicationStep4.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\_UpdateSliderContentDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\ReferenceFirm\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReferenceFirm\Update.cshtml" />
+    <Content Include="Areas\User\Views\IndustrialDesign\AddOrUpdateIndustrialDesignApplication.cshtml" />
+    <Content Include="Areas\User\Views\IndustrialDesign\IndustrialDesignApplicationDetail.cshtml" />
+    <Content Include="Areas\User\Views\IndustrialDesign\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Update.cshtml" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\markapatent - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Site\base.js" />
+    <Content Include="Scripts\Site\datatable-1.0.1.js" />
+    <Content Include="Scripts\Site\loading.js" />
+    <Content Include="Scripts\Site\searchfilter-1.0.0.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Log.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Shared\_ShowMessageView.cshtml" />
+    <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\Basket\_BasketItems.cshtml" />
+    <Content Include="Views\Domain\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\UserAccount\Index.cshtml" />
+    <Content Include="Views\UserAccount\ChangePassword.cshtml" />
+    <Content Include="Views\UserAccount\Addresses.cshtml" />
+    <Content Include="Views\UserAccount\Update.cshtml" />
+    <Content Include="Views\Shared\_LayoutHosting.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_Blogs.cshtml" />
+    <Content Include="Views\Shared\_RecentBlogs.cshtml" />
+    <Content Include="Views\Blog\Read.cshtml" />
+    <Content Include="Views\Shared\_BlogCategories.cshtml" />
+    <Content Include="Views\Shared\_RecentBlogsSideBar.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Shared\_BrandApi.cshtml" />
+    <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Patent\Index.cshtml" />
+    <Content Include="Scripts\response.json" />
+    <Content Include="Views\Shared\_Attachment.cshtml" />
+    <Content Include="Views\Shared\_AttachmentList.cshtml" />
+    <Content Include="Views\ReferenceFirm\Index.cshtml" />
+    <Content Include="Views\Domain\SearchDomain.cshtml" />
+    <Content Include="Views\Shared\_MultipleAttachment.cshtml" />
+    <Content Include="Views\Shared\_MultipleAttachmentList.cshtml" />
+    <Content Include="Views\Patent\Result.cshtml" />
+    <Content Include="Views\Brand\Result.cshtml" />
+    <Content Include="Views\Error\e403.cshtml" />
+    <Content Include="Views\Error\e404.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutError.cshtml" />
+    <Content Include="Views\Services\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Themes\assets\bs4\plugins\jquery.inputmask\css\" />
+    <Folder Include="App_Themes\assets\bs4\plugins\jqueryui\js\" />
+    <Folder Include="Areas\Admin\Views\Domain\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\Common\" />
+    <Folder Include="Views\DomainBase\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Business\Domain.Business.csproj">
+      <Project>{7a42260a-f532-4156-9690-17ba93d7c591}</Project>
+      <Name>Domain.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entity\Domain.Entity.csproj">
+      <Project>{95ea3cb7-a0bb-44e3-bed2-2cbc812590a4}</Project>
+      <Name>Domain.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Infrastructure\Domain.Infrastructure.csproj">
+      <Project>{b9c87fbf-d88b-4303-bd30-1dc8171f41ce}</Project>
+      <Name>Domain.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.WebHelpers\Domain.WebHelpers.csproj">
+      <Project>{840fcceb-61b2-4ae4-8851-9465751646e9}</Project>
+      <Name>Domain.WebHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54166</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54164/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
+  <Import Project="..\packages\PostSharp.4.2.17\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

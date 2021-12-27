@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Web", "Domain.Web\Domain.Web.csproj", "{A0C7F09F-78E2-4456-8177-81BE9DA2E988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Entity", "Domain.Entity\Domain.Entity.csproj", "{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Business", "Domain.Business\Domain.Business.csproj", "{7A42260A-F532-4156-9690-17BA93D7C591}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.WebHelpers", "Domain.WebHelpers\Domain.WebHelpers.csproj", "{840FCCEB-61B2-4AE4-8851-9465751646E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Infrastructure", "Domain.Infrastructure\Domain.Infrastructure.csproj", "{B9C87FBF-D88B-4303-BD30-1DC8171F41CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.DataAccess", "Domain.DataAccess\Domain.DataAccess.csproj", "{9F775A13-EF38-4400-8C32-A061E3399975}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F959604F-01C9-4022-AC4F-089F11E77E03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0C7F09F-78E2-4456-8177-81BE9DA2E988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C7F09F-78E2-4456-8177-81BE9DA2E988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C7F09F-78E2-4456-8177-81BE9DA2E988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C7F09F-78E2-4456-8177-81BE9DA2E988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A42260A-F532-4156-9690-17BA93D7C591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A42260A-F532-4156-9690-17BA93D7C591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A42260A-F532-4156-9690-17BA93D7C591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A42260A-F532-4156-9690-17BA93D7C591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{840FCCEB-61B2-4AE4-8851-9465751646E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840FCCEB-61B2-4AE4-8851-9465751646E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840FCCEB-61B2-4AE4-8851-9465751646E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840FCCEB-61B2-4AE4-8851-9465751646E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9C87FBF-D88B-4303-BD30-1DC8171F41CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C87FBF-D88B-4303-BD30-1DC8171F41CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C87FBF-D88B-4303-BD30-1DC8171F41CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C87FBF-D88B-4303-BD30-1DC8171F41CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F775A13-EF38-4400-8C32-A061E3399975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F775A13-EF38-4400-8C32-A061E3399975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F775A13-EF38-4400-8C32-A061E3399975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F775A13-EF38-4400-8C32-A061E3399975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F959604F-01C9-4022-AC4F-089F11E77E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F959604F-01C9-4022-AC4F-089F11E77E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F959604F-01C9-4022-AC4F-089F11E77E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F959604F-01C9-4022-AC4F-089F11E77E03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAB82ECA-6657-417C-AEE7-B493AD50C9E6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://hacitakkim.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Domain.Business\\Domain.Business.csproj
+		SccProjectName1 = Domain.Business
+		SccLocalPath1 = Domain.Business
+		SccProjectUniqueName2 = Domain.DataAccess\\Domain.DataAccess.csproj
+		SccProjectName2 = Domain.DataAccess
+		SccLocalPath2 = Domain.DataAccess
+		SccProjectUniqueName3 = Domain.Entity\\Domain.Entity.csproj
+		SccProjectName3 = Domain.Entity
+		SccLocalPath3 = Domain.Entity
+		SccProjectUniqueName4 = Domain.Infrastructure\\Domain.Infrastructure.csproj
+		SccProjectName4 = Domain.Infrastructure
+		SccLocalPath4 = Domain.Infrastructure
+		SccProjectUniqueName5 = Domain.Web\\Domain.Web.csproj
+		SccProjectName5 = Domain.Web
+		SccLocalPath5 = Domain.Web
+		SccProjectUniqueName6 = Domain.WebHelpers\\Domain.WebHelpers.csproj
+		SccProjectName6 = Domain.WebHelpers
+		SccLocalPath6 = Domain.WebHelpers
+	EndGlobalSection
+EndGlobal

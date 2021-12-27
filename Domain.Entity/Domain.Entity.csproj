@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95EA3CB7-A0BB-44E3-BED2-2CBC812590A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.Entity</RootNamespace>
+    <AssemblyName>Domain.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComplexType\DomainApplicationComplexType.cs" />
+    <Compile Include="ComplexType\IndustrialDesignApplicationComplexType.cs" />
+    <Compile Include="ComplexType\SliderContentDetailComplexType.cs" />
+    <Compile Include="ComplexType\SliderContentComplexType.cs" />
+    <Compile Include="ComplexType\AttachmentComplexType.cs" />
+    <Compile Include="ComplexType\BlogContentComplexType.cs" />
+    <Compile Include="ComplexType\PatentApplicationComplexType.cs" />
+    <Compile Include="ComplexType\BrandForWatchingApplicationComplexType.cs" />
+    <Compile Include="ComplexType\ContactPageComplexType.cs" />
+    <Compile Include="ComplexType\DomainPriceComplexType.cs" />
+    <Compile Include="ComplexType\BrandApplicationComplexType.cs" />
+    <Compile Include="ComplexType\SystemUserComplexType.cs" />
+    <Compile Include="Concrete\Services.cs" />
+    <Compile Include="Concrete\IndustrialDesignApplicationDetail.cs" />
+    <Compile Include="Concrete\RelatedEntity.cs" />
+    <Compile Include="Concrete\Form.cs" />
+    <Compile Include="Concrete\Attachment.cs" />
+    <Compile Include="Concrete\Beneficiary.cs" />
+    <Compile Include="Concrete\BlogContent.cs" />
+    <Compile Include="Concrete\PatentApplicationDetail.cs" />
+    <Compile Include="Concrete\BrandForWatching.cs" />
+    <Compile Include="Concrete\BrandWatchingApplicationDetail.cs" />
+    <Compile Include="Concrete\PrmBrandApplicationType.cs" />
+    <Compile Include="Concrete\ReferenceFirm.cs" />
+    <Compile Include="Concrete\SliderContent.cs" />
+    <Compile Include="Concrete\SliderContentDetail.cs" />
+    <Compile Include="Concrete\SubMenu.cs" />
+    <Compile Include="Concrete\Menu.cs" />
+    <Compile Include="Concrete\Contact.cs" />
+    <Compile Include="Concrete\CustomerDomain.cs" />
+    <Compile Include="Concrete\PrmApplicationType.cs" />
+    <Compile Include="Concrete\Management.cs" />
+    <Compile Include="Concrete\PrmBlogCategory.cs" />
+    <Compile Include="Concrete\PrmTLDType.cs" />
+    <Compile Include="Concrete\Sale.cs" />
+    <Compile Include="Concrete\SaleDetail.cs" />
+    <Compile Include="Concrete\SaleTransaction.cs" />
+    <Compile Include="Concrete\Town.cs" />
+    <Compile Include="Concrete\City.cs" />
+    <Compile Include="Concrete\CustomerApplicationBrandClasses.cs" />
+    <Compile Include="Concrete\BrandApplicationDetail.cs" />
+    <Compile Include="Concrete\BrandClasses.cs" />
+    <Compile Include="Concrete\BrandSubClasses.cs" />
+    <Compile Include="Concrete\CustomerApplication.cs" />
+    <Compile Include="Concrete\PrmFirmStatusType.cs" />
+    <Compile Include="Concrete\SystemUser.cs" />
+    <Compile Include="Concrete\DomainPrice.cs" />
+    <Compile Include="Container\Helper\Basket\BasketItem.cs" />
+    <Compile Include="Container\Request\Attachment\RequestAttachment.cs" />
+    <Compile Include="Container\Request\Basket\RequestUserBasket.cs" />
+    <Compile Include="Container\Request\Beneficiary\RequestBeneficiaryContactRegistry.cs" />
+    <Compile Include="Container\Request\Beneficiary\RequestBeneficiary.cs" />
+    <Compile Include="Container\Request\Beneficiary\RequestBeneficiaryRegistry.cs" />
+    <Compile Include="Container\Request\Blog\RequestBlogContent.cs" />
+    <Compile Include="Container\Request\BrandClass\RequestBrandSubClasses.cs" />
+    <Compile Include="Container\Request\BrandClass\RequestBrandClasses.cs" />
+    <Compile Include="Container\Request\Brand\RequestBrandForWatchingRegistration.cs" />
+    <Compile Include="Container\Request\Brand\RequestBrandForWatching.cs" />
+    <Compile Include="Container\Request\Brand\RequestBrandWatchingApplication.cs" />
+    <Compile Include="Container\Request\Brand\RequestBrandApplication.cs" />
+    <Compile Include="Container\Request\Brand\RequestBrandWatchingApplicationDetail.cs" />
+    <Compile Include="Container\Request\Contact\RequestContact.cs" />
+    <Compile Include="Container\Request\Domain\RequestTldType.cs" />
+    <Compile Include="Container\Request\IndustrialDesign\RequestIndustrialDesignApplication.cs" />
+    <Compile Include="Container\Request\Manage\RequestManagement.cs" />
+    <Compile Include="Container\Request\Brand\RequestBrandApplicationDetail.cs" />
+    <Compile Include="Container\Request\Customer\RequestCustomerApplication.cs" />
+    <Compile Include="Container\Request\Menus\RequestMenu.cs" />
+    <Compile Include="Container\Request\Parameter\RequestDomainPrice.cs" />
+    <Compile Include="Container\Request\Parameter\RequestTLDType.cs" />
+    <Compile Include="Container\Request\IndustrialDesign\RequestIndustrialDesignApplicationDetail.cs" />
+    <Compile Include="Container\Request\Patent\RequestPatentApplicationDetail.cs" />
+    <Compile Include="Container\Request\Patent\RequestPatentApplication.cs" />
+    <Compile Include="Container\Request\Services\RequestService.cs" />
+    <Compile Include="Container\Request\SystemUsers\RequestSystemUser.cs" />
+    <Compile Include="Container\Response\Attachment\ResponseAttachment.cs" />
+    <Compile Include="Container\Response\Bneficiary\ResponseBeneficiaryContactRegistry.cs" />
+    <Compile Include="Container\Response\Bneficiary\ResponseBeneficiary.cs" />
+    <Compile Include="Container\Response\BrandClass\ResponseBrandSubClasses.cs" />
+    <Compile Include="Container\Response\BrandClass\ResponseBrandClasses.cs" />
+    <Compile Include="Container\Response\Brand\ResponseBrandForWatching.cs" />
+    <Compile Include="Container\Response\Brand\ResponseBrandWatchingApplication.cs" />
+    <Compile Include="Container\Response\Brand\ResponseBrandWatchingApplicationDetail.cs" />
+    <Compile Include="Container\Response\Brand\ResponseBrandApplicationDetail.cs" />
+    <Compile Include="Container\Response\Brand\ResponseBrandApplication.cs" />
+    <Compile Include="Container\Response\IndustrialDesign\ResponseIndustrialDesignApplication.cs" />
+    <Compile Include="Container\Response\Menus\ResponseMenu.cs" />
+    <Compile Include="Container\Response\Contact\ResponseContact.cs" />
+    <Compile Include="Container\Response\Customer\ResponseCustomerApplication.cs" />
+    <Compile Include="Container\Response\Log\ResponseErrorLog.cs" />
+    <Compile Include="Container\Response\Bneficiary\ResponseBeneficiaryRegistry.cs" />
+    <Compile Include="Container\Response\IndustrialDesign\ResponseIndustrialDesignApplicationDetail.cs" />
+    <Compile Include="Container\Response\Patent\ResponsePatentApplicationDetail.cs" />
+    <Compile Include="Container\Response\Patent\ResponsePatentApplication.cs" />
+    <Compile Include="Container\Response\Services\ResponseService.cs" />
+    <Compile Include="Enum\EnumBrandApplicationType.cs" />
+    <Compile Include="Enum\EnumApplicationType.cs" />
+    <Compile Include="Enum\EnumDurationType.cs" />
+    <Compile Include="Enum\EnumFirmStatusType.cs" />
+    <Compile Include="Enum\EnumCurrencyType.cs" />
+    <Compile Include="Enum\EnumDomainStatus.cs" />
+    <Compile Include="Enum\EnumFormType.cs" />
+    <Compile Include="Enum\EnumDomainState.cs" />
+    <Compile Include="Enum\EnumState.cs" />
+    <Compile Include="Enum\EnumDomainApplicationType.cs" />
+    <Compile Include="Enum\EnumAnonymousUser.cs" />
+    <Compile Include="Enum\EnumSystemUserType.cs" />
+    <Compile Include="Enum\EnumSystemUserState.cs" />
+    <Compile Include="Enum\EnumRelatedEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Messages.cs" />
+    <Compile Include="ViewModels\UserIndustrialDesignApplication\IndustrialDesignApplicationDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserPatentApplication\BeneficiaryPatentViewModel.cs" />
+    <Compile Include="ViewModels\UserPatentApplication\PatentApplicationDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserBrandForWatching\BrandForWatchingViewModel.cs" />
+    <Compile Include="ViewModels\UserBrandForWatching\BrandWatchingApplicationDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserBrandApplication\BeneficiaryViewModel.cs" />
+    <Compile Include="ViewModels\UserBrandApplication\BrandApplicationDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserBrandApplication\ContactViewModel.cs" />
+    <Compile Include="ViewModels\UserOtherBrandApplication\BeneficiaryOtherViewModel.cs" />
+    <Compile Include="ViewModels\UserOtherBrandApplication\BrandApplicationDetailOtherViewModel.cs" />
+    <Compile Include="ViewModels\UserOtherBrandApplication\ContactOtherViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Container\Response\Basket\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Infrastructure\Domain.Infrastructure.csproj">
+      <Project>{b9c87fbf-d88b-4303-bd30-1dc8171f41ce}</Project>
+      <Name>Domain.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

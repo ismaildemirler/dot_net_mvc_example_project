@@ -1,0 +1,32 @@
+﻿@using Newtonsoft.Json
+@{
+    <script type="text/javascript">
+        @if (TempData["ShowMessageCustom"] != null)
+        {
+            var msgArray= Html.Raw(JsonConvert.SerializeObject(TempData["ShowMessageCustom"]));
+            <text>ShowMessageCustom(@msgArray)</text>
+            TempData["ShowMessageCustom"] = null;
+        }
+
+        @if (TempData["ShowMessageSwal"] != null)
+        {
+            var msgObject= Html.Raw(JsonConvert.SerializeObject(TempData["ShowMessageSwal"]));
+            <text>ShowMessageSwal(@msgObject)</text>
+            TempData["ShowMessageSwal"] = null;
+        }
+
+        @if (TempData["ShowPartialCustom"] != null)
+        {
+            var partialArray= Html.Raw(JsonConvert.SerializeObject(TempData["ShowPartialCustom"]));
+            <text>ShowPartialCustom(@partialArray)</text>
+            TempData["ShowPartialCustom"] = null;
+        }
+
+        @if (TempData["ShowPartialCustomSwal"] != null)
+        {
+            var partialArray= Html.Raw(JsonConvert.SerializeObject(TempData["ShowPartialCustomSwal"]));
+            <text>ShowMessageCustomSwal(@partialArray)</text>
+            TempData["ShowPartialCustomSwal"] = null;
+        }
+    </script>
+}

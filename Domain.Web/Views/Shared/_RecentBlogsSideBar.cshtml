@@ -1,0 +1,29 @@
+﻿@{
+    var recentBlogs = CacheManager.GetRecentBlogs;
+}
+
+<div class="sidebar_widget">
+    <div class="sidebar_title">
+        <h3>Son Eklenen Yazılar</h3>
+    </div>
+    <ul class="recent_posts_list">
+        @foreach (var blog in recentBlogs)
+        {
+            string imgSrc = Url.Content("~/App_Themes/images/blog.jpg");
+
+            if (blog.PostImage != null)
+            {
+                var base64 = Convert.ToBase64String(blog.PostImage);
+                imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+            }
+
+            <li>
+                <span>
+                    <a href="@Url.Action("Read", "Blog", new { area="", id=blog.BlogContentId })"><img src="@imgSrc" /></a>
+                </span>
+                <a href="@Url.Action("Read", "Blog", new { area="", id=blog.BlogContentId })"> @blog.Title </a>
+                <i> @blog.PostDate.ToShortDateString() </i>
+            </li>
+        }
+    </ul>
+</div>

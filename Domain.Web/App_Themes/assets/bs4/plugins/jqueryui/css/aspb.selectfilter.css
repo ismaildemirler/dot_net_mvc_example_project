@@ -1,0 +1,31 @@
+﻿/*Select Filter*/
+
+.list-group.selectable {  margin-bottom: 0px;max-height: 200px;overflow-y: auto;}
+.list-group.selectable.inputfilter,.list-group.selectable.rangefilter {overflow-y:visible;}
+
+.list-group.selectable > .list-group-item {  padding: 6px 5px; font-size:0.8em;}
+.list-group-item > i { float: left;margin-right:5px; }
+
+.filter-group { margin:5px;min-width:150px}
+.filter-group .panel-heading {padding:8px 5px; white-space:nowrap}
+.filter-group .panel-title {font-size:0.9em;}
+.filter-group .input-group {margin-right:-1px;}
+
+.filter-group > .btn-filter-submit,.filter-group > .btn-filter-cancel {margin-top:5px;margin-right:5px;}
+.filter-group i {margin-right:5px;}
+
+.list-group.sidegroup {  margin: 0px; }
+.list-group.sidegroup > .list-group-item {padding: 10px 5px; font-size:0.9em; background-color:transparent; border-left-width:0px;border-right-width:0px;font-size:16px;color:#fff;border-color:rgba(0,0,0,0.3);}
+.list-group.sidegroup > .list-group-item:hover {  background-color:rgba(0,0,0,0.2); }
+.list-group.sidegroup > .list-group-item > i { float: left;margin-right:10px;font-size:22px;line-height:24px; }
+
+.filter-group .list-group-item-header {padding: 5px 10px 5px 10px; color: #e0e0e0; background-color: #636363;}
+
+.input-group > .input-group-append > .btn {border-radius:0px !important;}
+.filter-group > .card-header {padding: 0.4rem 1.25rem;margin-bottom: 0;}
+.filter-group > .card-header > .card-title {margin-bottom: 0.1rem;}
+h6.card-title {margin: 5px 0px;}
+.panel-filter a {color:#000000;}
+.panel-filter .btn-danger{color:white !important;}
+.filter-group .card-title {font-size: 0.9em !important;}
+.filter-group .datetimepicker {margin-top:0px;}

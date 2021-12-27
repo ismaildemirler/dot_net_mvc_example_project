@@ -1,0 +1,351 @@
+﻿@model bool
+@{
+    var brandClassList = CacheManager.GetAllBrandClasses;
+}
+
+<div id="reCaptchaDiv" class="displayNone">
+    <div id="captcha_container0" class="g-recaptcha-with-ajax"></div>
+</div>
+
+<div class="row" style="background-color: #fff;">
+    @(Html.Domain().TextBox("txtBrandName").SetTitle("Marka Adı").SetPlaceholder("Lütfen araştırılacak marka adını yazınız.").SetParentCss("col-sm-12 pl-4 pr-4"))
+    <div class="col-lg-12">
+        @(Html.Domain().RadioButtonList("radioList").SetRadioButtons(buttons =>
+            {
+                buttons.Add().SetText("Sektör Bazlı").SetValue(1);
+            buttons.Add().SetText("Sınıf Bazlı").SetValue(2);
+        }).SetTitle("Arama Şekli").SetSelectedValue(1).SetState(StateType.brand).SetLayout(LayoutType.horizontal).SetCallBackFunction("RadioChange"))
+    </div>
+
+    <div id="sectorDiv" class="col-lg-12 brand">
+        <div class="portlet light portlet-fit bordered m-2">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-directions font-green hide"></i>
+                    <span class="caption-subject bold font-dark uppercase "> Sektörler </span>
+                    <span class="caption-helper">Araştırmak istediğiniz sektörleri seçiniz.</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm" type="button" onclick="Toggle();"> Hepsini seç </button>
+                        <button class="btn btn-danger btn-sm d-none" type="button" onclick="Toggle();"> Tümünü Kaldır </button>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row chkboxes">
+                    @for (int i = 0; i < brandClassList.Count; i++)
+                    {
+                        <div class="col-sm-12 col-lg-6 col-xl-4 chkbox-container font-weight-bold">
+                            @Html.Domain().CheckBox("cbxSector" + brandClassList[i].BrandClassesIdentification).SetTitle(brandClassList[i].Description).SetState(StateType.brand).SetHtmlAttributes(new { value = brandClassList[i].BrandClassesIdentification })
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="text-center portlet-footer">
+                <button class="btn btn-success btnsearch fontBold" type="button"> <span class="fa fa-search"></span> Araştır </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="niceClassesDiv" class="col-lg-12 brand d-none">
+        <div id="sectorDiv" class="portlet light portlet-fit bordered m-2">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-directions font-green hide"></i>
+                    <span class="caption-subject bold font-dark uppercase "> Marka Sınıfları </span>
+                    <span class="caption-helper">Araştırmak istediğiniz marka sınıflarını seçiniz.</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm" type="button" onclick="Toggle();"> Hepsini seç </button>
+                        <button class="btn btn-danger btn-sm d-none" type="button" onclick="Toggle();"> Tümünü Kaldır </button>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row chkboxes">
+                    @for (int i = 0; i < brandClassList.Count; i++)
+                    {
+                        <div class="col-xs-6 col-lg-4 col-xl-3 chkbox-container font-weight-bold brand-classes">
+                            @Html.Domain().CheckBox("cbxClass" + brandClassList[i].BrandClassesIdentification).SetTitle(brandClassList[i].BrandClassesIdentification).SetState(StateType.brand).SetHtmlAttributes(new { value = brandClassList[i].BrandClassesIdentification })
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <div class="text-center portlet-footer">
+                <button class="btn btn-success btnsearch fontBold" type="button"> <span class="fa fa-search"></span> Araştır </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="brand-result mt-3 col-xs-12 px-4"></div>
+
+    <div class="col-sm-12 px-4 text-center">
+        <small>
+            Not: Araştırma sonuçları bilgi amaçlı olup, bu sonuçlara göre yapılacak marka
+            başvuruları tescil edilir ya da edilemez kesin yargısına varılmamalıdır. Detaylı
+            bilgi için <strong>+90 224 544 00 90</strong> numaralı hattımızdan bizimle iletişime
+            geçebilirsiniz.
+        </small>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?hl=tr?render=explicit"></script>
+
+<script>
+    
+    var captchaWidgetId;
+    var recaptchaCalls = 0;
+    var pageSize = 30;
+    var selectedRadioButton = 1;
+
+    function AddModalModeAndShowReCaptchaDiv() {
+        $("body").addClass("modalmode");
+        $("#reCaptchaDiv").show();
+    }
+
+    function RemoveModalModeAndHideReCaptchaDiv() {
+        $("body").addClass("modalmode");
+        $("#reCaptchaDiv").hide();
+    }
+
+    function ValidateSearchParameters() {
+        if ($("#txtBrandName").val().includes("<") || $("#txtBrandName").val().includes(">")) {
+            ShowMessage("Araştırılacak marka '<' veya '>' karakterlerini içermemelidir.", 1, true);
+            return false;
+        }
+        if ($("#txtBrandName").val().length <= 3 || $("#txtBrandName").val().length > 50) {
+            ShowMessage("Araştırılacak marka en az 4 en çok 50 karakter uzunluğunda olmalıdır.", 1, true);
+            return false;
+        }
+        if (GetSelectedCheckboxValues().length === 0) {
+            ShowMessage("Araştırılacak sektör veya sınıfları belirtmediniz.", 1, true);
+            return false;
+        }
+        return true;
+    }
+
+    function Search(pageIndex) {
+        if (ValidateSearchParameters()) {
+            RemoveModalModeAndHideReCaptchaDiv();
+
+            var data = {
+                draw: 1,
+                length: pageSize,
+                markWord: $("#txtBrandName").val(),
+                order: [],
+                search: { value: "", regex: false },
+                grecaptchaResponse: grecaptcha.getResponse(captchaWidgetId),
+                start: pageIndex * pageSize,
+            };
+
+            if (selectedRadioButton == 1) {
+                data.sectors = GetSelectedCheckboxValues();
+            } else if (selectedRadioButton == 2) {
+                data.niceClasses = GetSelectedCheckboxValues();
+            }
+            else {
+                ShowMessage("Lütfen hangi kategoride arama yapmak istediğinizi seçiniz.", 1);
+                return;
+            }
+
+            $.ajax({
+                url: "https://www.vebiz.com.tr/TrademarkSearch.ashx",
+                xhrFields: {
+                    withCredentials: true
+                },
+                async: false,
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function (data) {
+                    ShowDataOnGrid(data, pageIndex);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    }
+
+    function ShowDataOnGrid(result, pageIndex) {
+
+        var strGrid = "<div> Toplam " + result.recordsTotal + " kayıt bulundu. </div>";
+
+        strGrid += "<div class='table-responsive'><table class='table table-hover table-bordered'><thead class='thead-dark'><tr>";
+        strGrid += "<th>#</th>";
+        strGrid += "<th>Logo</th>";
+        strGrid += "<th>Marka</th>";
+        strGrid += "<th>Başvuru No</th>";
+        strGrid += "<th>Başvuru Tarihi</th>";
+        strGrid += "<th>Sınıflar</th>";
+        strGrid += "<th>Tescil Tarihi</th>";
+        strGrid += "<th>Sahibi</th>";
+        strGrid += "<th>Durumu</th>";
+        strGrid += "<th>Kapsam</th>";
+        strGrid += "</tr></thead><tbody>";
+
+        $.each(result.data, function (index, row) {
+            strGrid += "<tr>";
+
+            if ('@Model' == 'True') {
+                strGrid += "<td> <label class='m-checkbox--state-brand m-checkbox'><input id='cbxSector02' name='cbxSector02' type='checkbox' value='02'><span></span></label> </td>";
+            }
+            else {
+                strGrid += "<td></td>";
+            }
+
+            strGrid += "<td> <img src=" + row.LogoUrl + " width=" + row.LogoWidth + " height=" + row.LogoHeight + "> </td>";
+            strGrid += "<td class='marka'>" + row.Marka + "</td>";
+            strGrid += "<td class='basvuruno'>" + row.BasvuruNo + "</td>";
+            strGrid += "<td>" + row.BasvuruTarihi + "</td>";
+            strGrid += "<td class='sinif'>" + row.Siniflar + "</td>";
+            strGrid += "<td>" + row.TescilTarihi + "</td>";
+            strGrid += "<td class='sahibi'>" + row.Sahibi + "</td>";
+            strGrid += "<td>" + row.Durumu + "</td>";
+            strGrid += "<td class='text-center'> <a tabindex='0' role='button' data-toggle='popover' data-placement='top' data-trigger='focus' title='Kapsam' data-content='" + row.Kapsam + "'> <i class='fa fa-info-circle'></i> </a> </td>";
+            strGrid += "</tr>";
+        });
+
+        strGrid += "</tbody><tfoot><tr><td colspan='10' class='table-secondary'>";
+
+        var totolPage = parseInt(result.recordsTotal / pageSize);
+
+        strGrid += "<div class='float-right mt-2 mr-3'> <b> Toplam: " + totolPage + " sayfa (" + result.recordsTotal + " kayıt bulundu) </b> </div>";
+
+        strGrid += "<nav class='paging text-center ml-1' data-active-page='" + pageIndex + "' data-last-page='" + (totolPage - 1) + "'>";
+        strGrid += "<ul class='pagination p-0 m-1 d-inline'>";
+
+        strGrid += "<li class='page-item " + (pageIndex < 1 ? "disabled" : "") + "'>";
+        strGrid += "<a class='page-link' data-page='First'>";
+        strGrid += "<span class='fa fa-angle-double-left font-weight-bold'></span>";
+        strGrid += "</a>";
+        strGrid += "</li>"
+
+        strGrid += "<li class='page-item " + (pageIndex < 1 ? "disabled" : "") + "'>";
+        strGrid += "<a class='page-link' data-page='Previous'>";
+        strGrid += "<span class='fa fa-angle-left'></span>";
+        strGrid += "</a>";
+        strGrid += "</li>"
+
+        strGrid += "<li class='page-item disabled'>";
+        strGrid += "<a class='page-link'>" + (pageIndex + 1) + "</a>";
+        strGrid += "</li>";
+
+        strGrid += "<li class='page-item " + (pageIndex + 1 >= totolPage ? "disabled" : "") + "'>";
+        strGrid += "<a class='page-link' data-page='Next'>";
+        strGrid += "<span class='fa fa-angle-right'></span>";
+        strGrid += "</a>";
+        strGrid += "</li>";
+
+        strGrid += "<li class='page-item " + (pageIndex + 1 >= totolPage ? "disabled" : "") + "'>";
+        strGrid += "<a class='page-link' data-page='Last'>";
+        strGrid += "<span class='fa fa-angle-double-right font-weight-bold'></span>";
+        strGrid += "</a>";
+        strGrid += "</li>";
+
+        if ('@Model' == 'True') {
+            strGrid += "<li class='page-item'>";
+            strGrid += "<a id='btnAddSelectedBrands' class='page-link btn ml-5' style='background-color: #34bfa3;color: #fff;'> Seçilenleri Ekle </a>";
+            strGrid += "</li>";
+        }
+
+        strGrid += "</ul>";
+        strGrid += "</nav>";
+
+        strGrid += "</td></tr></tfoot></table></div>";
+
+        $(".brand-result").html(strGrid);
+
+        $('[data-toggle="popover"]').popover();
+    }
+
+    $(function () {
+        //$(".btnsearch").click(function () { Search(0); });
+
+        $('.btnsearch').on('click', function () {
+            if (ValidateSearchParameters() === true) {
+                $("#captcha_container" + recaptchaCalls).remove();
+                recaptchaCalls++;
+                $('#reCaptchaDiv').append("<div id=captcha_container" + recaptchaCalls + " class='g-recaptcha-with-ajax'></div>");
+                AddModalModeAndShowReCaptchaDiv();
+                captchaWidgetId = grecaptcha.render('captcha_container' + recaptchaCalls, {
+                    'sitekey': '6LdX2pIUAAAAAAdf1z3QkJfNNk_0GFZ23wQ0c1tS', //don't change this key
+                    'callback': Search
+                });
+            }
+        });
+
+
+        $("body").on("click", "nav li a.page-link", function () {
+            var selectedPageIndex = $(this).data("page");
+            var activePageIndex = $("nav.paging").data("active-page");
+            var lastPageIndex = $("nav.paging").data("last-page");
+
+            switch (selectedPageIndex) {
+                case "First":
+                    Search(0);
+                    break;
+                case "Previous":
+                    Search(activePageIndex - 1);
+                    break;
+                case "Next":
+                    Search(activePageIndex + 1);
+                    break;
+                case "Last":
+                    Search(lastPageIndex);
+                    break;
+                default:
+            }
+        });
+
+        $("body").on('click', "#btnAddSelectedBrands", function () {
+            var brands = [];
+            debugger;
+            var selectedRows = $(".brand-result table tbody td input[type=checkbox]:checked").closest("tr");
+            if (selectedRows.length == 0) {
+                ShowMessage("Lütfen en az bir marka seçimi yapınız.", 1);
+            }
+            else {
+                $.each(selectedRows, function (index, element) {
+                    var brand = {
+                        "BrandName": $(element).find("td.marka").text(),
+                        "FirmName": $(element).find("td.sahibi").text(),
+                        "ClassesToWatch": $(element).find("td.sinif").text(),
+                        "RegistryNumber": $(element).find("td.basvuruno").text(),
+                        "BrandWatchingApplicationDetailId": $('#BrandForWatching_BrandWatchingApplicationDetailId').val()
+                    }
+                    brands.push(brand);
+                });
+
+                model = JSON.stringify({ 'BrandForWatchingList': brands });
+                postData('@Url.Action("AddBrandsComingFromApi")', { brandForWatchingList: model }, true, null, function () {
+                    location.reload();
+                });
+            }
+        });
+    });
+
+    function RadioChange(value) {
+        $("#sectorDiv").toggleClass("d-none");
+        $("#niceClassesDiv").toggleClass("d-none");
+    }
+
+    function Toggle() {
+        $(".brand:not(.d-none) .chkboxes input[type=checkbox]").click();
+        $(".brand:not(.d-none) .actions .btn").toggleClass("d-none");
+    }
+
+    function GetSelectedCheckboxValues() {
+        var checkedNiceClasses = "";
+        var list = $(".brand:not(.d-none) .chkboxes input[type=checkbox]:checked");
+        $.each(list, function (index, element) {
+            checkedNiceClasses += $(element).val() + "-";
+        });
+        return checkedNiceClasses;
+    }
+
+</script>
+

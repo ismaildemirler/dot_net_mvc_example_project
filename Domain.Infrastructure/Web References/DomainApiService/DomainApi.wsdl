@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DomainApi" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Data" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.Enumerations" />
+      <xsd:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.CommonApiContracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDomainApi_CheckAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAvailability" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CheckAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CheckAvailabilityIdn_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAvailabilityIdn" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CheckAvailabilityIdn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAvailabilityIdnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_RegisterWithContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterWithContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_RegisterWithContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterWithContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyNameServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyNameServer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyNameServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyNameServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyContacts" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContacts" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SaveContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveContacts" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SaveContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyAuthCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyAuthCode" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyAuthCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyAuthCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStatus" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_EnableTheftProtectionLock_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableTheftProtectionLock" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_EnableTheftProtectionLock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableTheftProtectionLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DisableTheftProtectionLock_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableTheftProtectionLock" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DisableTheftProtectionLock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableTheftProtectionLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyPrivacyProtectionStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPrivacyProtectionStatus" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyPrivacyProtectionStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPrivacyProtectionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_AddChildNameServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddChildNameServer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_AddChildNameServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddChildNameServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyChildNameServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyChildNameServer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyChildNameServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyChildNameServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DeleteChildNameServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteChildNameServer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DeleteChildNameServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteChildNameServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetChildNameServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildNameServer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetChildNameServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildNameServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetChildNameServers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildNameServers" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetChildNameServers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildNameServersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Renew_InputMessage">
+    <wsdl:part name="parameters" element="tns:Renew" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Renew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDetails" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetList" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CheckTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CheckTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Transfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Transfer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Transfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_QueryTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_QueryTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ApproveTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ApproveTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_RejectTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RejectTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_RejectTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RejectTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CancelTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CancelTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Restore_InputMessage">
+    <wsdl:part name="parameters" element="tns:Restore" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Restore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RestoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ResendIncomingTransferFOAMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResendIncomingTransferFOAMail" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ResendIncomingTransferFOAMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResendIncomingTransferFOAMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ResendOutgoingTransferFOAMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResendOutgoingTransferFOAMail" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ResendOutgoingTransferFOAMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResendOutgoingTransferFOAMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SuggestNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:SuggestNames" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SuggestNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SuggestNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetListOfLocks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOfLocks" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetListOfLocks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOfLocksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetTelCthLoginDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelCthLoginDetails" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetTelCthLoginDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelCthLoginDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyTelWhoisPreference_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTelWhoisPreference" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyTelWhoisPreference_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTelWhoisPreferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ResendTransferApprovalMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResendTransferApprovalMail" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ResendTransferApprovalMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResendTransferApprovalMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ReleaseUk_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseUk" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ReleaseUk_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseUkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ReCheckNsWithDeRegistry_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReCheckNsWithDeRegistry" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ReCheckNsWithDeRegistry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReCheckNsWithDeRegistryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_AssociateXxxMembershipOrTokenId_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssociateXxxMembershipOrTokenId" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_AssociateXxxMembershipOrTokenId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssociateXxxMembershipOrTokenIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Push_InputMessage">
+    <wsdl:part name="parameters" element="tns:Push" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Push_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PushResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Sync_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sync" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_Sync_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SetRenewalMode_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetRenewalMode" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SetRenewalMode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetRenewalModeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_PayRenewal_InputMessage">
+    <wsdl:part name="parameters" element="tns:PayRenewal" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_PayRenewal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PayRenewalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyAdditionalAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyAdditionalAttributes" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyAdditionalAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyAdditionalAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DENIC_CreateAuthInfo1_InputMessage">
+    <wsdl:part name="parameters" element="tns:DENIC_CreateAuthInfo1" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DENIC_CreateAuthInfo1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DENIC_CreateAuthInfo1Response" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DENIC_CreateAuthInfo2_InputMessage">
+    <wsdl:part name="parameters" element="tns:DENIC_CreateAuthInfo2" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DENIC_CreateAuthInfo2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DENIC_CreateAuthInfo2Response" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DENIC_DeleteAuthInfo1_InputMessage">
+    <wsdl:part name="parameters" element="tns:DENIC_DeleteAuthInfo1" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DENIC_DeleteAuthInfo1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DENIC_DeleteAuthInfo1Response" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetTldList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTldList" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetTldList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTldListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SyncFromRegistry_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncFromRegistry" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_SyncFromRegistry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncFromRegistryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetForward_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetForward" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetForward_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetForwardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CreateForward_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateForward" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_CreateForward_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateForwardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyForward_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyForward" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyForward_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyForwardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DeleteForward_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteForward" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_DeleteForward_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteForwardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetCurrentBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentBalance" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_GetCurrentBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyRenewalMode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyRenewalMode" />
+  </wsdl:message>
+  <wsdl:message name="IDomainApi_ModifyRenewalMode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyRenewalModeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDomainApi">
+    <wsdl:operation name="CheckAvailability">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/CheckAvailability" message="tns:IDomainApi_CheckAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/CheckAvailabilityResponse" message="tns:IDomainApi_CheckAvailability_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAvailabilityIdn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/CheckAvailabilityIdn" message="tns:IDomainApi_CheckAvailabilityIdn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/CheckAvailabilityIdnResponse" message="tns:IDomainApi_CheckAvailabilityIdn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Register" message="tns:IDomainApi_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/RegisterResponse" message="tns:IDomainApi_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterWithContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/RegisterWithContactInfo" message="tns:IDomainApi_RegisterWithContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/RegisterWithContactInfoResponse" message="tns:IDomainApi_RegisterWithContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyNameServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyNameServer" message="tns:IDomainApi_ModifyNameServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyNameServerResponse" message="tns:IDomainApi_ModifyNameServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyContacts" message="tns:IDomainApi_ModifyContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyContactsResponse" message="tns:IDomainApi_ModifyContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetContacts" message="tns:IDomainApi_GetContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetContactsResponse" message="tns:IDomainApi_GetContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/SaveContacts" message="tns:IDomainApi_SaveContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/SaveContactsResponse" message="tns:IDomainApi_SaveContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAuthCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyAuthCode" message="tns:IDomainApi_ModifyAuthCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyAuthCodeResponse" message="tns:IDomainApi_ModifyAuthCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyStatus" message="tns:IDomainApi_ModifyStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyStatusResponse" message="tns:IDomainApi_ModifyStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableTheftProtectionLock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/EnableTheftProtectionLock" message="tns:IDomainApi_EnableTheftProtectionLock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/EnableTheftProtectionLockResponse" message="tns:IDomainApi_EnableTheftProtectionLock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableTheftProtectionLock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/DisableTheftProtectionLock" message="tns:IDomainApi_DisableTheftProtectionLock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DisableTheftProtectionLockResponse" message="tns:IDomainApi_DisableTheftProtectionLock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPrivacyProtectionStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyPrivacyProtectionStatus" message="tns:IDomainApi_ModifyPrivacyProtectionStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyPrivacyProtectionStatusResponse" message="tns:IDomainApi_ModifyPrivacyProtectionStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddChildNameServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/AddChildNameServer" message="tns:IDomainApi_AddChildNameServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/AddChildNameServerResponse" message="tns:IDomainApi_AddChildNameServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyChildNameServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyChildNameServer" message="tns:IDomainApi_ModifyChildNameServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyChildNameServerResponse" message="tns:IDomainApi_ModifyChildNameServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChildNameServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/DeleteChildNameServer" message="tns:IDomainApi_DeleteChildNameServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DeleteChildNameServerResponse" message="tns:IDomainApi_DeleteChildNameServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildNameServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetChildNameServer" message="tns:IDomainApi_GetChildNameServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetChildNameServerResponse" message="tns:IDomainApi_GetChildNameServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildNameServers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetChildNameServers" message="tns:IDomainApi_GetChildNameServers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetChildNameServersResponse" message="tns:IDomainApi_GetChildNameServers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Delete" message="tns:IDomainApi_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DeleteResponse" message="tns:IDomainApi_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Renew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Renew" message="tns:IDomainApi_Renew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/RenewResponse" message="tns:IDomainApi_Renew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetDetails" message="tns:IDomainApi_GetDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetDetailsResponse" message="tns:IDomainApi_GetDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetList" message="tns:IDomainApi_GetList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetListResponse" message="tns:IDomainApi_GetList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/CheckTransfer" message="tns:IDomainApi_CheckTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/CheckTransferResponse" message="tns:IDomainApi_CheckTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Transfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Transfer" message="tns:IDomainApi_Transfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/TransferResponse" message="tns:IDomainApi_Transfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/QueryTransfer" message="tns:IDomainApi_QueryTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/QueryTransferResponse" message="tns:IDomainApi_QueryTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ApproveTransfer" message="tns:IDomainApi_ApproveTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ApproveTransferResponse" message="tns:IDomainApi_ApproveTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/RejectTransfer" message="tns:IDomainApi_RejectTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/RejectTransferResponse" message="tns:IDomainApi_RejectTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/CancelTransfer" message="tns:IDomainApi_CancelTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/CancelTransferResponse" message="tns:IDomainApi_CancelTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Restore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Restore" message="tns:IDomainApi_Restore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/RestoreResponse" message="tns:IDomainApi_Restore_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendIncomingTransferFOAMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ResendIncomingTransferFOAMail" message="tns:IDomainApi_ResendIncomingTransferFOAMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ResendIncomingTransferFOAMailResponse" message="tns:IDomainApi_ResendIncomingTransferFOAMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendOutgoingTransferFOAMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ResendOutgoingTransferFOAMail" message="tns:IDomainApi_ResendOutgoingTransferFOAMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ResendOutgoingTransferFOAMailResponse" message="tns:IDomainApi_ResendOutgoingTransferFOAMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SuggestNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/SuggestNames" message="tns:IDomainApi_SuggestNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/SuggestNamesResponse" message="tns:IDomainApi_SuggestNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfLocks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetListOfLocks" message="tns:IDomainApi_GetListOfLocks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetListOfLocksResponse" message="tns:IDomainApi_GetListOfLocks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTelCthLoginDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetTelCthLoginDetails" message="tns:IDomainApi_GetTelCthLoginDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetTelCthLoginDetailsResponse" message="tns:IDomainApi_GetTelCthLoginDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTelWhoisPreference">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyTelWhoisPreference" message="tns:IDomainApi_ModifyTelWhoisPreference_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyTelWhoisPreferenceResponse" message="tns:IDomainApi_ModifyTelWhoisPreference_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendTransferApprovalMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ResendTransferApprovalMail" message="tns:IDomainApi_ResendTransferApprovalMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ResendTransferApprovalMailResponse" message="tns:IDomainApi_ResendTransferApprovalMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseUk">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ReleaseUk" message="tns:IDomainApi_ReleaseUk_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ReleaseUkResponse" message="tns:IDomainApi_ReleaseUk_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReCheckNsWithDeRegistry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ReCheckNsWithDeRegistry" message="tns:IDomainApi_ReCheckNsWithDeRegistry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ReCheckNsWithDeRegistryResponse" message="tns:IDomainApi_ReCheckNsWithDeRegistry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssociateXxxMembershipOrTokenId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/AssociateXxxMembershipOrTokenId" message="tns:IDomainApi_AssociateXxxMembershipOrTokenId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/AssociateXxxMembershipOrTokenIdResponse" message="tns:IDomainApi_AssociateXxxMembershipOrTokenId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Push">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Push" message="tns:IDomainApi_Push_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/PushResponse" message="tns:IDomainApi_Push_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/Sync" message="tns:IDomainApi_Sync_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/SyncResponse" message="tns:IDomainApi_Sync_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRenewalMode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/SetRenewalMode" message="tns:IDomainApi_SetRenewalMode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/SetRenewalModeResponse" message="tns:IDomainApi_SetRenewalMode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PayRenewal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/PayRenewal" message="tns:IDomainApi_PayRenewal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/PayRenewalResponse" message="tns:IDomainApi_PayRenewal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAdditionalAttributes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyAdditionalAttributes" message="tns:IDomainApi_ModifyAdditionalAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyAdditionalAttributesResponse" message="tns:IDomainApi_ModifyAdditionalAttributes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DENIC_CreateAuthInfo1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/DENIC_CreateAuthInfo1" message="tns:IDomainApi_DENIC_CreateAuthInfo1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DENIC_CreateAuthInfo1Response" message="tns:IDomainApi_DENIC_CreateAuthInfo1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DENIC_CreateAuthInfo2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/DENIC_CreateAuthInfo2" message="tns:IDomainApi_DENIC_CreateAuthInfo2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DENIC_CreateAuthInfo2Response" message="tns:IDomainApi_DENIC_CreateAuthInfo2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DENIC_DeleteAuthInfo1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/DENIC_DeleteAuthInfo1" message="tns:IDomainApi_DENIC_DeleteAuthInfo1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DENIC_DeleteAuthInfo1Response" message="tns:IDomainApi_DENIC_DeleteAuthInfo1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTldList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetTldList" message="tns:IDomainApi_GetTldList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetTldListResponse" message="tns:IDomainApi_GetTldList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncFromRegistry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/SyncFromRegistry" message="tns:IDomainApi_SyncFromRegistry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/SyncFromRegistryResponse" message="tns:IDomainApi_SyncFromRegistry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForward">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetForward" message="tns:IDomainApi_GetForward_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetForwardResponse" message="tns:IDomainApi_GetForward_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateForward">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/CreateForward" message="tns:IDomainApi_CreateForward_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/CreateForwardResponse" message="tns:IDomainApi_CreateForward_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyForward">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyForward" message="tns:IDomainApi_ModifyForward_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyForwardResponse" message="tns:IDomainApi_ModifyForward_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteForward">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/DeleteForward" message="tns:IDomainApi_DeleteForward_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/DeleteForwardResponse" message="tns:IDomainApi_DeleteForward_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/GetCurrentBalance" message="tns:IDomainApi_GetCurrentBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/GetCurrentBalanceResponse" message="tns:IDomainApi_GetCurrentBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyRenewalMode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDomainApi/ModifyRenewalMode" message="tns:IDomainApi_ModifyRenewalMode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDomainApi/ModifyRenewalModeResponse" message="tns:IDomainApi_ModifyRenewalMode_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDomainApi" type="tns:IDomainApi">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckAvailability">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/CheckAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAvailabilityIdn">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/CheckAvailabilityIdn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterWithContactInfo">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/RegisterWithContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyNameServer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyNameServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyContacts">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyContacts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContacts">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetContacts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveContacts">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/SaveContacts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAuthCode">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyAuthCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyStatus">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableTheftProtectionLock">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/EnableTheftProtectionLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableTheftProtectionLock">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/DisableTheftProtectionLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPrivacyProtectionStatus">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyPrivacyProtectionStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddChildNameServer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/AddChildNameServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyChildNameServer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyChildNameServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChildNameServer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/DeleteChildNameServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildNameServer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetChildNameServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildNameServers">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetChildNameServers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Renew">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Renew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetails">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTransfer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/CheckTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transfer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Transfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryTransfer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/QueryTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveTransfer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ApproveTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectTransfer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/RejectTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelTransfer">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/CancelTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Restore">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Restore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendIncomingTransferFOAMail">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ResendIncomingTransferFOAMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendOutgoingTransferFOAMail">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ResendOutgoingTransferFOAMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuggestNames">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/SuggestNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfLocks">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetListOfLocks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTelCthLoginDetails">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetTelCthLoginDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTelWhoisPreference">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyTelWhoisPreference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendTransferApprovalMail">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ResendTransferApprovalMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseUk">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ReleaseUk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReCheckNsWithDeRegistry">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ReCheckNsWithDeRegistry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssociateXxxMembershipOrTokenId">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/AssociateXxxMembershipOrTokenId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Push">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Push" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/Sync" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRenewalMode">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/SetRenewalMode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayRenewal">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/PayRenewal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAdditionalAttributes">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyAdditionalAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DENIC_CreateAuthInfo1">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/DENIC_CreateAuthInfo1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DENIC_CreateAuthInfo2">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/DENIC_CreateAuthInfo2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DENIC_DeleteAuthInfo1">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/DENIC_DeleteAuthInfo1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTldList">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetTldList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncFromRegistry">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/SyncFromRegistry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForward">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetForward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateForward">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/CreateForward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyForward">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyForward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteForward">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/DeleteForward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBalance">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/GetCurrentBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyRenewalMode">
+      <soap:operation soapAction="http://tempuri.org/IDomainApi/ModifyRenewalMode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DomainApi">
+    <wsdl:port name="BasicHttpBinding_IDomainApi" binding="tns:BasicHttpBinding_IDomainApi">
+      <soap:address location="http://api-ote.domainnameapi.com/DomainApi.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

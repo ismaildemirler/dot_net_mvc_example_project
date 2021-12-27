@@ -1,0 +1,105 @@
+﻿body {
+    background-image: url(/App_Themes/images/bg_repeat.png) !important;
+    overflow: auto;
+
+    
+}
+
+.login {
+    background-color: #fcfcfc !important;
+}
+
+    .login .content .input-icon {
+        border-left: 2px solid #3598dc !important;
+    }
+
+.visual > i {
+    opacity: 0.2 !important;
+}
+
+
+
+@media (max-width: 767px) {
+    .logoGiris img {
+        height: auto;
+        max-width: 130px;
+        max-height: 91px;
+    }
+
+    .logoGiris {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+
+    h4.girisBaslik {
+        padding: 20px 0 !important;
+        margin-top: 0 !important;
+        line-height: 1.4 !important;
+        font-size: 1.1em;
+     -ms-text-shadow: 2px 1px 1px #eaeaea;
+    text-shadow: 2px 1px 1px #eaeaea;
+    }
+}
+
+@media (min-width:768px) {
+  .logoGiris img {
+      width: 100%;
+        height: auto;
+        max-width: 130px;
+        max-height: 91px;
+    }
+
+ .login .logoGiris {
+    margin: 0 !important;
+    padding: 15px 0;
+    text-align: left !important;
+}
+
+h4.girisBaslik {
+    padding: 5px 0 !important;
+    margin-top: 0 !important;
+    line-height: 1.2em!important;
+    font-size: 1.2em;
+   -ms-text-shadow: 2px 1px 1px #eaeaea;
+    text-shadow: 2px 1px 1px #eaeaea;
+}
+
+}
+
+
+@media (min-width:1680px) {
+.login .logoGiris {
+    margin: 0 !important;
+    padding: 15px 0;
+    text-align: left !important;
+}
+
+h4.girisBaslik {
+    padding: 8px 0 !important;
+    margin-top: 0 !important;
+    line-height: 1.4em!important;
+    font-size: 1.3em;
+    -ms-text-shadow: 2px 1px 1px #eaeaea;
+    text-shadow: 2px 1px 1px #eaeaea;
+}
+}
+
+
+.btn-xs .badge {
+    padding: 2px 5px !important;
+}
+
+.login .content {
+    -webkit-box-shadow: 0px 0px 53px 0px rgba(105,102,105,0.29);
+    -moz-box-shadow: 0px 0px 53px 0px rgba(105,102,105,0.29);
+    box-shadow: 0px 0px 53px 0px rgba(105,102,105,0.29);
+}
+
+.contentBig {
+    width: 80% !important;
+}
+
+

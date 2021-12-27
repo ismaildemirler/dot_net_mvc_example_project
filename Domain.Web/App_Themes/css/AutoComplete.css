@@ -1,0 +1,66 @@
+﻿/*@import url('../assets/global/plugins/jquery-ui/jquery-ui.min.css');*/
+
+.ui-autocomplete-loading {
+    background: transparent url('../images/loadingtext.gif') no-repeat right center;
+}
+
+/*jquery ui eklentiler*/
+ul.ui-autocomplete {
+    box-shadow: 2px 2px 2px #999;
+    z-index: 9000;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    padding: 0;
+    margin: 0;
+    /*background-color: #ffffff;*/
+    z-index: 9999999999 !important;
+    width: 10%;
+}
+
+    ul.ui-autocomplete li {
+        display: block;
+        outline: 0;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+    ul.ui-autocomplete small {
+        font-size: 80%;
+        color: #666666;
+    }
+
+    ul.ui-autocomplete li:nth-child(odd) {
+        background-color: #FAFAFA;
+        padding: 10px;
+    }
+
+.ui-menu .ui-menu-item {
+    padding: 10px;
+}
+
+.ui-menu-item > a.ui-corner-all {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 14px;
+    color: #555555;
+    white-space: nowrap;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.ui-state-hover, .ui-state-active, .ui-menu-item:hover {
+    color: #00bfff;
+    text-decoration: none;
+    background-color: #FAFAFA;
+    border: 1px solid #00bfff;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
+}
+.autocomplete_clear  {
+    cursor: pointer;
+}

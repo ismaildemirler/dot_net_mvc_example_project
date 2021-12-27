@@ -1,0 +1,50 @@
+﻿@model TLDTypeViewModel
+@{
+    ViewBag.Title = "Sisteme Kayıtlı Domain Uzantıları";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+
+        @Html.AntiForgeryToken()
+
+        @(Html.DomainFor()
+                .Grid("tblList")
+                .SetPaging(false)
+                .SetColumns(columns =>
+                {
+                    columns.Add(c => c.Buttons).SetClassName("grdIslemler");
+                    columns.Add(c => c.Description);
+                })
+                .SetToolbarButtons(buttons => {
+                    buttons.Add(GridButtonType.custom).SetTitle("Yeni Kayıt").SetIcon("fa fa-plus").SetCssClass("btn btn-default insert");
+                })
+            .SetExportButtonShow(false)
+            .SetAjaxUrl(Url.Action("GetTLDList")).SetDefaultOrder(0).SetFunctionName("GetTLDList"))
+
+    </div>
+</div>
+
+@section script {
+<script>
+
+    function RefreshGridAndClosePartial() {
+        GetTLDList();
+        HideModal();
+    }
+
+    $(function () {
+      
+        $("body").on("click", ".insert", function () {
+            getPartialViewWithModal("@Url.Action("_UpdateTLDType")", null);
+        });
+
+        $("body").on("click", ".update", function () {
+            var url = $(this).data("url");
+            getPartialViewWithModal(url, null);
+        });
+
+    });
+
+</script>
+}

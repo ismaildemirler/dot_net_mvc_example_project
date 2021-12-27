@@ -1,0 +1,69 @@
+﻿@using Domain.Web.Models.UserAccount
+@model UserAccountInfoViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>HESAP İŞLEMLERİ</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home")">
+                Ana Sayfa
+            </a> <i>/</i> <a href="#">Hesap İşlemleri</a> <i>/</i> Hesabım
+        </div>
+    </div>
+</div><!-- end page title -->
+
+<div class="clearfix pagegap"></div>
+
+<section class="divider">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <h3 class="line-bottom mt-0 mb-30">KULLANICI BİLGİLERİ</h3>
+                </div>
+                <div class="clearfix divider_line"></div>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.DomainFor().TextBoxFor(model => model.FirstName).SetParentCss("col-sm-12").SetPlaceholder("Ad").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.LastName).SetParentCss("col-sm-12").SetPlaceholder("Soyad").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.PhoneNumber).SetParentCss("col-sm-12").SetMaskType(MaskType.Phone).SetPlaceholder("Telefon").SetTitleHidden(true)
+
+                    <div class="col-sm-12 m-form p-2 mt-2 text-right">
+                        @Html.Domain().Button("btnRegister").SetType(ButtonType.submit).SetCustomClasses("btn-xl").SetTitle("Güncelle").SetStyle(ButtonStyle.success).SetIcon("fa fa-save")
+                    </div>
+
+                    <div class="col-sm-12 m-form p-2 mt-2 text-right">
+                        <a href="@Url.Action("Index")" style="font-weight:bold; text-decoration:underline"> <i class="fa fa-arrow-left"></i> Hesap Bilgilerim Sayfasına Dön </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider: Call To Action -->
+<section class="bg-theme-colored-2">
+    <div class="container pt-0 pb-0">
+        <div class="row">
+            <div class="call-to-action pt-0 pb-0">
+                <div class="col-md-3 text-center font-16 pt-40 pb-40 border-right-dark">
+                    <a href="#" class="text-white"><i class="fa fa-headphones mr-10"></i></a>
+                </div>
+                <div class="col-md-3 text-center font-16 pt-40 pb-40 border-right-dark">
+                    <a href="#" class="text-white"><i class="fa fa-envelope-o mr-10"></i> </a>
+                </div>
+                <div class="col-md-3 text-center font-16 pt-40 pb-40 border-right-dark">
+                    <a href="#" class="text-white"><i class="fa fa-mobile mr-10"></i> </a>
+                </div>
+                <div class="col-md-3 text-center font-16 pt-40 pb-40">
+                    <a href="#" class="text-white"><i class="fa fa-skype mr-10"></i> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

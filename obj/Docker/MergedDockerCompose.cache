@@ -1,0 +1,9 @@
+services:
+  domain.web:
+    build:
+      context: C:\PROJECTS\Domain\Domain\Domain.Web
+      dockerfile: Dockerfile
+    image: domainweb
+    ports:
+    - 80/tcp
+version: '3.4'

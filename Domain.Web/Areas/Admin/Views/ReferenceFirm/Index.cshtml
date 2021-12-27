@@ -1,0 +1,35 @@
+﻿@using Domain.Web.Areas.Admin.Models.ReferenceFirm
+@using Domain.WebHelpers.Infrastructre
+@model ReferenceFirmViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Anasayfa Referans Yönetimi";
+    ViewBag.IsViewUseDatatable = true;
+}
+
+@section filter
+{
+    @using (Html.Domain().FilterContainer("filter"))
+    {
+        @Html.DomainFor().FilterInputFor(model => model.Name).SetInputType(FilterGroupType.Like)
+        @Html.DomainFor().FilterInputFor(model => model.WorkName).SetInputType(FilterGroupType.Like)
+    }
+}
+
+@(Html.Domain()
+    .Grid<ReferenceFirmViewModel>("tblSlider")
+    .SetColumns(columns =>
+    {
+        columns.Add(c => c.Buttons).SetClassName("grdIslemler");
+        columns.Add(c => c.Name);
+        columns.Add(c => c.WorkName);
+        columns.Add(c => c.Detail);
+        columns.Add(c => c.InsertDate).SetDateFormat();
+        columns.Add(c => c.StateDesc);
+    })
+    .SetToolbarButtons(buttons => {
+        buttons.Add(GridButtonType.insert).SetActionUrl(Url.Action("Update")).SetTitle("Yeni Kayıt").SetIcon("fa fa-plus");
+    })
+    .SetDefaultOrder(3, Enums.EnumSortType.desc)
+    .SetAjaxUrl(Url.Action("GetReferenceFirmPagedList", "ReferenceFirm", new { area = "Admin" }))
+    .SetHeaderVisible(true).SetTitle("Kayıtlı Referans Firmalar"))

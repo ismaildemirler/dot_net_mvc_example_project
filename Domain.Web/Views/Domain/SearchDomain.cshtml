@@ -1,0 +1,186 @@
+﻿@using Domain.Web.Models.Domain
+@model DomainApiResponseInfoListViewModel
+@{
+    ViewBag.Title = "SearchDomain";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+
+    var comDomain = Model.DomainApiResponseInfoList.FirstOrDefault(f => f.Tld == "com");
+    Model.DomainApiResponseInfoList.Remove(comDomain);
+}
+
+<style>
+    .fa-check {
+        font-size: 2.5rem;
+    }
+
+    .fa-times {
+        font-size: 2.5rem;
+    }
+</style>
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>ALAN ADI SORGULAMA</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home")">
+                Ana Sayfa
+            </a> <i>/</i> <a href="#">Domain</a> <i>/</i> Domain Sorgulama
+        </div>
+    </div>
+</div><!-- end page title -->
+<div class="container pt-5 pb-5">
+    <div class="row">
+        <div class="puntch_text domainpage" style="padding:0px;">
+            <div class="container pagecontainer">
+                <div class="s003">
+                    <form action="@Url.Action("SearchDomain", "Domain")" method="post" style="max-width:100%;">
+                        <div class="inner-form">
+                            <div class="input-field second-wrap">
+                                <input id="search" type="text" name="DomainName" placeholder="Hayalinizdeki alan adına sahip olun!" />
+                            </div>
+                            <div class="input-field third-wrap">
+                                <button class="btn-search" type="submit">
+                                    <svg class="svg-inline--fa fa-search fa-w-16"
+                                         aria-hidden="true" data-prefix="fas"
+                                         data-icon="search" role="img"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @if (comDomain.Status == EnumHelperClass.ToDisplayName(EnumDomainStatus.Available))
+        {
+            <div class="comresultdiv col-sm-12 col-md-12 col-lg-12 text-left l-border">
+                <ul>
+                    <li class="col-lg-1">
+                        <div class="available-circle-content ">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </li>
+                    <li class="col-lg-6">
+                        <ul class="domainresult">
+                            <li class="availabledomainresulth3">
+                                Tebrikler
+                            </li>
+                            <li>
+                                <p style="font-size:15px;">
+                                    <span style="font-weight:bold;">@(comDomain.DomainName + ".com")</span> alan adı kayıt edilebilir.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-3 comoptionli"> @(comDomain.Price + "/yıl") </li>
+                    <li class="col-lg-2 text-right" style="padding-right:0px; margin-right:0px;">
+                        <a class="addbasket btn btn-dark btn-xl visible-md visible-lg"
+                           data-id="@(comDomain.ClassKey + " " + comDomain.DomainName + " " + comDomain.Tld + " " + comDomain.Command )"
+                           data-price="@comDomain.Price"
+                           data-productname="@(comDomain.DomainName + ".com")">
+                            <i class="fa fa-shopping-cart vertical-align-middle mr-10"></i> &nbsp; Sepete Ekle
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        }
+        else
+        {
+            <div class="comresultdiv col-sm-12 col-md-12 col-lg-12 text-left l-border">
+                <ul>
+                    <li class="col-lg-1">
+                        <div class="notavailable-circle-content">
+                            <i class="fa fa-times"></i>
+                        </div>
+                    </li>
+                    <li class="col-lg-11">
+                        <ul class="domainresult">
+                            <li class="notavailabledomainresulth3">
+                                Üzgünüz
+                            </li>
+                            <li>
+                                <p style="font-size:15px;">
+                                    <span style="font-weight:bold;">@(comDomain.DomainName + ".com")</span> alan adı daha önce kayıt edilmiş.
+                                </p>
+                                <p style="font-size:13px; background:#e6e9ed; color:#333; padding:5px;">
+                                    Yeniden sorgulama yapabilir veya aşağıdaki alan adı önerilerine göz atabilirsiniz.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        }
+
+        <div class="alternativediv col-sm-12 col-md-12 col-lg-12 text-left l-border" style="margin-top:20px;">
+            <ul>
+                <li class="col-lg-12">
+                    <ul class="domainresultalternativeh3">
+                        <li>
+                            Alternatif Alan Adı Önerileri
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        @foreach (var item in Model.DomainApiResponseInfoList.Where(f => f.Status == EnumHelperClass.ToDisplayName(EnumDomainStatus.Available)))
+        {
+            <div class="alternativeoptions col-sm-12 col-md-12 col-lg-12 text-left l-border">
+                <ul class="services">
+                    <li class="col-lg-7 alternativeoptiondomain">
+                        @(item.DomainName + "." + item.Tld)
+                    </li>
+                    <li class="col-lg-1"> İNDİRİM <span class="alternativeoptionli">%90</span></li>
+                    <li class="col-lg-2 text-right">
+                        <p class="alternativeoptionli">@(item.Price.ToString()) $ </p>
+                        <p>/ilk yıl</p>
+                    </li>
+                    <li class="col-lg-2 text-right alternativeoptionli">
+                        <a class="addbasket btn btn-dark btn-xl visible-md visible-lg"
+                           data-tldtypeid="@item.TldId"
+                           data-price="@item.Price"
+                           data-productname="@(item.DomainName)">
+                            <i class="fa fa-shopping-cart vertical-align-middle mr-10"></i> &nbsp; Sepete Ekle
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+@section script {
+    <script>
+
+        $(function () {
+            $("body").on("click", ".addbasket", function () {
+                postData("@Url.Action("AddDomainInfosToCache", "Domain")",
+                    {
+                        DomainName: $(this).data("productname"),
+                        TldId: $(this).data("tldtypeid"),
+                        Price: $(this).data("price"),
+                        Amount:1
+                    }, null, null, function (Data) {
+                    postData("@Url.Action("AddItemToTheBasket", "Basket")",
+                        {
+                            RelatedEntityId: $(this).data("id"),
+                            RelatedEntityType: "@EnumRelatedEntity.DomainApplicationDetail",
+                            ProductName: Data.ProductName,
+                            Price: Data.Price,
+                            Currency: Data.Currency,
+                            Amount:1
+                        }, null, null, function () {
+                            ShowMessage("Ürün sepete eklenmiştir.", 3);
+                            UpdateBasketDropDown();
+                    });
+                });
+            });
+        });
+    </script>
+}

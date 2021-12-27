@@ -1,0 +1,488 @@
+﻿@using Domain.Entity.Enum
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+    var recentBlogs = CacheManager.GetRecentBlogs;
+    var brandClassList = CacheManager.GetAllBrandClasses;
+
+    var sliderContentList = CacheManager.GetAllSliderContent;
+    var sliderContentDetailList = CacheManager.GetAllSliderContentDetail;
+
+    var referenceList = CacheManager.GetAllReferenceFirms;
+
+    var services = CacheManager.GetServices;
+
+    int dataStartTime = 2000;
+}
+
+<style>
+    .m-checkbox {
+        font-weight: bold;
+    }
+
+    .price-desc {
+        color: #fff;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .result input {
+        text-align: right !important;
+    }
+
+    .client-logo-carousel .owl-stage-outer {
+        padding: 10px 0;
+    }
+
+    .owl-carousel .ow-client-logo img {
+        height: 100px;
+        max-height: 100%;
+        width: auto;
+        display: inline-block;
+    }
+
+    .client-logo {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px;
+    }
+
+    .ow-client-logo {
+        background-color: #fff;
+        display: table;
+        width: 100%;
+        border-radius: 6px;
+        box-shadow: 0 0 0 0 rgba(0,0,0,.1);
+        transition: all .8s;
+        -moz-transition: all .8s;
+        -ms-transition: all .8s;
+        -o-transition: all .8s;
+        -webkit-transition: all .8s;
+    }
+
+    .owl-btn-center-lr .owl-nav .owl-next, .owl-btn-center-lr .owl-nav .owl-prev {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin: 0;
+        transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+    }
+
+    .ti-arrow-right:before {
+        content: "\f061";
+    }
+
+    .owl-btn-center-lr .owl-nav {
+        margin: 0;
+    }
+
+        .owl-btn-center-lr .owl-nav .owl-next {
+            left: auto;
+            right: 0;
+        }
+
+    .owl-btn-3 .owl-next, .owl-btn-3 .owl-prev {
+        background-color: rgba(0,0,0,0) !important;
+        color: #000 !important;
+        font-size: 35px !important;
+        height: auto;
+        width: auto;
+        opacity: .2;
+    }
+
+    .servicesRow img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .l-border {
+        border-left: 1px solid #eee;
+    }
+
+    .r-border {
+        border-right: 1px solid #eee;
+    }
+
+
+
+
+</style>
+
+<div class="container_full menu">
+    <div class="fullwidthbanner-container">
+        <div class="fullwidthbanner">
+            <ul>
+                @foreach (var sliderContent in sliderContentList)
+                {
+                    int dataYPosition = 180;
+
+                    <li data-transition="fade" data-slotamount="10">
+
+                        @if (sliderContent.SliderImage != null)
+                        {
+                            string base64String = Convert.ToBase64String(sliderContent.SliderImage);
+                            <img src="@String.Format("data:image/png;base64,{0}", base64String)" alt="" class="slider-img" />
+                        }
+                        else
+                        {
+                            <img src="~/App_Themes/assets/airhosting/images/slider-bg.jpg" alt="" class="slider-img" />
+                        }
+
+                        <div class="caption lfr" data-x="500" data-y="0"
+                             data-speed="900" data-start="400" data-easing="easeOutBack">
+                        </div>
+                        <div class="caption lft big_white" data-x="0" data-y="55" data-speed="400" data-start="1000" data-easing="easeOutExpo">
+                            @sliderContent.Header
+                        </div>
+                        <div class="caption lft big_orange" data-x="0" data-y="119"
+                             data-speed="400" data-start="1300" data-easing="easeOutExpo">
+                            @sliderContent.Topic
+                        </div>
+
+
+                        @foreach (var sliderContentDetail in sliderContentDetailList.Where(w => w.SliderContentId == sliderContent.SliderContentId).OrderBy(o => o.RankNumber))
+                        {
+                            <div class="caption sfb" data-x="4" data-y="@dataYPosition" data-speed="400" data-start="@dataStartTime" data-easing="easeOutExpo">
+                                <img src="@Url.Content("~/App_Themes/assets/airhosting/images/sliders/revolution/check.png")" alt="" class="sright_icon" />
+                            </div>
+                            <div class="caption lfb small_text" data-x="27" data-y="@(dataYPosition - 1)" data-speed="400" data-start="@dataStartTime" data-easing="easeOutExpo">
+                                @sliderContentDetail.ContentInfo
+                            </div>
+
+
+                            dataStartTime += 100;
+                            dataYPosition += 30;
+
+                        }
+
+                        @if (sliderContent.HasDetailLink)
+                        {
+                            <div class="caption sfb" data-x="0" data-y="408" data-speed="400" data-start="3000" data-easing="easeOutExpo">
+                                <a href="@sliderContent.DetailUrl" class="slider_button1">
+                                    DETAYA GİT&nbsp;&nbsp;&nbsp;
+                                </a>
+                            </div>
+                        }
+
+                        @if (sliderContent.HasPriceSection)
+                        {
+                            <div class="caption sfb" data-x="385" data-y="265" data-speed="300" data-start="3800" data-easing="easeOutExpo">
+                                <div class="text-center">
+                                    <p class="price-desc">
+                                        @Html.Raw(sliderContent.PriceDescription)
+                                    </p>
+                                </div>
+                                <div class="price">
+                                    Sadece<br />
+                                    <i>
+                                        @(sliderContent.CurrencyTypeId == (byte)EnumCurrencyType.dollar ? "$" : "₺")@sliderContent.Price
+                                    </i> @(sliderContent.DurationTypeId == (byte)EnumDurationType.unselected ? "" : (sliderContent.DurationTypeId == (byte)EnumDurationType.month ? "/ay" : "/yıl"))
+                                </div>
+                            </div>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div style="background-color:#f7f7f7" class="pt-4 pb-5">
+    <div class="container-fluid wf pt-2">
+        <div class="row pb-3">
+            <div class="col-xs-12">
+                <h2 class="title text-uppercase text-theme-color-2 line-bottom-double-line-centered text-center"> <span style="color:#068aa0">HİZMETLERİMİZ</span></h2>
+            </div>
+        </div>
+        <div class="row servicesRow">
+            @if (services != null)
+            {
+            foreach (var service in services)
+            {
+                <div class="col-xs-12 col-lg-4 text-center px-5 l-border r-border">
+                    <a href="@Url.Action("Detail","Services", new { id=service.ServiceID.Encrypt(), area="" })">
+                    <img id="imgIcon" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(service.Icon))" />
+                    <h3>@service.Header</h3>
+                    <p>@service.DescriptionText</p>
+                    </a>
+                </div>
+            }
+            }
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="mt-4 mb-5">
+    <div class="container-fluid wf pt-2">
+
+        <div id="tabs">
+            <ul class="tabs nav-justified">
+                <li><a href="#tab2"> <img src="~/App_Themes/images/Patent3.png" class="mb-0" /> Patent Araştırması</a></li>
+                <li class="active"><a href="#tab1"> <img src="~/App_Themes/images/Trademark4.png" /> Marka Başvuru</a></li>
+                <li><a href="#tab3"> <img src="~/App_Themes/images/DomainSearch.png" class="mb-0" /> Domain Sorgulama </a></li>
+            </ul>
+            <div class="tab-container">
+                <div id="tab2" class="tab-content py-5 px-5">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <div class="row">
+                                <form action="@Url.Action("PatentApplication", "Patent")" method="post">
+                                    @Html.AntiForgeryToken()
+                                    @(Html.Domain().TextBox("CustomerName").SetTitle("Adınız Soyadınız").SetParentCss("col-sm-12 col-lg-6 col-xl-3")
+                                          .SetHtmlAttributes(new
+                                          {
+                                              data_val = "true",
+                                              data_val_required = "Adınız Soyadınız alanı zorunludur",
+                                              data_val_length = "Adınız Soyadınız alanına maksimum 150 karakter girilebilir",
+                                              data_val_length_max = "150"
+                                          }))
+                                    @Html.Domain().TextBox("Email").SetTitle("Email Adresiniz").SetParentCss("col-sm-12 col-lg-6 col-xl-3").SetMaskType(MaskType.Text).SetHtmlAttributes(new { data_val = "true", data_val_required = "Email zorunludur" })
+                                    @Html.Domain().TextBox("PhoneNumber").SetTitle("Telefon Numaranız").SetParentCss("col-sm-12 col-lg-6 col-xl-2").SetMaskType(MaskType.Phone).SetHtmlAttributes(new { data_val = "true", data_val_required = "Telefon zorunludur" })
+                                    @(Html.Domain().TextBox("Title").SetTitle("Buluş Başlığı").SetParentCss("col-sm-12 col-lg-6 col-xl-4")
+                                          .SetHtmlAttributes(new
+                                                  {
+                                                      data_val = "true",
+                                                      data_val_required = "Buluş Başlığı alanı zorunludur",
+                                                      data_val_length = "Buluş Başlığı alanına maksimum 150 karakter girilebilir",
+                                                      data_val_length_max = "150"
+                                                  }))
+                                    <div class="col-sm-12"></div>
+                                    @(Html.Domain().TextArea("Summary").SetTitle("Buluş Özeti").SetParentCss("col-sm-12 col-lg-6 col-xl-4")
+                                          .SetHtmlAttributes(new
+                                                  {
+                                                      data_val = "true",
+                                                      data_val_required = "Buluş Özeti alanı zorunludur",
+                                                      data_val_length = "Buluş Özeti alanına maksimum 250 karakter girilebilir",
+                                                      data_val_length_max = "250"
+                                                  }))
+                                    @Html.Domain().TextArea("PresentFeatures").SetTitle("Buluşu Zorunlu Kılan Sebepler").SetParentCss("col-sm-12 col-lg-6 col-xl-4").SetHtmlAttributes(new { data_val = "true", data_val_required = "Buluşu Zorunlu Kılan Sebepler alanı zorunludur" })
+                                    @Html.Domain().TextArea("PlannedFeatures").SetTitle("Buluşun Getirdiği Yenilikler").SetParentCss("col-sm-12 col-lg-6 col-xl-4").SetHtmlAttributes(new { data_val = "true", data_val_required = "Buluşun Getirdiği Yenilikler alanı zorunludur" })
+                                    <div class="col-sm-12"></div>
+                                    <div class="col-sm-12 col-lg-3 col-xl-2 text-center p-2">
+                                        <button id="btnPatentApply" type="submit" class="btn btn-primary w-100"> Başvuru Yap </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab1" class="tab-content py-5 px-5">
+                    <section class="signup">
+                        <div class="row">
+                            <form action="@Url.Action("BrandApplication", "Brand")" method="post">
+                                @Html.AntiForgeryToken()
+                                <div class="col-xs-12 col-lg-9 col-xl-10">
+                                    <div class="row" style="max-height:720px; overflow-y:scroll;">
+
+                                        @(Html.Domain().TextBox("BrandName").SetTitle("Marka Adı").SetParentCss("col-sm-12 col-lg-10 col-xl-8 mb-4 m-form pl-4")
+                                            .SetPlaceholder("Lütfen tescil etmek istediğiniz marka adını yazın.")
+                                            .SetHtmlAttributes(new
+                                            {
+                                                data_val = "true",
+                                                data_val_required = "Marka Adı alanı zorunludur",
+                                                data_val_length = "Marka Adı alanına maksimum 500 karakter girilebilir",
+                                                data_val_length_max = "500"
+                                            }))
+
+                                        @(Html.Domain().TextBox("CustomerName").SetTitle("Adınız Soyadınız").SetParentCss("col-sm-12 col-lg-6 col-xl-3")
+                                          .SetHtmlAttributes(new
+                                          {
+                                              data_val = "true",
+                                              data_val_required = "Adınız Soyadınız alanı zorunludur",
+                                              data_val_length = "Adınız Soyadınız alanına maksimum 150 karakter girilebilir",
+                                              data_val_length_max = "150"
+                                          }))
+                                        <div class="col-xs-12"></div>
+                                        <div class="col-xs-12 px-4 pb-3">
+                                            <span style="color: #3f4047;font-weight: bold;font-size:0.9rem;"> Marka Sınıfı </span><br />
+                                            Lütfen tescil etmek istediğiniz marka sınıf(lar)ını seçin
+                                        </div>
+                                        @Html.Hidden("BrandClassesArray")
+                                        @for (int i = 0; i < brandClassList.Count; i++)
+                                        {
+                                            <div class="col-sm-12 col-lg-6 col-xl-4 chkbox-container font-weight-bold checkboxes">
+                                                @(Html.Domain().CheckBox("" + (i + 1)).SetTitle(brandClassList[i].BrandClassesIdentification + " - " + brandClassList[i].Description).SetState(StateType.brand)
+                                            .SetHtmlAttributes(new { data_id = brandClassList[i].BrandClassesId }))
+                                            </div>
+                                        }
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-12 col-lg-3 col-xl-2 pt-3 result">
+                                    @Html.Domain().TextBox("Email").SetTitle("Email Adresiniz").SetParentCss("col-sm-12 col-lg-6 col-xl-12").SetHtmlAttributes(new { data_val = "true", data_val_required = "Email zorunludur" })
+                                    @Html.Domain().TextBox("PhoneNumber").SetTitle("Telefon Numaranız").SetParentCss("col-sm-12 col-lg-6 col-xl-12").SetMaskType(MaskType.Phone).SetHtmlAttributes(new { data_val = "true", data_val_required = "Telefon zorunludur" })
+
+                                    @Html.Domain().TextBox("txtCorporateFee").SetAddOn("₺", GridColumDirection.right).SetTitle("Kurum Harcı").SetReadOnly(true)
+                                    @Html.Domain().TextBox("txtServiceFee").SetAddOn("₺", GridColumDirection.right).SetTitle("Hizmet Bedeli").SetReadOnly(true)
+                                    <hr />
+                                    @Html.Domain().TextBox("txtTotal").SetAddOn("₺", GridColumDirection.right).SetTitle("Toplam").SetReadOnly(true)
+
+                                    <div class="col-sm-12 p-2">
+                                        <input type="submit" class="btn btn-primary w-100" value="Başvuru Yap"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div id="tab3" class="tab-content py-5 px-3">
+                    <div class="s003">
+                        <form action="@Url.Action("SearchDomain", "Domain")" method="post">
+                            <div class="domainslogan">
+                                <span>Aradığınız domain <b>0,99'dan başlayan</b> fiyatlarla</span>
+                            </div>
+                            <div class="inner-form">
+                                <input id="search" type="text" name="DomainName" class="border-0 form-control w-100" placeholder="Hayalinizdeki alan adına sahip olun!"
+                                       data-val="true" data-val-required="Lütfen geçerli bir alan adı giriniz" />
+                                <div class="input-field third-wrap text-center">
+                                    <button class="btn-search" type="submit">
+                                        <svg class="svg-inline--fa fa-search fa-w-16"
+                                             aria-hidden="true" data-prefix="fas"
+                                             data-icon="search" role="img"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div><span class="field-validation-valid" data-valmsg-for="DomainName" data-valmsg-replace="true"></span></div>
+                            <nav id="access" class="domainquery" role="navigation">
+                                <div id="menu" class="extensions">
+                                    <ul id="tiny" class="querylist">
+                                        <li>
+                                            <span class="extensionspan">.com</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.org</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.net</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.city</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.online</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.info</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.store</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                        <li>
+                                            <span class="extensionspan">.com.tr</span><span class="extensionprice">7.99$</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<section id="blog" style="background-color: #f7f7f7;">
+    <div class="container pb-sm-30">
+        <div class="section-title text-center mb-40">
+            <div class="row">
+                <div class="col-xs-12 mt-5">
+                    <h2 class="title text-uppercase text-theme-color-2 line-bottom-double-line-centered">Güncel <span style="color:#068aa0">Yazılar</span></h2>
+                    <hr />
+                </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="row mb-2">
+                @Html.Partial("_RecentBlogs")
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container pb-sm-30">
+    <div class="section-title text-center mb-40">
+        <div class="row">
+            <div class="col-xs-12 mt-5">
+                <h2 class="title text-uppercase text-theme-color-2 line-bottom-double-line-centered"> <span style="color:#068aa0"> Referanslarımız </span></h2>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="row mb-5">
+            <div class="mycarousel client-logo-carousel owl-loaded owl-theme owl-carousel owl-dots-none owl-btn-center-lr owl-btn-3 owl-drag">
+                @foreach (var item in referenceList)
+                {
+                    string base64String = Convert.ToBase64String(item.LogoImage);
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo border">
+                                <a href="javascript:void(0);"><img src="@String.Format("data:image/png;base64,{0}", base64String)" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section script {
+    <script>
+
+        $(function () {
+
+            $("#tabs li:nth(1)").trigger("click");
+
+            var selectedBrandClassIds = [];
+
+            $(".chkbox-container input[type=checkbox]").click(function () {
+                var selectedItems = $(".chkbox-container input[type=checkbox]:checked");
+                var length = 0;
+                if (selectedItems != null && selectedItems != undefined) {
+                    length = selectedItems.length;
+                }
+                $("#txtCorporateFee").val(length * 250);
+                if (length == 0) {
+                    $("#txtServiceFee").val("0");
+                }
+                else if (length == 1) {
+                    $("#txtServiceFee").val("299");
+                }
+                else if (length > 1) {
+                    $("#txtServiceFee").val(299 + 199 * (length - 1));
+                }
+                $("#txtTotal").val(parseInt($("#txtCorporateFee").val()) + parseInt($("#txtServiceFee").val()));
+
+                $.each(selectedItems, function (index, element) {
+                    selectedBrandClassIds.push($(element).data("id"));
+                });
+
+            });
+
+            $("input:checkbox").change(function () {
+                var array = [];
+                $('.checkboxes').find('input[type="checkbox"]:checked').each(function () {
+                    array.push($(this).attr('name'));
+                });
+                $('#BrandClassesArray').val(array);
+            });
+        });
+    </script>
+}

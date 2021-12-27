@@ -1,0 +1,31 @@
+﻿@using Domain.Web.Areas.Admin.Model.ManagementPanel
+@model AboutPageViewModel
+@{
+    ViewBag.Title = "Yönetim Paneli - Hakkımızda Sayfası";
+}
+
+<style>
+    .cke_contents {
+        min-height:400px;
+    }
+</style>
+
+<div class="ajaxForm">
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.TextAreaFor(model => model.Content, new { @class="ckeditor" })
+            </div>
+            <div class="col-sm-12 text-right mt-2">
+                <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+            </div>
+        </div>
+    }
+</div>
+
+@section script {
+    <script src="~/App_Themes/assets/ckeditor/ckeditor.js"></script>
+}
+

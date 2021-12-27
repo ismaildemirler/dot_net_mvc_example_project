@@ -1,0 +1,75 @@
+﻿@model DomainPriceViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Update", "DomainPrice", FormMethod.Post, new { @class="ajaxForm", ajaxsuccesscallback="RefreshGridAndClosePartial" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model=> model.DomainPriceId)
+
+    <div class="row px-5 pb-2">
+
+        @Html.DomainFor().DropDownListFor(model => model.TLDTypeId).SetParentCss("col-sm-12 col-lg-6").SetSelectList(Model.TLDTypes).SetOptionLabel("Seçiniz")
+
+        <div class="col-sm-12 mt-3"></div>
+
+        @(Html.DomainFor().TextBoxFor(model => model.RegisterPrice).SetParentCss("col-sm-12 col-lg-5 price").SetMaskType(MaskType.Currency)
+              .SetAddOn("$", GridColumDirection.right).SetHtmlAttributes(new { data_target = "register" }))
+        @(Html.DomainFor().TextBoxFor(model => model.RegisterPriceWithDiscount).SetParentCss("col-sm-12 col-lg-5 price-discount").SetMaskType(MaskType.Currency)
+              .SetAddOn("$", GridColumDirection.right).SetHtmlAttributes(new { data_target = "register" }))
+        @(Html.Domain().TextBox("RegisterPriceDiscountRate").SetParentCss("col-sm-12 col-lg-2 price-discount-rate").SetTitle("İndirim Oranı").SetMaskType(MaskType.Decimal)
+              .SetAddOn("%", GridColumDirection.right).SetReadOnly(true).SetHtmlAttributes(new { data_target = "register" }))
+
+        <div class="col-sm-12 mt-3"></div>
+
+        @(Html.DomainFor().TextBoxFor(model => model.TransferPrice).SetParentCss("col-sm-12 col-lg-5 price").SetMaskType(MaskType.Currency)
+             .SetAddOn("$", GridColumDirection.right).SetHtmlAttributes(new { data_target = "transfer" }))
+        @(Html.DomainFor().TextBoxFor(model => model.TransferPriceWithDiscount).SetParentCss("col-sm-12 col-lg-5 price-discount").SetMaskType(MaskType.Currency)
+              .SetAddOn("$", GridColumDirection.right).SetHtmlAttributes(new { data_target = "transfer" }))
+        @(Html.Domain().TextBox("TransferPriceDiscountRate").SetParentCss("col-sm-12 col-lg-2 price-discount-rate").SetTitle("İndirim Oranı").SetMaskType(MaskType.Decimal)
+              .SetAddOn("%", GridColumDirection.right).SetReadOnly(true).SetHtmlAttributes(new { data_target = "transfer" }))
+
+        <div class="col-sm-12 mt-3"></div>
+
+        @(Html.DomainFor().TextBoxFor(model => model.RefreshPrice).SetParentCss("col-sm-12 col-lg-5 price").SetMaskType(MaskType.Currency)
+             .SetAddOn("$", GridColumDirection.right).SetHtmlAttributes(new { data_target = "refresh" }))
+        @(Html.DomainFor().TextBoxFor(model => model.RefreshPriceWithDiscount).SetParentCss("col-sm-12 col-lg-5 price-discount").SetMaskType(MaskType.Currency)
+              .SetAddOn("$", GridColumDirection.right).SetHtmlAttributes(new { data_target = "refresh" }))
+        @(Html.Domain().TextBox("RefreshPriceDiscountRate").SetParentCss("col-sm-12 col-lg-2 price-discount-rate").SetTitle("İndirim Oranı").SetMaskType(MaskType.Decimal)
+              .SetAddOn("%", GridColumDirection.right).SetReadOnly(true).SetHtmlAttributes(new { data_target = "refresh" }))
+
+        <div class="col-sm-12 text-right mt-4">
+            <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+        </div>
+
+    </div>
+}
+
+<script>
+
+    $(function () {
+
+        $(".price, .price-discount").keyup(function () {
+
+            var target = $(this).find("input").data("target");
+            var txtPrice = $(".price [data-target=" + target + "]");
+            var txtPriceDiscount = $(".price-discount [data-target=" + target + "]");
+            var txtPriceDiscountRate = $(".price-discount-rate [data-target=" + target + "]");
+
+            $(txtPriceDiscountRate).val("");
+
+            if (!wsLib.isNullOrEmpty($(txtPrice).val()) && !wsLib.isNullOrEmpty($(txtPriceDiscount).val())) {
+                var price = parseFloat($(txtPrice).val().replace(",", "."));
+                var priceDiscount = parseFloat($(txtPriceDiscount).val().replace(",", "."));
+                var discountRate = ((price - priceDiscount) / price * 100.0).toFixed(2);;
+                $(txtPriceDiscountRate).val(discountRate);
+            }
+        });
+
+        $(".price, .price-discount").trigger("keyup");
+
+    });
+
+</script>
+

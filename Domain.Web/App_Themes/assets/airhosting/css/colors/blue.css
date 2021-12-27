@@ -1,0 +1,186 @@
+a:hover, a:focus {
+	color: #0a70e3;
+}
+
+.site_logo h1 {
+	color: #0a70e3;
+}
+
+h4 i {
+	color: #0a70e3;
+}
+
+#access .menu ul li a:hover {
+	color: #0a70e3;
+} 
+#access .menu ul li a.active {
+	color: #0a70e3;
+}
+#access .menu ul li ul li a {
+	background: #454545 url(../../images/spacer.gif) no-repeat center bottom;
+	border-bottom: 1px solid #666;
+}
+	#access .menu ul li ul li a:hover,
+	#access .menu ul li ul li.active a,
+	#access .menu ul li ul li a.selected {
+		background: #666 url(../../images/spacer.gif) no-repeat center bottom;
+		border-bottom: 1px solid #666;
+	}
+#access .menu ul li ul li a.arrow {
+	background: url(../../images/colors/blue/menu-drop-arrow.png) no-repeat left top;
+}
+
+.slider_static {
+	background: #0a70e3 url(../../images/colors/blue/slider-bg.jpg) no-repeat center top;
+}
+
+.gray_bg_but:hover {
+	color: #0a70e3;
+}
+.slider_static .right .offer_box .save_big i {
+	color: #0a70e3;
+}
+.slider_static .right .offer_box .small_text_two {
+	color: #0a70e3;
+}
+
+.whats_included_list li img {
+	background-color: #0a70e3;
+}
+
+.what_people_says .jcarousel-skin-tango-two .jcarousel-item {
+	background: url(../../images/colors/blue/testi-bg.png) no-repeat left top;
+}
+
+.big_text1 {
+	color: #0a70e3;
+}
+.big_text2 i {
+	color: #0a70e3;
+}
+
+.our_products li h5 {
+	color: #0a70e3;
+}
+
+.our_products li h3 {
+	color: #0a70e3;
+}
+
+.punchline_text_box {
+	border-left: 5px solid #0a70e3;
+}
+
+.sidebar_widget h3 {
+	background: url(../../images/colors/blue/sidebar-title-bg.png) no-repeat left bottom;
+}
+
+.sidebar_widget ul.arrows_list1 li a:hover {
+	color: #0a70e3;
+}
+.recent_posts_list li a:hover {
+	color: #0a70e3;
+}
+
+a.but_hand_right {
+	background: #0a70e3 url(../../images/elements/hand_right.png) no-repeat 16px 12px;
+}
+a.but_hand_right:hover {
+	background-color: #277ee1;
+	color: #fff;
+}
+
+a.knowmore_but {
+	background-color: #0a70e3;
+}
+a.knowmore_but:hover {
+	color: #fff;
+	background-color: #277ee1;
+}
+
+a.but_goback {
+	background: #0a70e3 url(../../images/arrow_left.png) no-repeat 18px 13px;
+}
+a.but_goback:hover {
+	color: #fff;
+	background-color: #277ee1;
+}
+
+.punchline_text_box2 {
+	border-left: 5px solid #0a70e3;
+}
+
+.sideimg_list li a {
+	color: #0a70e3;
+}
+
+
+.fullwidthbanner-container .fullwidthbanner {
+	background: url(../../images/colors/blue/slider-bg.jpg) no-repeat center top;
+}
+
+.fluidHeight .iosSlider {
+	background: url(../../images/colors/blue/slider-bg.jpg) no-repeat center top;
+}
+
+blockquote {
+	border-left: 5px solid #0a70e3;
+}
+.accrodation .acc-trigger a { background: url(../../images/colors/blue/accordion-ico.png) no-repeat 20px 13px;}
+.accrodation .acc-trigger a:hover { color: #0a70e3; border-bottom: 1px solid #fff;  }
+.accrodation .acc-trigger.active a { color: #0a70e3; background-position: 20px -58px; cursor: default;	}
+.accrodation_full .acc-trigger a { background: url(../../images/colors/blue/accordion-ico.png) no-repeat 20px 13px;}
+.accrodation_full .acc-trigger a:hover { color: #0a70e3; border-bottom: 1px solid #fff;  }
+.accrodation_full .acc-trigger.active a { color: #0a70e3; background-position: 20px -58px; cursor: default;	}
+html #tabs ul.tabs li.active, html #tabs ul.tabs li.active a,  html #tabs ul.tabs li.active a:hover  { 
+	border-top: 2px solid #0a70e3;
+}
+html #tabs-two ul.tabs-two li.active, html #tabs-two ul.tabs-two li.active a,  html #tabs-two ul.tabs-two li.active a:hover  { 
+	color:#0a70e3;
+}
+#site-searchform #searchsubmit{
+	background: #0a70e3 url(../../images/site-search-icon.png) no-repeat center 9px;
+}
+
+.blog_post h3 a:hover {
+	color: #0a70e3;
+}
+.blog_post a.date strong {
+	color: #0a70e3;
+}
+.blog_post a.date i {
+	background-color: #0a70e3;
+}
+
+.about_author a {
+	color: #0a70e3;
+}
+
+.address-info a {
+	color: #0a70e3;
+}
+
+.our_support h5 {
+	color: #0a70e3;
+}
+
+.pricing-tables-helight .title {
+	background-color: #0969d8;
+	border-top: 3px solid #0863cc;
+	border-bottom: 1px solid #0b77ec;
+}
+.pricing-tables-helight .price {
+	background-color: #0a70e3;
+}
+.pricing-tables-helight-two .title {
+	background-color: #0969d8;
+	border-top: 3px solid #0863cc;
+	border-bottom: 1px solid #0b77ec;
+}
+.pricing-tables-helight-two .price {
+	background-color: #0a70e3;
+}
+.button.small.colorchan{
+	color: #fff;
+	background-color: #0a70e3;
+}

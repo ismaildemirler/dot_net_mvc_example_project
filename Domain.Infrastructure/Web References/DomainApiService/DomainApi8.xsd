@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" />
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.CommonApiContracts" />
+  <xs:element name="CheckAvailability">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q1:CheckAvailabilityRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckAvailabilityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="CheckAvailabilityResult" nillable="true" type="q2:CheckAvailabilityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckAvailabilityIdn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q3:CheckAvailabilityIdnRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckAvailabilityIdnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="CheckAvailabilityIdnResult" nillable="true" type="q4:CheckAvailabilityIdnResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Register">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q5:RegisterRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="RegisterResult" nillable="true" type="q6:RegisterResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterWithContactInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q7:RegisterWithContactInfoRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterWithContactInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="RegisterWithContactInfoResult" nillable="true" type="q8:RegisterResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyNameServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q9:ModifyNameServerRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyNameServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyNameServerResult" nillable="true" type="q10:ModifyNameServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q11:ModifyContactsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyContactsResult" nillable="true" type="q12:ModifyContactsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q13:GetContactsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetContactsResult" nillable="true" type="q14:GetContactsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q15:SaveContactsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="SaveContactsResult" nillable="true" type="q16:SaveContactsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyAuthCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q17:ModifyAuthCodeRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyAuthCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyAuthCodeResult" nillable="true" type="q18:ModifyAuthCodeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q19:ModifyStatusRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyStatusResult" nillable="true" type="q20:ModifyStatusResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnableTheftProtectionLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q21:EnableTheftProtectionLockRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnableTheftProtectionLockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="EnableTheftProtectionLockResult" nillable="true" type="q22:EnableTheftProtectionLockResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisableTheftProtectionLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q23:DisableTheftProtectionLockRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisableTheftProtectionLockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DisableTheftProtectionLockResult" nillable="true" type="q24:DisableTheftProtectionLockResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPrivacyProtectionStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q25:ModifyPrivacyProtectionStatusRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPrivacyProtectionStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyPrivacyProtectionStatusResult" nillable="true" type="q26:ModifyPrivacyProtectionStatusResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddChildNameServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q27:AddChildNameServerRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddChildNameServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="AddChildNameServerResult" nillable="true" type="q28:AddChildNameServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyChildNameServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q29:ModifyChildNameServerRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyChildNameServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyChildNameServerResult" nillable="true" type="q30:ModifyChildNameServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteChildNameServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q31:DeleteChildNameServerRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteChildNameServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DeleteChildNameServerResult" nillable="true" type="q32:DeleteChildNameServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildNameServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q33:GetChildNameServerRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildNameServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetChildNameServerResult" nillable="true" type="q34:GetChildNameServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildNameServers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q35:GetChildNameServersRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildNameServersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetChildNameServersResult" nillable="true" type="q36:GetChildNameServersResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q37:DeleteRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DeleteResult" nillable="true" type="q38:DeleteResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Renew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q39:RenewRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RenewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="RenewResult" nillable="true" type="q40:RenewResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q41:GetDetailsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetDetailsResult" nillable="true" type="q42:GetDetailsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q43:GetListRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetListResult" nillable="true" type="q44:GetListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q45:CheckTransferRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckTransferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="CheckTransferResult" nillable="true" type="q46:CheckTransferResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q47:TransferRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="TransferResult" nillable="true" type="q48:TransferResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q49:QueryTransferRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryTransferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="QueryTransferResult" nillable="true" type="q50:QueryTransferResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q51:ApproveTransferRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveTransferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ApproveTransferResult" nillable="true" type="q52:ApproveTransferResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejectTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q53:RejectTransferRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejectTransferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="RejectTransferResult" nillable="true" type="q54:RejectTransferResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q55:CancelTransferRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelTransferResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="CancelTransferResult" nillable="true" type="q56:CancelTransferResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Restore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q57:RestoreRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RestoreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="RestoreResult" nillable="true" type="q58:RestoreResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResendIncomingTransferFOAMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q59:ResendIncomingTransferFOAMailRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResendIncomingTransferFOAMailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ResendIncomingTransferFOAMailResult" nillable="true" type="q60:ResendIncomingTransferFOAMailResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResendOutgoingTransferFOAMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q61:ResendOutgoingTransferFOAMailRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResendOutgoingTransferFOAMailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ResendOutgoingTransferFOAMailResult" nillable="true" type="q62:ResendOutgoingTransferFOAMailResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SuggestNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q63:SuggestNamesRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SuggestNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="SuggestNamesResult" nillable="true" type="q64:SuggestNamesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListOfLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q65:GetListOfLocksRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListOfLocksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetListOfLocksResult" nillable="true" type="q66:GetListOfLocksResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTelCthLoginDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q67:GetTelCthLoginDetailsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTelCthLoginDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetTelCthLoginDetailsResult" nillable="true" type="q68:GetTelCthLoginDetailsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyTelWhoisPreference">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q69:ModifyTelWhoisPreferenceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyTelWhoisPreferenceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyTelWhoisPreferenceResult" nillable="true" type="q70:ModifyTelWhoisPreferenceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResendTransferApprovalMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q71:ResendTransferApprovalMailRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResendTransferApprovalMailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ResendTransferApprovalMailResult" nillable="true" type="q72:ResendTransferApprovalMailResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReleaseUk">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q73:ReleaseUkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReleaseUkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ReleaseUkResult" nillable="true" type="q74:ReleaseUkResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReCheckNsWithDeRegistry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q75:ReCheckNsWithDeRegistryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReCheckNsWithDeRegistryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ReCheckNsWithDeRegistryResult" nillable="true" type="q76:ReCheckNsWithDeRegistryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociateXxxMembershipOrTokenId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q77:AssociateXxxMembershipOrTokenIdRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociateXxxMembershipOrTokenIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="AssociateXxxMembershipOrTokenIdResult" nillable="true" type="q78:AssociateXxxMembershipOrTokenIdResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Push">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q79:PushRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PushResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="PushResult" nillable="true" type="q80:PushResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sync">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q81:SyncRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="SyncResult" nillable="true" type="q82:SyncResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetRenewalMode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q83:SetRenewalModeRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetRenewalModeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="SetRenewalModeResult" nillable="true" type="q84:SetRenewalModeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PayRenewal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q85:PayRenewalRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PayRenewalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="PayRenewalResult" nillable="true" type="q86:PayRenewalResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyAdditionalAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q87:ModifyAdditionalAttributesRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyAdditionalAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyAdditionalAttributesResult" nillable="true" type="q88:ModifyAdditionalAttributesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DENIC_CreateAuthInfo1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q89:DENIC_CreateAuthInfo1Request" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DENIC_CreateAuthInfo1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DENIC_CreateAuthInfo1Result" nillable="true" type="q90:DENIC_CreateAuthInfo1Response" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DENIC_CreateAuthInfo2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q91:DENIC_CreateAuthInfo2Request" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DENIC_CreateAuthInfo2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DENIC_CreateAuthInfo2Result" nillable="true" type="q92:DENIC_CreateAuthInfo2Response" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DENIC_DeleteAuthInfo1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q93:DENIC_DeleteAuthInfo1Request" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DENIC_DeleteAuthInfo1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DENIC_DeleteAuthInfo1Result" nillable="true" type="q94:DENIC_DeleteAuthInfo1Response" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTldList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q95:GetTldListRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTldListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetTldListResult" nillable="true" type="q96:GetTldListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncFromRegistry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q97:SyncFromRegistryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncFromRegistryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="SyncFromRegistryResult" nillable="true" type="q98:SyncFromRegistryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetForward">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q99:ForwardRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetForwardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="GetForwardResult" nillable="true" type="q100:ForwardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateForward">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q101:ForwardRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateForwardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="CreateForwardResult" nillable="true" type="q102:ForwardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyForward">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q103:ForwardRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyForwardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyForwardResult" nillable="true" type="q104:ForwardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteForward">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q105="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q105:ForwardRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteForwardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q106="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="DeleteForwardResult" nillable="true" type="q106:ForwardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q107="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.CommonApiContracts" minOccurs="0" name="request" nillable="true" type="q107:GetCurrentBalanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q108="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.CommonApiContracts" minOccurs="0" name="GetCurrentBalanceResult" nillable="true" type="q108:GetCurrentBalanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyRenewalMode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q109="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="request" nillable="true" type="q109:ModifyRenewealModeRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyRenewalModeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q110="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.DomainApiContracts" minOccurs="0" name="ModifyRenewalModeResult" nillable="true" type="q110:ModifyRenewalModeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

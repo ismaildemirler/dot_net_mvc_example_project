@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B9C87FBF-D88B-4303-BD30-1DC8171F41CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.Infrastructure</RootNamespace>
+    <AssemblyName>Domain.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <DontImportPostSharp>True</DontImportPostSharp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elasticsearch.Net, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.7.5.0\lib\net461\Elasticsearch.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.0.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.0.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.0.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Nest, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NEST.7.5.0\lib\net461\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.3.5.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.3.5\lib\net45\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.2\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Api.ClientApi">
+      <HintPath>..\Domain.Web\Olipso\Olipso.Api.ClientApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RequiredDlls\Olipso\Olipso.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Olipso.Test.WinForms.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RequiredDlls\Olipso\Olipso.Test.WinForms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=4.2.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.4.2.17\lib\net35-client\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.5.8.0\lib\net45\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.5.8.0\lib\net45\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.5.8.0\lib\net45\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.5.8.0\lib\net45\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.PerformanceCounter, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.PerformanceCounter.4.7.0\lib\net461\System.Diagnostics.PerformanceCounter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.4.7.0\lib\netstandard2.0\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Wolf Software.Library NET">
+      <HintPath>..\..\..\Users\ismail\Desktop\Wolf Software.Library NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aspects\Postsharp\AuthorizationAspects\SecuredOperation.cs" />
+    <Compile Include="Aspects\Postsharp\CacheAspects\CacheAspect.cs" />
+    <Compile Include="Aspects\Postsharp\CacheAspects\CacheRemoveAspect.cs" />
+    <Compile Include="Aspects\Postsharp\ExceptionAspects\ExceptionLogAspect.cs" />
+    <Compile Include="Aspects\Postsharp\LogAspects\LogAspect.cs" />
+    <Compile Include="Aspects\Postsharp\PerformanceAspects\PerformanceAspect.cs" />
+    <Compile Include="Aspects\Postsharp\TransactionAspects\TransactionScopeAspect.cs" />
+    <Compile Include="CrossCuttingConcerns\Caching\ICacheManager.cs" />
+    <Compile Include="CrossCuttingConcerns\Caching\Microsoft\MemoryCacheManager.cs" />
+    <Compile Include="CrossCuttingConcerns\Exceptions\BusinessException.cs" />
+    <Compile Include="CrossCuttingConcerns\Exceptions\BusinessRules.cs" />
+    <Compile Include="CrossCuttingConcerns\Exceptions\NotificationException.cs" />
+    <Compile Include="CrossCuttingConcerns\Exceptions\ValidationCoreException.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\Log4Net\Layouts\JsonLayout.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\Log4Net\LoggerService.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\Log4Net\Loggers\DatabaseLogger.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\Log4Net\Loggers\FileLogger.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\Log4Net\SerializableLogEvent.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\LogDetail.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\LogParameter.cs" />
+    <Compile Include="CrossCuttingConcerns\Logging\NoLog.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Identity.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\AuthenticationHelper.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\DomainAuthorize.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\SecurityUtilities.cs" />
+    <Compile Include="CrossCuttingConcerns\Session\SessionManager.cs" />
+    <Compile Include="CrossCuttingConcerns\Validation\Concrete\FormattedArgumentValidationException.cs" />
+    <Compile Include="CrossCuttingConcerns\Validation\EnterpriseLibrary\ValidationInterceptor.cs" />
+    <Compile Include="CrossCuttingConcerns\Validation\FluentValidation\ValidatorTool.cs" />
+    <Compile Include="CrossCuttingConcerns\Validation\ValidationAttributes\IArgumentValidationAttribute.cs" />
+    <Compile Include="CrossCuttingConcerns\Validation\ValidationAttributes\ValidationRules.cs" />
+    <Compile Include="DataAccess\EntityFramework\DbContextBase\DbContextBase.cs" />
+    <Compile Include="DataAccess\EntityFramework\DbContextBase\ErrorLog.cs" />
+    <Compile Include="DataAccess\EntityFramework\DbContextBase\TableLog.cs" />
+    <Compile Include="DataAccess\EntityFramework\DbContextBase\TableLogDetail.cs" />
+    <Compile Include="DataAccess\EntityFramework\EfEntityRepositoryBase.cs" />
+    <Compile Include="DataAccess\EntityFramework\EfQueryableRepository.cs" />
+    <Compile Include="DataAccess\EntityFramework\TableLog\LoggingDB.cs" />
+    <Compile Include="DataAccess\EntityFramework\TableLog\LoggingDB1.cs">
+      <DependentUpon>LoggingDB.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\IRepository.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\IRepositoryFactory.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\PagedList\IEnumerablePagedListExtensions.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\PagedList\IPagedList.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\PagedList\IQueryablePageListExtensions.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\PagedList\PagedList.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\Repository.cs" />
+    <Compile Include="DataAccess\EntityFramework\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="DataAccess\IEntityRepository.cs" />
+    <Compile Include="DataAccess\IQueryableRepository.cs" />
+    <Compile Include="ElasticSearch\ElasticProvider.cs" />
+    <Compile Include="ElasticSearch\ElasticSearchBase.cs" />
+    <Compile Include="ElasticSearch\ErrorLog.cs" />
+    <Compile Include="ElasticSearch\IElasticRepository.cs" />
+    <Compile Include="Entities\Ara.cs" />
+    <Compile Include="Entities\DtParameterModel.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\SearchFilter.cs" />
+    <Compile Include="Entities\Siralama.cs" />
+    <Compile Include="Entities\WebSelectListItem.cs" />
+    <Compile Include="Enums\EnumCommon.cs" />
+    <Compile Include="Helpers\EnumHelperClass.cs" />
+    <Compile Include="MYS\ActionAuthorizeAttribute.cs" />
+    <Compile Include="MYS\AuthorizationManager.cs" />
+    <Compile Include="MYS\Infrastructure\AjaxResult.cs" />
+    <Compile Include="MYS\Infrastructure\Containers\Request\Accreditation\RequestUserRole.cs" />
+    <Compile Include="MYS\Infrastructure\Containers\Request\Logging\RequestErrorLog.cs" />
+    <Compile Include="MYS\Infrastructure\Containers\Request\Logging\RequestNotAuthorizeLog.cs" />
+    <Compile Include="MYS\Infrastructure\Containers\Request\Logging\RequestTableLog.cs" />
+    <Compile Include="MYS\Infrastructure\Containers\Request\Logging\RequestTableLogDetail.cs" />
+    <Compile Include="MYS\Infrastructure\CurrentUser.cs" />
+    <Compile Include="MYS\Infrastructure\Enums\EnumUserStates.cs" />
+    <Compile Include="MYS\Infrastructure\Extensions.cs" />
+    <Compile Include="MYS\Infrastructure\Utilities.cs" />
+    <Compile Include="MYS\Infrastructure\Web\SessionManager.cs" />
+    <Compile Include="MYS\MYSHelper.cs" />
+    <Compile Include="MYS\ViewAuthorizeAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Redis\RedisCacheManager.cs" />
+    <Compile Include="Tools\Office.cs" />
+    <Compile Include="Utilities\Common\BarcodeUtilities.cs" />
+    <Compile Include="Utilities\Common\ConnectionMethods.cs" />
+    <Compile Include="Utilities\Common\CurrentUserPrincipal.cs" />
+    <Compile Include="Utilities\Common\FileUtilities.cs" />
+    <Compile Include="Utilities\Common\FileValidation.cs" />
+    <Compile Include="Utilities\Common\ImageUtilities.cs" />
+    <Compile Include="Utilities\Common\Utilities.cs" />
+    <Compile Include="Utilities\Comporators\Comparator.cs" />
+    <Compile Include="Utilities\Comporators\ComparatorFactory.cs" />
+    <Compile Include="Utilities\Comporators\EnumerableComparator.cs" />
+    <Compile Include="Utilities\EnumUtilities\EnumItem.cs" />
+    <Compile Include="Utilities\EnumUtilities\EnumTextAttribute.cs" />
+    <Compile Include="Utilities\EnumUtilities\EnumUtilities.cs" />
+    <Compile Include="Utilities\Exception\ExceptionUtility.cs" />
+    <Compile Include="Utilities\ExtensionMethods\ConvertExtensionMethods.cs" />
+    <Compile Include="Utilities\ExtensionMethods\EnumExtensions.cs" />
+    <Compile Include="Utilities\ExtensionMethods\LinqExtensions.cs" />
+    <Compile Include="Utilities\ExtensionMethods\ListExtensions.cs" />
+    <Compile Include="Utilities\ExtensionMethods\ObjectExtensions.cs" />
+    <Compile Include="Utilities\ExtensionMethods\QueryExtension.cs" />
+    <Compile Include="Utilities\ExtensionMethods\RouteValueDictionaryExtensions.cs" />
+    <Compile Include="Utilities\ExtensionMethods\SqlParameterExtensions.cs" />
+    <Compile Include="Utilities\ExtensionMethods\StringExtensionMethods.cs" />
+    <Compile Include="Utilities\ExtensionMethods\StringExtensions.cs" />
+    <Compile Include="Utilities\Mappings\AutoMapperHelper.cs" />
+    <Compile Include="Utilities\MVC\Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Utilities\Parsers\ClassConverter.cs" />
+    <Compile Include="Utilities\Search\ExpressionBuilder.cs" />
+    <Compile Include="Utilities\Search\Op.cs" />
+    <Compile Include="Utilities\Search\SearchFilter.cs" />
+    <Compile Include="Utilities\SecurityUtilities\CryptoHelper.cs" />
+    <Compile Include="Utilities\SpecificationBase\AndSpecification.cs" />
+    <Compile Include="Utilities\SpecificationBase\CompositeSpecification.cs" />
+    <Compile Include="Utilities\SpecificationBase\ISpecification.cs" />
+    <Compile Include="Utilities\SpecificationBase\NotSpecification.cs" />
+    <Compile Include="Utilities\SpecificationBase\OrSpecification.cs" />
+    <Compile Include="Utilities\SpecificationBase\Specification.cs" />
+    <Compile Include="Web References\DomainApiService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\WebServiceClient.cs" />
+    <Compile Include="Web\AttributeHelperExtension.cs" />
+    <Compile Include="Web\CookieHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataAccess\EntityFramework\TableLog\EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="DataAccess\EntityFramework\TableLog\EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RequiredDlls\Olipso\Olipso.Api.ClientApi.dll.config" />
+    <None Include="Web References\DomainApiService\AddChildNameServerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ApproveTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\AssociateXxxMembershipOrTokenIdResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\CancelTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\CheckAvailabilityIdnResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\CheckAvailabilityResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\CheckTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DeleteChildNameServerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DeleteResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DENIC_CreateAuthInfo1Response.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DENIC_CreateAuthInfo2Response.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DENIC_DeleteAuthInfo1Response.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DisableTheftProtectionLockResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi.wsdl" />
+    <None Include="Web References\DomainApiService\DomainApi.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\DomainApi8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\DomainApiService\EnableTheftProtectionLockResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ForwardResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetChildNameServerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetChildNameServersResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetContactsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetCurrentBalanceResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetDetailsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetListOfLocksResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetTelCthLoginDetailsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\GetTldListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyAdditionalAttributesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyAuthCodeResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyChildNameServerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyContactsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyNameServerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyPrivacyProtectionStatusResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyRenewalModeResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyStatusResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ModifyTelWhoisPreferenceResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\PayRenewalResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\PushResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\QueryTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ReCheckNsWithDeRegistryResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\DomainApiService\RegisterResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\RejectTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ReleaseUkResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\RenewResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ResendIncomingTransferFOAMailResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ResendOutgoingTransferFOAMailResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\ResendTransferApprovalMailResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\RestoreResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\SaveContactsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\SetRenewalModeResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\SuggestNamesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\SyncFromRegistryResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\SyncResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DomainApiService\TransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataAccess\EntityFramework\TableLog\LoggingDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LoggingDB1.cs</LastGenOutput>
+    </Content>
+    <Content Include="RequiredDlls\iTextSharp\itextsharp.dll" />
+    <Content Include="RequiredDlls\iTextSharp\iTextSharp.xml" />
+    <Content Include="RequiredDlls\Olipso\Olipso.Api.ClientApi.dll" />
+    <Content Include="RequiredDlls\Olipso\Olipso.Core.dll" />
+    <Content Include="RequiredDlls\Olipso\Olipso.Test.WinForms.Core.dll" />
+    <Content Include="RequiredDlls\Wolf Software.Library NET.dll" />
+    <None Include="Web References\DomainApiService\DomainApi.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CrossCuttingConcerns\Enum\" />
+    <Folder Include="CrossCuttingConcerns\Validation\Abstract\" />
+    <Folder Include="DataAccess\Logging\" />
+    <Folder Include="MYS\Infrastructure\Containers\Response\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://api-ote.domainnameapi.com/DomainApi.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\DomainApiService\</RelPath>
+      <UpdateFromURL>http://api-ote.domainnameapi.com/DomainApi.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Domain_Infrastructure_DomainApiService_DomainApi</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\PostSharp.4.2.17\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
+</Project>

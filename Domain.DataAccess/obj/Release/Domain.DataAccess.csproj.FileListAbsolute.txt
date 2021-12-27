@@ -1,0 +1,2 @@
+C:\PROJECTS\Domain\Domain\Domain.DataAccess\obj\Release\Domain.DataAccess.csprojAssemblyReference.cache
+C:\PROJECTS\Domain\Domain\Domain.DataAccess\obj\Release\Domain.DataAccess.csproj.CoreCompileInputs.cache

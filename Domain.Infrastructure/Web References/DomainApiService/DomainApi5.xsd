@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ExecutionStatus">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="ERROR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ExecutionStatus" nillable="true" type="tns:ExecutionStatus" />
+  <xs:simpleType name="ContactType">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Contact" />
+      <xs:enumeration value="CoopContact" />
+      <xs:enumeration value="UkContact" />
+      <xs:enumeration value="EuContact" />
+      <xs:enumeration value="CnContact" />
+      <xs:enumeration value="CoContact" />
+      <xs:enumeration value="CaContact" />
+      <xs:enumeration value="DeContact" />
+      <xs:enumeration value="EsContact" />
+      <xs:enumeration value="CoopSponsor" />
+      <xs:enumeration value="Sponsor" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContactType" nillable="true" type="tns:ContactType" />
+  <xs:simpleType name="OrderDirection">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASC" />
+      <xs:enumeration value="DESC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderDirection" nillable="true" type="tns:OrderDirection" />
+  <xs:simpleType name="TradeType">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Registration" />
+      <xs:enumeration value="Renew" />
+      <xs:enumeration value="Transfer" />
+      <xs:enumeration value="Restore" />
+      <xs:enumeration value="Setup" />
+      <xs:enumeration value="Trade" />
+      <xs:enumeration value="AdditionalLicence" />
+      <xs:enumeration value="PayRenewal" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TradeType" nillable="true" type="tns:TradeType" />
+  <xs:simpleType name="UrlForwardType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STANDART" />
+      <xs:enumeration value="FRAME" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UrlForwardType" nillable="true" type="tns:UrlForwardType" />
+</xs:schema>

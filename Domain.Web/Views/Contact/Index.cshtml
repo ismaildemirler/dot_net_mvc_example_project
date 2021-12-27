@@ -1,0 +1,54 @@
+﻿@using Domain.Web.Models.Contact
+@model ContactUsViewModel
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container-fluid wf">
+        <div class="leaft_title"><h1>İletişim</h1></div>
+        <div class="reght_pagenation"><a href="@Url.Action("Index", "Home", new { area="" })">Ana Sayfa</a> <i>/</i> İletişim</div>
+    </div>
+</div>
+
+<div class="container-fluid wf mb-3" style="background-color: #fff;">
+    <div class="col-xs-12">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6119.647824995073!2d32.846800676341736!3d39.92295664574931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34effd6b9930b%3A0x6fa79cbeeeec0bac!2zS8SxesSxbGF5LCAwNjQyMCDDh2Fua2F5YS9BbmthcmE!5e0!3m2!1str!2str!4v1587651574015!5m2!1str!2str"
+                height="450" frameborder="0" style="border:0; width:100%;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="support">
+            <h3>İLETİŞİM BİLGİLERİ</h3>
+            <h5> <span class="fa fa-phone"></span> Telefon</h5>
+            <p> <strong> @Model.FirmPhoneNumber </strong> </p>
+            <br />
+            <h5> <span class="fa fa-envelope"></span> E-Posta</h5>
+            <p><strong><a href="mailto:@Model.FirmEMail"> @Model.FirmEMail </a></strong></p>
+            <br />
+            <h5> <span class="fa fa-location-arrow"></span> Adres</h5>
+            <p><strong> @Model.FirmAddress </strong></p>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="support">
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-md-12 pt-2 px-2">
+                        <p class="lead">Aşağıdaki formu doldurarak bize mesajınızı gönderebilirsiniz.</p>
+                    </div>
+                    @Html.DomainFor().TextBoxFor(model => model.EMail).SetParentCss("col-sm-12").SetPlaceholder("E-Posta").SetLayout(LayoutType.vertical)
+                    @Html.DomainFor().TextAreaFor(model => model.Message).SetParentCss("col-sm-12").SetLayout(LayoutType.vertical)
+
+                    <div class="col-sm-12 m-form p-2 mt-2">
+                        @Html.Domain().Button("btnSend").SetType(ButtonType.submit).SetCustomClasses("btn-xl").SetTitle("Gönder").SetStyle(ButtonStyle.success).SetIcon("fa fa-envelope")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols LinesOfCode="1254" PostSharpLinesOfCode="0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect">
+    <Instance Declaration="#2=M:[Domain.Business]Domain.Business.Concrete.Patent.PatentService::CreatePatentApplication(Domain.Entity.Container.Request.Patent.RequestPatentApplication)" Id="8a4b16b426b1e0fa">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3=Wrapped by advice(s) OnEntry, OnSuccess, OnException, OnExit" Ordinal="0" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#4=M:[Domain.Business]Domain.Business.Concrete.Patent.PatentService::DeletePatent(Domain.Entity.Container.Request.Patent.RequestPatentApplicationDetail)" Id="8a4b16b479d7fac7">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#5=M:[Domain.Business]Domain.Business.Concrete.IndustrialDesign.IndustrialDesignService::CreateIndustrialDesignApplication(Domain.Entity.Container.Request.IndustrialDesign.RequestIndustrialDesignApplication)" Id="8a4b16b49c037242">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="2" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#6=M:[Domain.Business]Domain.Business.Concrete.IndustrialDesign.IndustrialDesignService::DeleteIndustrialDesign(Domain.Entity.Container.Request.IndustrialDesign.RequestIndustrialDesignApplicationDetail)" Id="8a4b16b4d93f292b">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="3" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#7=M:[Domain.Business]Domain.Business.Concrete.Brand.BrandService::CreateBrandApplication(Domain.Entity.Container.Request.Brand.RequestBrandApplication)" Id="8a4b16b4ec439c14">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#8=M:[Domain.Business]Domain.Business.Concrete.Brand.BrandService::DeleteBrand(Domain.Entity.Container.Request.Brand.RequestBrandApplicationDetail)" Id="8a4b16b4e662d041">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="5" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#9=M:[Domain.Business]Domain.Business.Concrete.Brand.BrandService::CreateBrandWatchApplication(Domain.Entity.Container.Request.Brand.RequestBrandWatchingApplication)" Id="8a4b16b4fb6ed7f5">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="6" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#10=M:[Domain.Business]Domain.Business.Concrete.Brand.BrandService::DeleteBrandForWatchingApplication(Domain.Entity.Container.Request.Brand.RequestBrandForWatching)" Id="8a4b16b43dc451ec">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="7" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#11=M:[Domain.Business]Domain.Business.Concrete.Contact.ContactService::DeleteContact(Domain.Entity.Container.Request.Contact.RequestContact)" Id="8a4b16b498e2c9e8">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="8" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#12=M:[Domain.Business]Domain.Business.Concrete.Beneficiary.BeneficiaryService::CreateBeneficiaryContactRegistry(Domain.Entity.Container.Request.Beneficiary.RequestBeneficiaryContactRegistry)" Id="8a4b16b4425d287a">
+      <Target>
+        <JoinPoint Advising="#1" Description="#3" Ordinal="9" />
+      </Target>
+    </Instance>
+  </Class>
+  <Annotation Target="#13=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnEntry(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#14=2" Description="#15=PostSharp estimates that 2 line(s) of code are saved every time this advice is applied. Use the [LinesOfCodeAvoided] attribute on the aspect or specify the LinesOfCodeAvoided property on the advice attribute to override this value." />
+  <Annotation Target="#16=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnSuccess(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#14" Description="#15" />
+  <Annotation Target="#17=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnExit(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#14" Description="#15" />
+  <Annotation Target="#18=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnException(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#14" Description="#15" />
+</Symbols>

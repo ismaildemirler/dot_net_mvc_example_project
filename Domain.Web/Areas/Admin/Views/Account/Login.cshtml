@@ -1,0 +1,49 @@
+﻿@using Domain.Web.Models.Account
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>ADMİN PANELİ GİRİŞİ</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home", new { area="" })">
+                Ana Sayfa
+            </a> <i>/</i> <a href="#">Admin Paneli Girişi</a> <i>/</i> Giriş 
+        </div>
+    </div>
+</div>
+
+<section class="">
+    <div class="container content">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-xs-12">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-md-12 p-2">
+                        <p class="lead">Lütfen kullanıcı adı ve şifrenizi eksiksiz doldurunuz</p>
+                    </div>
+                    @Html.DomainFor().TextBoxFor(model => model.EMail).SetParentCss("col-xs-12").SetPlaceholder("E-Posta").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.Password).SetTitleHidden(true).SetPlaceholder("Şifre").SetParentCss("col-xs-12 m-login__form-input--last").SetHtmlAttributes(new { type = "password", autocomplete = "off" })
+
+                    <div class="col-xs-12 m-form p-2 mt-2">
+                        <a style="text-decoration:underline" href="@Url.Action("ForgotPassword","Account", new { area="Admin" })"> Şifremi Unuttum </a>
+                        <br /><br />
+                    </div>
+                    <div class="col-xs-12 col-md-4 m-form p-2">
+                        @Html.Domain().Button("btnLogin").SetType(ButtonType.submit).SetCustomClasses("btn-xl w-100").SetTitle("Giriş Yap").SetStyle(ButtonStyle.success).SetIcon("fa fa-sign-in")
+                    </div>
+
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

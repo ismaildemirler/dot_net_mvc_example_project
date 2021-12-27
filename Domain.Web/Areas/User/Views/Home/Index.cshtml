@@ -1,0 +1,1137 @@
+﻿@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    var brandService = DependencyResolver<IBrandService>.Resolve();
+    var numberOfBrand = brandService.GetAllApplications(CurrentUser.Identity.UserId.ToString(), true).Count;
+
+    var patentService = DependencyResolver<IPatentService>.Resolve();
+    var numberOfPatent = patentService.GetAllApplications(CurrentUser.Identity.UserId.ToString()).Count;
+
+    var industrialDesignService = DependencyResolver<IIndustrialDesignService>.Resolve();
+    var numberOfDesign = industrialDesignService.GetAllApplications(CurrentUser.Identity.UserId.ToString()).Count;
+
+    var numberOfBrandWatch = brandService.GetAllBrandWatchApplications(CurrentUser.Identity.UserId.ToString()).Count;
+
+    var numberOfOtherBrand = brandService.GetAllApplications(
+        CurrentUser.Identity.UserId.ToString(), false).Count;
+
+    var domainService = DependencyResolver<IDomainService>.Resolve();
+    var numberOfDomain = domainService.GetAllDomainApplications(CurrentUser.Identity.UserId.ToString()).Count;
+}
+@using KOSGEB.YKBS.Business.DependencyResolver.Ninject;
+@using Domain.Business.Abstract.IndustrialDesign;
+@using Domain.Business.Abstract.Domain;
+@using Domain.Infrastructure.MYS.Infrastructure;
+@using Domain.Business.Abstract.Brand;
+@using Domain.Business.Abstract.Patent;
+
+<div class="row">
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 17-->
+        <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body">
+                <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                    <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                            <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                    <text style="color:white; font-weight:bold;">MARKA BAŞVURULARI</text>
+                </span>
+                <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"
+                     style="color:white;">
+                    <b>@numberOfBrand </b> adet başvurunuz bulunmaktadır. <br />
+                    Tümünü görmek için tıklayınız.
+                </div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Stats Widget 17-->
+    </div>
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 17-->
+        <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body">
+                <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                    <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                            <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                    <text style="color:white; font-weight:bold;">PATENT BAŞVURULARI</text>
+                </span>
+                <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"
+                     style="color:white;">
+                    <b>@numberOfPatent </b> adet başvurunuz bulunmaktadır. <br />
+                    Tümünü görmek için tıklayınız.
+                </div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Stats Widget 17-->
+    </div>
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 17-->
+        <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body">
+                <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                    <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                            <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                    <text style="color:white;
+                            font-weight:bold;">
+                        ENDÜSTRİYEL TASARIM BAŞVURULARI
+                    </text>
+                </span>
+                <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"
+                     style="color:white;">
+                    <b>@numberOfDesign </b> adet başvurunuz bulunmaktadır. <br />
+                    Tümünü görmek için tıklayınız.
+                </div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Stats Widget 17-->
+    </div>
+</div>
+<div class="row" style="margin-top:10px;">
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 17-->
+        <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body">
+                <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                    <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                            <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                    <text style="color:white; font-weight:bold;">MARKA İZLEME BAŞVURULARI</text>
+                </span>
+                <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"
+                     style="color:white;">
+                    <b>@numberOfBrandWatch </b> adet başvurunuz bulunmaktadır. <br />
+                    Tümünü görmek için tıklayınız.
+                </div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Stats Widget 17-->
+    </div>
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 17-->
+        <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body">
+                <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                    <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                            <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                    <text style="color:white; font-weight:bold;">DİĞER MARKA BAŞVURULARI</text>
+                </span>
+                <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"
+                     style="color:white;">
+                    <b>@numberOfOtherBrand </b> adet başvurunuz bulunmaktadır. <br />
+                    Tümünü görmek için tıklayınız.
+                </div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Stats Widget 17-->
+    </div>
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 17-->
+        <a href="#" class="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body">
+                <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                    <!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                            <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                    <text style="color:white;
+                            font-weight:bold;">
+                        ALAN ADI BAŞVURULARI
+                    </text>
+                </span>
+                <div class="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"
+                     style="color:white;">
+                    <b>@numberOfDomain </b> adet başvurunuz bulunmaktadır. <br />
+                    Tümünü görmek için tıklayınız.
+                </div>
+            </div>
+            <!--end::Body-->
+        </a>
+        <!--end::Stats Widget 17-->
+    </div>
+</div>
+
+<!--end::Advance Table Widget 5-->
+<!--begin::Row-->
+<!--<div class="row" style="margin-top:10px;">
+<div class="col-xl-6">-->
+<!--begin::Mixed Widget 16-->
+<!--<div class="card card-custom card-stretch gutter-b">-->
+<!--begin::Header-->
+<!--<div class="card-header border-0 pt-5">
+<div class="card-title">
+    <div class="card-label">
+        <div class="font-weight-bolder">Weekly Sales Stats</div>
+        <div class="font-size-sm text-muted mt-2">890,344 Sales</div>
+    </div>
+</div>
+<div class="card-toolbar">
+    <div class="dropdown dropdown-inline">
+        <a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ki ki-bold-more-hor"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">-->
+<!--begin::Navigation-->
+<!--<ul class="navi navi-hover">
+    <li class="navi-header font-weight-bold py-4">
+        <span class="font-size-lg">Choose Label:</span>
+        <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+    </li>
+    <li class="navi-separator mb-3 opacity-70"></li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-text">
+                <span class="label label-xl label-inline label-light-success">Customer</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-text">
+                <span class="label label-xl label-inline label-light-danger">Partner</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-text">
+                <span class="label label-xl label-inline label-light-warning">Suplier</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-text">
+                <span class="label label-xl label-inline label-light-primary">Member</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-text">
+                <span class="label label-xl label-inline label-light-dark">Staff</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-separator mt-3 opacity-70"></li>
+    <li class="navi-footer py-4">
+        <a class="btn btn-clean font-weight-bold btn-sm" href="#">
+            <i class="ki ki-plus icon-sm"></i>Add new
+        </a>
+    </li>
+</ul>-->
+<!--end::Navigation-->
+<!--</div>
+        </div>
+    </div>
+</div>-->
+<!--end::Header-->
+<!--begin::Body-->
+<!--<div class="card-body d-flex flex-column">-->
+<!--begin::Chart-->
+<!--<div class="flex-grow-1" style="position: relative;">
+    <div id="kt_mixed_widget_16_chart" style="height: 200px; min-height: 200.7px;"><div id="apexchartsh5lj5rpa" class="apexcharts-canvas apexchartsh5lj5rpa apexcharts-theme-light" style="width: 355px; height: 200.7px;"><svg id="SvgjsSvg1320" width="355" height="200.7" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1322" class="apexcharts-inner apexcharts-graphical" transform="translate(90.5, 0)"><defs id="SvgjsDefs1321"><clipPath id="gridRectMaskh5lj5rpa"><rect id="SvgjsRect1324" width="182" height="200" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMaskh5lj5rpa"><rect id="SvgjsRect1325" width="180" height="202" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1326" class="apexcharts-radialbar"><g id="SvgjsG1327"><g id="SvgjsG1328" class="apexcharts-tracks"><g id="SvgjsG1329" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 88 24.937560975609756 A 74.06243902439024 74.06243902439024 0 1 1 87.98707366593528 24.937562103645206" fill="none" fill-opacity="1" stroke="rgba(243,246,249,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 88 24.937560975609756 A 74.06243902439024 74.06243902439024 0 1 1 87.98707366593528 24.937562103645206"></path></g><g id="SvgjsG1331" class="apexcharts-radialbar-track apexcharts-track" rel="2"><path id="apexcharts-radialbarTrack-1" d="M 88 37.619512195121956 A 61.380487804878044 61.380487804878044 0 1 1 87.98928708396762 37.61951313000024" fill="none" fill-opacity="1" stroke="rgba(243,246,249,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 88 37.619512195121956 A 61.380487804878044 61.380487804878044 0 1 1 87.98928708396762 37.61951313000024"></path></g><g id="SvgjsG1333" class="apexcharts-radialbar-track apexcharts-track" rel="3"><path id="apexcharts-radialbarTrack-2" d="M 88 50.301463414634156 A 48.698536585365844 48.698536585365844 0 1 1 87.99150050199997 50.30146415635528" fill="none" fill-opacity="1" stroke="rgba(243,246,249,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 88 50.301463414634156 A 48.698536585365844 48.698536585365844 0 1 1 87.99150050199997 50.30146415635528"></path></g><g id="SvgjsG1335" class="apexcharts-radialbar-track apexcharts-track" rel="4"><path id="apexcharts-radialbarTrack-3" d="M 88 62.98341463414636 A 36.01658536585364 36.01658536585364 0 1 1 87.9937139200323 62.98341518271032" fill="none" fill-opacity="1" stroke="rgba(243,246,249,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 88 62.98341463414636 A 36.01658536585364 36.01658536585364 0 1 1 87.9937139200323 62.98341518271032"></path></g></g><g id="SvgjsG1337"><g id="SvgjsG1341" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1342" d="M 88 24.937560975609756 A 74.06243902439024 74.06243902439024 0 1 1 44.467190592652884 158.91777181559002" fill="none" fill-opacity="0.85" stroke="rgba(137,80,252,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="216" data:value="60" index="0" j="0" data:pathOrig="M 88 24.937560975609756 A 74.06243902439024 74.06243902439024 0 1 1 44.467190592652884 158.91777181559002"></path></g><g id="SvgjsG1343" class="apexcharts-series apexcharts-radial-series" seriesName="seriesx2" rel="2" data:realIndex="1"><path id="SvgjsPath1344" d="M 88 37.619512195121956 A 61.380487804878044 61.380487804878044 0 0 1 88 160.38048780487804" fill="none" fill-opacity="0.85" stroke="rgba(246,78,96,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-1" data:angle="180" data:value="50" index="0" j="1" data:pathOrig="M 88 37.619512195121956 A 61.380487804878044 61.380487804878044 0 0 1 88 160.38048780487804"></path></g><g id="SvgjsG1345" class="apexcharts-series apexcharts-radial-series" seriesName="seriesx3" rel="3" data:realIndex="2"><path id="SvgjsPath1346" d="M 88 50.301463414634156 A 48.698536585365844 48.698536585365844 0 1 1 39.301463414634156 99" fill="none" fill-opacity="0.85" stroke="rgba(27,197,189,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-2" data:angle="270" data:value="75" index="0" j="2" data:pathOrig="M 88 50.301463414634156 A 48.698536585365844 48.698536585365844 0 1 1 39.301463414634156 99"></path></g><g id="SvgjsG1347" class="apexcharts-series apexcharts-radial-series" seriesName="seriesx4" rel="4" data:realIndex="3"><path id="SvgjsPath1348" d="M 88 62.98341463414636 A 36.01658536585364 36.01658536585364 0 1 1 53.746191793104224 87.87026304259518" fill="none" fill-opacity="0.85" stroke="rgba(54,153,255,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.681951219512197" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-3" data:angle="288" data:value="80" index="0" j="3" data:pathOrig="M 88 62.98341463414636 A 36.01658536585364 36.01658536585364 0 1 1 53.746191793104224 87.87026304259518"></path></g><circle id="SvgjsCircle1338" r="32.17560975609756" cx="88" cy="99" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1339" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1340" font-family="Helvetica, Arial, sans-serif" x="88" y="109" text-anchor="middle" dominant-baseline="auto" font-size="18px" font-weight="700" fill="#5e6278" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">60%</text></g></g></g></g><line id="SvgjsLine1349" x1="0" y1="0" x2="176" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1350" x1="0" y1="0" x2="176" y2="0" stroke-dasharray="0" stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1323" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+    <div class="resize-triggers"><div class="expand-trigger"><div style="width: 356px; height: 219px;"></div></div><div class="contract-trigger"></div></div>
+</div>-->
+<!--end::Chart-->
+<!--begin::Items-->
+<!--<div class="mt-10 mb-5">
+<div class="row row-paddingless mb-10">-->
+<!--begin::Item-->
+<!--<div class="col">
+<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-45 symbol-light-info mr-4 flex-shrink-0">
+<div class="symbol-label">
+    <span class="svg-icon svg-icon-lg svg-icon-info">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Shopping/Cart3.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M12,4.56204994 L7.76822128,9.6401844 C7.4146572,10.0644613 6.7840925,10.1217854 6.3598156,9.76822128 C5.9355387,9.4146572 5.87821464,8.7840925 6.23177872,8.3598156 L11.2317787,2.3598156 C11.6315738,1.88006147 12.3684262,1.88006147 12.7682213,2.3598156 L17.7682213,8.3598156 C18.1217854,8.7840925 18.0644613,9.4146572 17.6401844,9.76822128 C17.2159075,10.1217854 16.5853428,10.0644613 16.2317787,9.6401844 L12,4.56204994 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+        <path d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z" fill="#000000"></path>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <div class="font-size-h4 text-dark-75 font-weight-bolder">$2,034</div>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">Author Sales</div>
+</div>-->
+<!--end::Title-->
+<!--</div>
+</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="col">
+<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-45 symbol-light-danger mr-4 flex-shrink-0">
+<div class="symbol-label">
+    <span class="svg-icon svg-icon-lg svg-icon-danger">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Home/Library.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000"></path>
+        <rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1"></rect>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <div class="font-size-h4 text-dark-75 font-weight-bolder">$706</div>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">Commission</div>
+</div>-->
+<!--end::Title-->
+<!--</div>
+</div>-->
+<!--end::Item-->
+<!--</div>
+<div class="row row-paddingless">-->
+<!--begin::Item-->
+<!--<div class="col">
+<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-45 symbol-light-success mr-4 flex-shrink-0">
+<div class="symbol-label">
+    <span class="svg-icon svg-icon-lg svg-icon-success">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Shopping/Cart3.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M12,4.56204994 L7.76822128,9.6401844 C7.4146572,10.0644613 6.7840925,10.1217854 6.3598156,9.76822128 C5.9355387,9.4146572 5.87821464,8.7840925 6.23177872,8.3598156 L11.2317787,2.3598156 C11.6315738,1.88006147 12.3684262,1.88006147 12.7682213,2.3598156 L17.7682213,8.3598156 C18.1217854,8.7840925 18.0644613,9.4146572 17.6401844,9.76822128 C17.2159075,10.1217854 16.5853428,10.0644613 16.2317787,9.6401844 L12,4.56204994 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+        <path d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z" fill="#000000"></path>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <div class="font-size-h4 text-dark-75 font-weight-bolder">$49</div>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">Average Bid</div>
+</div>-->
+<!--end::Title-->
+<!--</div>
+</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="col">
+<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-45 symbol-light-primary mr-4 flex-shrink-0">
+<div class="symbol-label">
+    <span class="svg-icon svg-icon-lg svg-icon-primary">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Shopping/Barcode-read.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <rect fill="#000000" opacity="0.3" x="4" y="4" width="8" height="16"></rect>
+        <path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <div class="font-size-h4 text-dark-75 font-weight-bolder">$5.8M</div>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">All Time Sales</div>
+</div>-->
+<!--end::Title-->
+<!--</div>
+</div>-->
+<!--end::Item-->
+<!--</div>
+</div>-->
+<!--end::Items-->
+<!--</div>-->
+<!--end::Body-->
+<!--</div>-->
+<!--end::Mixed Widget 16-->
+<!--</div>
+<div class="col-xl-6">-->
+<!--begin::Mixed Widget 15-->
+<!--<div class="card card-custom card-stretch gutter-b">-->
+<!--begin::Header-->
+<!--<div class="card-header border-0 pt-5">
+<h3 class="card-title font-weight-bolder">Trends</h3>
+<div class="card-toolbar">
+    <div class="dropdown dropdown-inline">
+        <a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ki ki-bold-more-hor"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">-->
+<!--begin::Naviigation-->
+<!--<ul class="navi">
+    <li class="navi-header font-weight-bold py-5">
+        <span class="font-size-lg">Add New:</span>
+        <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+    </li>
+    <li class="navi-separator mb-3 opacity-70"></li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-shopping-cart-1"></i>
+            </span>
+            <span class="navi-text">Order</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="navi-icon flaticon2-calendar-8"></i>
+            </span>
+            <span class="navi-text">Members</span>
+            <span class="navi-label">
+                <span class="label label-light-danger label-rounded font-weight-bold">3</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="navi-icon flaticon2-telegram-logo"></i>
+            </span>
+            <span class="navi-text">Project</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="navi-icon flaticon2-new-email"></i>
+            </span>
+            <span class="navi-text">Record</span>
+            <span class="navi-label">
+                <span class="label label-light-success label-rounded font-weight-bold">5</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-separator mt-3 opacity-70"></li>
+    <li class="navi-footer pt-5 pb-4">
+        <a class="btn btn-light-primary font-weight-bolder btn-sm" href="#">More options</a>
+        <a class="btn btn-clean font-weight-bold btn-sm d-none" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more...">Learn more</a>
+    </li>
+</ul>-->
+<!--end::Naviigation-->
+<!--</div>
+        </div>
+    </div>
+</div>-->
+<!--end::Header-->
+<!--begin::Body-->
+<!--<div class="card-body d-flex flex-column">-->
+<!--begin::Chart-->
+<!--<div class="flex-grow-1" style="position: relative;">
+    <div id="kt_mixed_widget_15_chart" style="height: 150px; min-height: 150px;"><div id="apexchartse0fjemrq" class="apexcharts-canvas apexchartse0fjemrq apexcharts-theme-light" style="width: 355px; height: 150px;"><svg id="SvgjsSvg1278" width="355" height="150" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1280" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 0)"><defs id="SvgjsDefs1279"><clipPath id="gridRectMaske0fjemrq"><rect id="SvgjsRect1283" width="362" height="153" x="-3.5" y="-1.5" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMaske0fjemrq"><rect id="SvgjsRect1284" width="359" height="154" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><linearGradient id="SvgjsLinearGradient1289" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1290" stop-opacity="1" stop-color="rgba(255,241,242,1)" offset="0.25"></stop><stop id="SvgjsStop1291" stop-opacity="0.375" stop-color="rgba(255,226,229,0.375)" offset="0.5"></stop><stop id="SvgjsStop1292" stop-opacity="0.375" stop-color="rgba(255,226,229,0.375)" offset="1"></stop></linearGradient></defs><g id="SvgjsG1295" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1296" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g></g><g id="SvgjsG1298" class="apexcharts-grid"><g id="SvgjsG1299" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1301" x1="0" y1="0" x2="355" y2="0" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1302" x1="0" y1="15" x2="355" y2="15" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1303" x1="0" y1="30" x2="355" y2="30" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1304" x1="0" y1="45" x2="355" y2="45" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1305" x1="0" y1="60" x2="355" y2="60" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1306" x1="0" y1="75" x2="355" y2="75" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1307" x1="0" y1="90" x2="355" y2="90" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1308" x1="0" y1="105" x2="355" y2="105" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1309" x1="0" y1="120" x2="355" y2="120" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1310" x1="0" y1="135" x2="355" y2="135" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line><line id="SvgjsLine1311" x1="0" y1="150" x2="355" y2="150" stroke="#e0e0e0" stroke-dasharray="0" class="apexcharts-gridline"></line></g><g id="SvgjsG1300" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1313" x1="0" y1="150" x2="355" y2="150" stroke="transparent" stroke-dasharray="0"></line><line id="SvgjsLine1312" x1="0" y1="1" x2="0" y2="150" stroke="transparent" stroke-dasharray="0"></line></g><g id="SvgjsG1285" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1286" class="apexcharts-series" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1293" d="M 0 150L 0 80.76923076923077C 24.849999999999998 80.76923076923077 46.150000000000006 80.76923076923077 71 80.76923076923077C 95.85 80.76923076923077 117.15 11.538461538461547 142 11.538461538461547C 166.85 11.538461538461547 188.15 92.3076923076923 213 92.3076923076923C 237.85 92.3076923076923 259.15 92.3076923076923 284 92.3076923076923C 308.85 92.3076923076923 330.15 57.69230769230769 355 57.69230769230769C 355 57.69230769230769 355 57.69230769230769 355 150M 355 57.69230769230769z" fill="url(#SvgjsLinearGradient1289)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaske0fjemrq)" pathTo="M 0 150L 0 80.76923076923077C 24.849999999999998 80.76923076923077 46.150000000000006 80.76923076923077 71 80.76923076923077C 95.85 80.76923076923077 117.15 11.538461538461547 142 11.538461538461547C 166.85 11.538461538461547 188.15 92.3076923076923 213 92.3076923076923C 237.85 92.3076923076923 259.15 92.3076923076923 284 92.3076923076923C 308.85 92.3076923076923 330.15 57.69230769230769 355 57.69230769230769C 355 57.69230769230769 355 57.69230769230769 355 150M 355 57.69230769230769z" pathFrom="M -1 150L -1 150L 71 150L 142 150L 213 150L 284 150L 355 150"></path><path id="SvgjsPath1294" d="M 0 80.76923076923077C 24.849999999999998 80.76923076923077 46.150000000000006 80.76923076923077 71 80.76923076923077C 95.85 80.76923076923077 117.15 11.538461538461547 142 11.538461538461547C 166.85 11.538461538461547 188.15 92.3076923076923 213 92.3076923076923C 237.85 92.3076923076923 259.15 92.3076923076923 284 92.3076923076923C 308.85 92.3076923076923 330.15 57.69230769230769 355 57.69230769230769" fill="none" fill-opacity="1" stroke="#f64e60" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaske0fjemrq)" pathTo="M 0 80.76923076923077C 24.849999999999998 80.76923076923077 46.150000000000006 80.76923076923077 71 80.76923076923077C 95.85 80.76923076923077 117.15 11.538461538461547 142 11.538461538461547C 166.85 11.538461538461547 188.15 92.3076923076923 213 92.3076923076923C 237.85 92.3076923076923 259.15 92.3076923076923 284 92.3076923076923C 308.85 92.3076923076923 330.15 57.69230769230769 355 57.69230769230769" pathFrom="M -1 150L -1 150L 71 150L 142 150L 213 150L 284 150L 355 150"></path><g id="SvgjsG1287" class="apexcharts-series-markers-wrap" data:realIndex="0"><g class="apexcharts-series-markers"><circle id="SvgjsCircle1319" r="0" cx="0" cy="0" class="apexcharts-marker wyqk4klmc no-pointer-events" stroke="#f64e60" fill="#ffe2e5" fill-opacity="1" stroke-width="3" stroke-opacity="0.9" default-marker-size="0"></circle></g></g></g><g id="SvgjsG1288" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1314" x1="0" y1="0" x2="355" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1315" x1="0" y1="0" x2="355" y2="0" stroke-dasharray="0" stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1316" class="apexcharts-yaxis-annotations"></g><g id="SvgjsG1317" class="apexcharts-xaxis-annotations"></g><g id="SvgjsG1318" class="apexcharts-point-annotations"></g></g><g id="SvgjsG1297" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1281" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: Poppins; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group"><span class="apexcharts-tooltip-marker" style="background-color: rgb(255, 226, 229);"></span><div class="apexcharts-tooltip-text" style="font-family: Poppins; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-label"></span><span class="apexcharts-tooltip-text-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light"><div class="apexcharts-xaxistooltip-text" style="font-family: Poppins; font-size: 12px;"></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+    <div class="resize-triggers"><div class="expand-trigger"><div style="width: 356px; height: 204px;"></div></div><div class="contract-trigger"></div></div>
+</div>-->
+<!--end::Chart-->
+<!--begin::Items-->
+<!--<div class="mt-5">-->
+<!--begin::Item-->
+<!--<div class="d-flex align-items-center justify-content-between mb-5">-->
+<!--begin::Section-->
+<!--<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+    <div class="symbol-label">
+        <img src="/metronic/theme/html/demo13/dist/assets/media/svg/misc/006-plurk.svg" class="h-50" alt="">
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Top Authors</a>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">Ricky Hunt, Sandra Trepp</div>
+</div>-->
+<!--end::Title-->
+<!--</div>-->
+<!--end::Section-->
+<!--begin::Label-->
+<!--<div class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">+82$</div>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Widget Item-->
+<!--<div class="d-flex align-items-center justify-content-between mb-5">-->
+<!--begin::Section-->
+<!--<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+    <div class="symbol-label">
+        <img src="/metronic/theme/html/demo13/dist/assets/media/svg/misc/015-telegram.svg" class="h-50" alt="">
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Top Sales</a>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">PitStop Emails</div>
+</div>-->
+<!--end::Title-->
+<!--</div>-->
+<!--end::Section-->
+<!--begin::Label-->
+<!--<div class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">+82$</div>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Widget Item-->
+<!--begin::Widget Item-->
+<!--<div class="d-flex align-items-center justify-content-between">-->
+<!--begin::Section-->
+<!--<div class="d-flex align-items-center mr-2">-->
+<!--begin::Symbol-->
+<!--<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+    <div class="symbol-label">
+        <img src="/metronic/theme/html/demo13/dist/assets/media/svg/misc/003-puzzle.svg" class="h-50" alt="">
+    </div>
+</div>-->
+<!--end::Symbol-->
+<!--begin::Title-->
+<!--<div>
+    <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Top Engagement</a>
+    <div class="font-size-sm text-muted font-weight-bold mt-1">KT.com</div>
+</div>-->
+<!--end::Title-->
+<!--</div>-->
+<!--end::Section-->
+<!--begin::Label-->
+<!--<div class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">+82$</div>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Widget Item-->
+<!--</div>-->
+<!--end::Widget Items-->
+<!--</div>-->
+<!--end::Body-->
+<!--</div>-->
+<!--end::Mixed Widget 15-->
+<!--</div>
+</div>-->
+<!--end::Row-->
+<!--begin::Row-->
+<!--<div class="row" style="margin-top:10px;">
+<div class="col-lg-6">-->
+<!--begin::List Widget 10-->
+<!--<div class="card card-custom card-stretch gutter-b">-->
+<!--begin::Header-->
+<!--<div class="card-header border-0">
+<h3 class="card-title font-weight-bolder text-dark">Notifications</h3>
+<div class="card-toolbar">
+    <div class="dropdown dropdown-inline">
+        <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ki ki-bold-more-ver"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">-->
+<!--begin::Naviigation-->
+<!--<ul class="navi">
+    <li class="navi-header font-weight-bold py-5">
+        <span class="font-size-lg">Add New:</span>
+        <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
+    </li>
+    <li class="navi-separator mb-3 opacity-70"></li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-shopping-cart-1"></i>
+            </span>
+            <span class="navi-text">Order</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="navi-icon flaticon2-calendar-8"></i>
+            </span>
+            <span class="navi-text">Members</span>
+            <span class="navi-label">
+                <span class="label label-light-danger label-rounded font-weight-bold">3</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="navi-icon flaticon2-telegram-logo"></i>
+            </span>
+            <span class="navi-text">Project</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="navi-icon flaticon2-new-email"></i>
+            </span>
+            <span class="navi-text">Record</span>
+            <span class="navi-label">
+                <span class="label label-light-success label-rounded font-weight-bold">5</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-separator mt-3 opacity-70"></li>
+    <li class="navi-footer pt-5 pb-4">
+        <a class="btn btn-light-primary font-weight-bolder btn-sm" href="#">More options</a>
+        <a class="btn btn-clean font-weight-bold btn-sm d-none" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to learn more...">Learn more</a>
+    </li>
+</ul>-->
+<!--end::Naviigation-->
+<!--</div>
+        </div>
+    </div>
+</div>-->
+<!--end::Header-->
+<!--begin::Body-->
+<!--<div class="card-body pt-0">-->
+<!--begin::Item-->
+<!--<div class="mb-6">-->
+<!--begin::Content-->
+<!--<div class="d-flex align-items-center flex-grow-1">-->
+<!--begin::Checkbox-->
+<!--<label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
+    <input type="checkbox" value="1">
+    <span></span>
+</label>-->
+<!--end::Checkbox-->
+<!--begin::Section-->
+<!--<div class="d-flex flex-wrap align-items-center justify-content-between w-100">-->
+<!--begin::Info-->
+<!--<div class="d-flex flex-column align-items-cente py-2 w-75">-->
+<!--begin::Title-->
+<!--<a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Daily Standup Meeting</a>-->
+<!--end::Title-->
+<!--begin::Data-->
+<!--<span class="text-muted font-weight-bold">Due in 2 Days</span>-->
+<!--end::Data-->
+<!--</div>-->
+<!--end::Info-->
+<!--begin::Label-->
+<!--<span class="label label-lg label-light-primary label-inline font-weight-bold py-4">Approved</span>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Section-->
+<!--</div>-->
+<!--end::Content-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="mb-6">-->
+<!--begin::Content-->
+<!--<div class="d-flex align-items-center flex-grow-1">-->
+<!--begin::Checkbox-->
+<!--<label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
+    <input type="checkbox" value="1">
+    <span></span>
+</label>-->
+<!--end::Checkbox-->
+<!--begin::Section-->
+<!--<div class="d-flex flex-wrap align-items-center justify-content-between w-100">-->
+<!--begin::Info-->
+<!--<div class="d-flex flex-column align-items-cente py-2 w-75">-->
+<!--begin::Title-->
+<!--<a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Group Town Hall Meet-up with showcase</a>-->
+<!--end::Title-->
+<!--begin::Data-->
+<!--<span class="text-muted font-weight-bold">Due in 2 Days</span>-->
+<!--end::Data-->
+<!--</div>-->
+<!--end::Info-->
+<!--begin::Label-->
+<!--<span class="label label-lg label-light-warning label-inline font-weight-bold py-4">In Progress</span>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Section-->
+<!--</div>-->
+<!--end::Content-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="mb-6">-->
+<!--begin::Content-->
+<!--<div class="d-flex align-items-center flex-grow-1">-->
+<!--begin::Checkbox-->
+<!--<label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
+    <input type="checkbox" value="1">
+    <span></span>
+</label>-->
+<!--end::Checkbox-->
+<!--begin::Section-->
+<!--<div class="d-flex flex-wrap align-items-center justify-content-between w-100">-->
+<!--begin::Info-->
+<!--<div class="d-flex flex-column align-items-cente py-2 w-75">-->
+<!--begin::Title-->
+<!--<a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Next sprint planning and estimations</a>-->
+<!--end::Title-->
+<!--begin::Data-->
+<!--<span class="text-muted font-weight-bold">Due in 2 Days</span>-->
+<!--end::Data-->
+<!--</div>-->
+<!--end::Info-->
+<!--begin::Label-->
+<!--<span class="label label-lg label-light-success label-inline font-weight-bold py-4">Success</span>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Section-->
+<!--</div>-->
+<!--end::Content-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="mb-6">-->
+<!--begin::Content-->
+<!--<div class="d-flex align-items-center flex-grow-1">-->
+<!--begin::Checkbox-->
+<!--<label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
+    <input type="checkbox" value="1">
+    <span></span>
+</label>-->
+<!--end::Checkbox-->
+<!--begin::Section-->
+<!--<div class="d-flex flex-wrap align-items-center justify-content-between w-100">-->
+<!--begin::Info-->
+<!--<div class="d-flex flex-column align-items-cente py-2 w-75">-->
+<!--begin::Title-->
+<!--<a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Sprint delivery and project deployment</a>-->
+<!--end::Title-->
+<!--begin::Data-->
+<!--<span class="text-muted font-weight-bold">Due in 2 Days</span>-->
+<!--end::Data-->
+<!--</div>-->
+<!--end::Info-->
+<!--begin::Label-->
+<!--<span class="label label-lg label-light-danger label-inline font-weight-bold py-4">Rejected</span>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Section-->
+<!--</div>-->
+<!--end::Content-->
+<!--</div>-->
+<!--end: Item-->
+<!--begin: Item-->
+<!--<div class="">-->
+<!--begin::Content-->
+<!--<div class="d-flex align-items-center flex-grow-1">-->
+<!--begin::Checkbox-->
+<!--<label class="checkbox checkbox-lg checkbox-lg flex-shrink-0 mr-4">
+    <input type="checkbox" value="1">
+    <span></span>
+</label>-->
+<!--end::Checkbox-->
+<!--begin::Section-->
+<!--<div class="d-flex flex-wrap align-items-center justify-content-between w-100">-->
+<!--begin::Info-->
+<!--<div class="d-flex flex-column align-items-cente py-2 w-75">-->
+<!--begin::Title-->
+<!--<a href="#" class="text-dark-75 font-weight-bold text-hover-primary font-size-lg mb-1">Data analytics research showcase</a>-->
+<!--end::Title-->
+<!--begin::Data-->
+<!--<span class="text-muted font-weight-bold">Due in 2 Days</span>-->
+<!--end::Data-->
+<!--</div>-->
+<!--end::Info-->
+<!--begin::Label-->
+<!--<span class="label label-lg label-light-warning label-inline font-weight-bold py-4">In Progress</span>-->
+<!--end::Label-->
+<!--</div>-->
+<!--end::Section-->
+<!--</div>-->
+<!--end::Content-->
+<!--</div>-->
+<!--end: Item-->
+<!--</div>-->
+<!--end: Card Body-->
+<!--</div>-->
+<!--end: Card-->
+<!--end: List Widget 10-->
+<!--</div>
+<div class="col-lg-6">-->
+<!--begin::List Widget 11-->
+<!--<div class="card card-custom card-stretch gutter-b">-->
+<!--begin::Header-->
+<!--<div class="card-header border-0">
+<h3 class="card-title font-weight-bolder text-dark">Trends</h3>
+<div class="card-toolbar">
+    <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
+        <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ki ki-bold-more-ver"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">-->
+<!--begin::Navigation-->
+<!--<ul class="navi navi-hover py-5">
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-drop"></i>
+            </span>
+            <span class="navi-text">New Group</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-list-3"></i>
+            </span>
+            <span class="navi-text">Contacts</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-rocket-1"></i>
+            </span>
+            <span class="navi-text">Groups</span>
+            <span class="navi-link-badge">
+                <span class="label label-light-primary label-inline font-weight-bold">new</span>
+            </span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-bell-2"></i>
+            </span>
+            <span class="navi-text">Calls</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-gear"></i>
+            </span>
+            <span class="navi-text">Settings</span>
+        </a>
+    </li>
+    <li class="navi-separator my-3"></li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-magnifier-tool"></i>
+            </span>
+            <span class="navi-text">Help</span>
+        </a>
+    </li>
+    <li class="navi-item">
+        <a href="#" class="navi-link">
+            <span class="navi-icon">
+                <i class="flaticon2-bell-2"></i>
+            </span>
+            <span class="navi-text">Privacy</span>
+            <span class="navi-link-badge">
+                <span class="label label-light-danger label-rounded font-weight-bold">5</span>
+            </span>
+        </a>
+    </li>
+</ul>-->
+<!--end::Navigation-->
+<!--</div>
+        </div>
+    </div>
+</div>-->
+<!--end::Header-->
+<!--begin::Body-->
+<!--<div class="card-body pt-0">-->
+<!--begin::Item-->
+<!--<div class="d-flex align-items-center mb-9 bg-light-warning rounded p-5">-->
+<!--begin::Icon-->
+<!--<span class="svg-icon svg-icon-warning mr-5">
+<span class="svg-icon svg-icon-lg">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Home/Library.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z" fill="#000000"></path>
+        <rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1"></rect>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+</span>-->
+<!--end::Icon-->
+<!--begin::Title-->
+<!--<div class="d-flex flex-column flex-grow-1 mr-2">
+    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Group lunch celebration</a>
+    <span class="text-muted font-weight-bold">Due in 2 Days</span>
+</div>-->
+<!--end::Title-->
+<!--begin::Lable-->
+<!--<span class="font-weight-bolder text-warning py-1 font-size-lg">+28%</span>-->
+<!--end::Lable-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="d-flex align-items-center bg-light-success rounded p-5 mb-9">-->
+<!--begin::Icon-->
+<!--<span class="svg-icon svg-icon-success mr-5">
+<span class="svg-icon svg-icon-lg">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Communication/Write.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)"></path>
+        <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+</span>-->
+<!--end::Icon-->
+<!--begin::Title-->
+<!--<div class="d-flex flex-column flex-grow-1 mr-2">
+    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Home navigation optimization</a>
+    <span class="text-muted font-weight-bold">Due in 2 Days</span>
+</div>-->
+<!--end::Title-->
+<!--begin::Lable-->
+<!--<span class="font-weight-bolder text-success py-1 font-size-lg">+50%</span>-->
+<!--end::Lable-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="d-flex align-items-center bg-light-danger rounded p-5 mb-9">-->
+<!--begin::Icon-->
+<!--<span class="svg-icon svg-icon-danger mr-5">
+<span class="svg-icon svg-icon-lg">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Communication/Group-chat.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M16,15.6315789 L16,12 C16,10.3431458 14.6568542,9 13,9 L6.16183229,9 L6.16183229,5.52631579 C6.16183229,4.13107011 7.29290239,3 8.68814808,3 L20.4776218,3 C21.8728674,3 23.0039375,4.13107011 23.0039375,5.52631579 L23.0039375,13.1052632 L23.0206157,17.786793 C23.0215995,18.0629336 22.7985408,18.2875874 22.5224001,18.2885711 C22.3891754,18.2890457 22.2612702,18.2363324 22.1670655,18.1421277 L19.6565168,15.6315789 L16,15.6315789 Z" fill="#000000"></path>
+        <path d="M1.98505595,18 L1.98505595,13 C1.98505595,11.8954305 2.88048645,11 3.98505595,11 L11.9850559,11 C13.0896254,11 13.9850559,11.8954305 13.9850559,13 L13.9850559,18 C13.9850559,19.1045695 13.0896254,20 11.9850559,20 L4.10078614,20 L2.85693427,21.1905292 C2.65744295,21.3814685 2.34093638,21.3745358 2.14999706,21.1750444 C2.06092565,21.0819836 2.01120804,20.958136 2.01120804,20.8293182 L2.01120804,18.32426 C1.99400175,18.2187196 1.98505595,18.1104045 1.98505595,18 Z M6.5,14 C6.22385763,14 6,14.2238576 6,14.5 C6,14.7761424 6.22385763,15 6.5,15 L11.5,15 C11.7761424,15 12,14.7761424 12,14.5 C12,14.2238576 11.7761424,14 11.5,14 L6.5,14 Z M9.5,16 C9.22385763,16 9,16.2238576 9,16.5 C9,16.7761424 9.22385763,17 9.5,17 L11.5,17 C11.7761424,17 12,16.7761424 12,16.5 C12,16.2238576 11.7761424,16 11.5,16 L9.5,16 Z" fill="#000000" opacity="0.3"></path>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+</span>-->
+<!--end::Icon-->
+<!--begin::Title-->
+<!--<div class="d-flex flex-column flex-grow-1 mr-2">
+    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Rebrand strategy planning</a>
+    <span class="text-muted font-weight-bold">Due in 2 Days</span>
+</div>-->
+<!--end::Title-->
+<!--begin::Lable-->
+<!--<span class="font-weight-bolder text-danger py-1 font-size-lg">-27%</span>-->
+<!--end::Lable-->
+<!--</div>-->
+<!--end::Item-->
+<!--begin::Item-->
+<!--<div class="d-flex align-items-center bg-light-info rounded p-5">-->
+<!--begin::Icon-->
+<!--<span class="svg-icon svg-icon-info mr-5">
+<span class="svg-icon svg-icon-lg">-->
+<!--begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/General/Attachment2.svg-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"></rect>
+        <path d="M11.7573593,15.2426407 L8.75735931,15.2426407 C8.20507456,15.2426407 7.75735931,15.6903559 7.75735931,16.2426407 C7.75735931,16.7949254 8.20507456,17.2426407 8.75735931,17.2426407 L11.7573593,17.2426407 L11.7573593,18.2426407 C11.7573593,19.3472102 10.8619288,20.2426407 9.75735931,20.2426407 L5.75735931,20.2426407 C4.65278981,20.2426407 3.75735931,19.3472102 3.75735931,18.2426407 L3.75735931,14.2426407 C3.75735931,13.1380712 4.65278981,12.2426407 5.75735931,12.2426407 L9.75735931,12.2426407 C10.8619288,12.2426407 11.7573593,13.1380712 11.7573593,14.2426407 L11.7573593,15.2426407 Z" fill="#000000" opacity="0.3" transform="translate(7.757359, 16.242641) rotate(-45.000000) translate(-7.757359, -16.242641)"></path>
+        <path d="M12.2426407,8.75735931 L15.2426407,8.75735931 C15.7949254,8.75735931 16.2426407,8.30964406 16.2426407,7.75735931 C16.2426407,7.20507456 15.7949254,6.75735931 15.2426407,6.75735931 L12.2426407,6.75735931 L12.2426407,5.75735931 C12.2426407,4.65278981 13.1380712,3.75735931 14.2426407,3.75735931 L18.2426407,3.75735931 C19.3472102,3.75735931 20.2426407,4.65278981 20.2426407,5.75735931 L20.2426407,9.75735931 C20.2426407,10.8619288 19.3472102,11.7573593 18.2426407,11.7573593 L14.2426407,11.7573593 C13.1380712,11.7573593 12.2426407,10.8619288 12.2426407,9.75735931 L12.2426407,8.75735931 Z" fill="#000000" transform="translate(16.242641, 7.757359) rotate(-45.000000) translate(-16.242641, -7.757359)"></path>
+        <path d="M5.89339828,3.42893219 C6.44568303,3.42893219 6.89339828,3.87664744 6.89339828,4.42893219 L6.89339828,6.42893219 C6.89339828,6.98121694 6.44568303,7.42893219 5.89339828,7.42893219 C5.34111353,7.42893219 4.89339828,6.98121694 4.89339828,6.42893219 L4.89339828,4.42893219 C4.89339828,3.87664744 5.34111353,3.42893219 5.89339828,3.42893219 Z M11.4289322,5.13603897 C11.8194565,5.52656326 11.8194565,6.15972824 11.4289322,6.55025253 L10.0147186,7.96446609 C9.62419433,8.35499039 8.99102936,8.35499039 8.60050506,7.96446609 C8.20998077,7.5739418 8.20998077,6.94077682 8.60050506,6.55025253 L10.0147186,5.13603897 C10.4052429,4.74551468 11.0384079,4.74551468 11.4289322,5.13603897 Z M0.600505063,5.13603897 C0.991029355,4.74551468 1.62419433,4.74551468 2.01471863,5.13603897 L3.42893219,6.55025253 C3.81945648,6.94077682 3.81945648,7.5739418 3.42893219,7.96446609 C3.0384079,8.35499039 2.40524292,8.35499039 2.01471863,7.96446609 L0.600505063,6.55025253 C0.209980772,6.15972824 0.209980772,5.52656326 0.600505063,5.13603897 Z" fill="#000000" opacity="0.3" transform="translate(6.014719, 5.843146) rotate(-45.000000) translate(-6.014719, -5.843146)"></path>
+        <path d="M17.9142136,15.4497475 C18.4664983,15.4497475 18.9142136,15.8974627 18.9142136,16.4497475 L18.9142136,18.4497475 C18.9142136,19.0020322 18.4664983,19.4497475 17.9142136,19.4497475 C17.3619288,19.4497475 16.9142136,19.0020322 16.9142136,18.4497475 L16.9142136,16.4497475 C16.9142136,15.8974627 17.3619288,15.4497475 17.9142136,15.4497475 Z M23.4497475,17.1568542 C23.8402718,17.5473785 23.8402718,18.1805435 23.4497475,18.5710678 L22.0355339,19.9852814 C21.6450096,20.3758057 21.0118446,20.3758057 20.6213203,19.9852814 C20.2307961,19.5947571 20.2307961,18.9615921 20.6213203,18.5710678 L22.0355339,17.1568542 C22.4260582,16.76633 23.0592232,16.76633 23.4497475,17.1568542 Z M12.6213203,17.1568542 C13.0118446,16.76633 13.6450096,16.76633 14.0355339,17.1568542 L15.4497475,18.5710678 C15.8402718,18.9615921 15.8402718,19.5947571 15.4497475,19.9852814 C15.0592232,20.3758057 14.4260582,20.3758057 14.0355339,19.9852814 L12.6213203,18.5710678 C12.2307961,18.1805435 12.2307961,17.5473785 12.6213203,17.1568542 Z" fill="#000000" opacity="0.3" transform="translate(18.035534, 17.863961) scale(1, -1) rotate(45.000000) translate(-18.035534, -17.863961)"></path>
+    </g>
+</svg>-->
+<!--end::Svg Icon-->
+<!--</span>
+</span>-->
+<!--end::Icon-->
+<!--begin::Title-->
+<!--<div class="d-flex flex-column flex-grow-1 mr-2">
+    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Product goals strategy meet-up</a>
+    <span class="text-muted font-weight-bold">Due in 2 Days</span>
+</div>-->
+<!--end::Title-->
+<!--begin::Lable-->
+<!--<span class="font-weight-bolder text-info py-1 font-size-lg">+8%</span>-->
+<!--end::Lable-->
+<!--</div>-->
+<!--end::Item-->
+<!--</div>-->
+<!--end::Body-->
+<!--</div>-->
+<!--end::List Widget 11-->
+<!--</div>
+</div>-->
+<!--end::Row-->
+<!--begin::Advance Table Widget 5-->
+@*<div class="card card-custom gutter-b" style="margin-top:10px;">
+        <div class="card-header border-0 py-5" style="padding-bottom:0px !important;">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label font-weight-bolder text-dark">Son Marka Başvurularınız</span>
+            </h3>
+        </div>
+        <div class="card-body py-0">
+            <div class="table-responsive">
+                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th class="pl-0" style="width: 40px">
+            <label class="checkbox checkbox-lg checkbox-inline mr-2">
+                <input type="checkbox" value="1">
+                <span></span>
+            </label>
+        </th>
+                            <th class="pl-0" style="min-width: 100px">FİRMA</th>
+                            <th style="min-width: 120px">MARKA ADI</th>
+                            <th style="min-width: 150px">
+                                ŞEHİR
+                                <span class="text-primary">ŞEHİR</span>
+                                <span class="svg-icon svg-icon-sm svg-icon-primary">
+                                begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/Navigation/Down-2.svg
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                <rect fill="#000000" opacity="0.3" x="11" y="4" width="2" height="10" rx="1"></rect>
+                <path d="M6.70710678,19.7071068 C6.31658249,20.0976311 5.68341751,20.0976311 5.29289322,19.7071068 C4.90236893,19.3165825 4.90236893,18.6834175 5.29289322,18.2928932 L11.2928932,12.2928932 C11.6714722,11.9143143 12.2810586,11.9010687 12.6757246,12.2628459 L18.6757246,17.7628459 C19.0828436,18.1360383 19.1103465,18.7686056 18.7371541,19.1757246 C18.3639617,19.5828436 17.7313944,19.6103465 17.3242754,19.2371541 L12.0300757,14.3841378 L6.70710678,19.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 15.999999) scale(1, -1) translate(-12.000003, -15.999999)"></path>
+            </g>
+        </svg>
+                                end::Svg Icon
+                                </span>
+                            </th>
+                            <th style="min-width: 150px">ADRES</th>
+                            <th style="min-width: 130px">DURUM</th>
+                            <th class="pr-0 text-right" style="min-width: 160px">İŞLEMLER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in brandService.GetAllApplications(5))
+                        {
+                            <tr>
+                                <td class="pl-0 py-6">
+                <label class="checkbox checkbox-lg checkbox-inline">
+                    <input type="checkbox" value="1">
+                    <span></span>
+                </label>
+            </td>
+                                <td class="pl-0">
+                                    <a href="#"
+                                       class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">
+                                        @item.FirmName
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">@item.BrandName</span>
+                                    <span class="text-muted font-weight-bold">Paid</span>
+                                </td>
+                                <td>
+                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                        @item.TownName/@item.CityName
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-muted font-weight-bold">@item.Address</span>
+                                </td>
+                                <td>
+                                    <span class="label label-lg label-light-primary label-inline">Onaylı</span>
+                                </td>
+                                <td class="pr-0 text-right">
+                                    <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+            <span class="svg-icon svg-icon-md svg-icon-primary">
+                                    begin::Svg Icon | path:/metronic/theme/html/demo13/dist/assets/media/svg/icons/General/Settings-1.svg
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24"></rect>
+                    <path d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z" fill="#000000"></path>
+                    <path d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z" fill="#000000" opacity="0.3"></path>
+                </g>
+            </svg>
+                                    end::Svg Icon
+                                    </span>
+            </a>
+                                    <a href="@Url.Action("ApplicationStep1", "Brand", new { brandApplicationDetailId = item.BrandApplicationDetailId})"
+                                       class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                        <span class="svg-icon svg-icon-md svg-icon-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                                    <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)"></path>
+                                                    <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm grid-btn-delete"
+                                       data-url='@Url.Action("DeleteBrand", "Brand", new { area = "User", brandApplicationDetailId = item.BrandApplicationDetailId })'>
+                                        <span class="svg-icon svg-icon-md svg-icon-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                                    <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                    <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>*@

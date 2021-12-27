@@ -1,0 +1,13 @@
+﻿@{ 
+    var categories = @CacheManager.GetBlogCategories;
+}
+
+<div class="sidebar_widget">
+    <div class="sidebar_title"><h3>KATEGORİLER</h3></div>
+    <ul class="arrows_list1">
+        @foreach (var category in categories)
+        {
+            <li><a href="@Url.Action("Index", "Blog", new { area="", categoryid=category.BlogCategoryId })"> @category.Description </a></li>
+        }
+    </ul>
+</div>

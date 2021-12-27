@@ -1,0 +1,116 @@
+﻿@model MultipleAttachmentViewModel
+@{
+    var guid = Guid.NewGuid().ToString().Replace('-', '_');
+}
+<style>
+    .dropzone {
+        margin-top: 10px;
+        border: 2px dashed #0087F7;
+        border-radius: 5px;
+        background: white;
+    }
+</style>
+<input type="hidden" id="EnumFormId" name="EnumFormId" value="@Model.FormType" />
+
+<div id="divMultipleAttachments">
+</div>
+
+<form action="#"
+      enctype="multipart/form-data" method="POST">
+    <input type="hidden" id="formId" name="formId" value="@((int)Model.FormType)" />
+    <input type="hidden" id="relatedEntity" name="relatedEntity" value="@Model.RelatedEntity" />
+    <input type="hidden" id="relatedEntityId" name="relatedEntityId" value="@Model.RelatedEntityId" />
+    <div class="dropzone" id="myDropzone">
+
+    </div>
+    @Html.Domain().Button("submit_all").SetType(ButtonType.button).SetIcon("fa fa-upload").SetIconAlignment(ButtonIconAlignment.right).SetStyle(ButtonStyle.submit).SetTitle("TÜMÜNÜ YÜKLE")
+</form>
+
+<script>
+    Dropzone.options.myDropzone = {
+        url: "/Common/MultipleImageUpload",
+        autoProcessQueue: false,
+        uploadMultiple: true,
+        parallelUploads: 5,
+        maxFiles: 5,
+        maxFilesize: 10,
+        acceptedFiles: 'image/*',
+        addRemoveLinks: true,
+        init: function () {
+            dzClosure = this;
+
+            document.getElementById("submit_all").addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (dzClosure.getQueuedFiles().length > 0) {
+                    dzClosure.processQueue();
+                } else {
+                    showErrorNotification("Lütfen yükleme yapmak için en az 1 adet dosya seçiniz!", "Uyarı");
+                }
+            });
+
+            this.on("sendingmultiple", function (data, xhr, formData) {
+                formData.append("__RequestVerificationToken", $('[name=__RequestVerificationToken]').val());
+                formData.append("formId", jQuery("#formId").val());
+                formData.append("relatedEntity", jQuery("#relatedEntity").val());
+                formData.append("relatedEntityId", jQuery("#relatedEntityId").val());
+            });
+
+            this.on("successmultiple", function (files, response) {
+                showSuccessNotification("Yükleme başarıyla gerçekleşti!", "Bilgi");
+                setTimeout(function () {
+                    Refresh();
+                }, 5000);
+                this.removeAllFiles();
+                exit();
+            });
+
+            this.on("errormultiple", function (files, response) {
+                showErrorNotification("Yükleme esnasında bir hata oluştu!", "Error");
+                exit();
+            });
+        }
+    }
+
+    function ActivateButtons() {
+        $('#divMultipleAttachments .btnDelete').click(function () {
+            var attachmentId = $(this).data("attachment-id");
+            swal({
+                title: "Devam etmek istiyor musunuz ?",
+                text: "Seçili kayıt silinecek!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "Evet",
+                cancelButtonText: "Hayır, iptal!",
+                reverseButtons: !0
+            }).then(function (e) {
+                if (e.value) {
+                    postData("@Url.Action("AttachmentDelete", "Common", new { area="" })", {
+                        __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
+                        AttachmentId: attachmentId,
+                        RelatedEntityId: $('#relatedEntityId').val()
+                    }, false, "", function () {
+                        showSuccessNotification("Kayıt başarı ile silindi!", "Bilgi");
+                        Refresh();
+                    }, function () {
+                        showWarningNotification("Kayıt silinemedi!", "Uyarı");
+                    });
+                }
+            });
+        });
+    }
+
+    function Refresh() {
+        getPartialView("@Url.Action("GetMultipleUploadedImage", "Common", new { area = "" })", {
+            RelatedEntity: $('#relatedEntity').val(),
+            FormType: $('#EnumFormId').val(),
+            RelatedEntityId: $('#relatedEntityId').val()
+        }, "divMultipleAttachments", function () {
+            ActivateButtons();
+        });
+    }
+
+    $(function () {
+        Refresh();
+    });
+</script>

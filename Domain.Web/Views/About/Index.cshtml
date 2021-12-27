@@ -1,0 +1,21 @@
+﻿@using Domain.Web.Areas.Admin.Model.ManagementPanel
+@model AboutPageViewModel
+@{
+    ViewBag.Title = "Hakkımızda";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+<div class="container_full menu"></div>
+
+        <div class="page_title">
+            <div class="container">
+                <div class="leaft_title"><h1>Hakkımızda</h1></div>
+                <div class="reght_pagenation"><a href="@Url.Action("Index", "Home", new { area="" })">Ana Sayfa</a> <i>/</i> Hakkımızda</div>
+            </div>
+        </div>
+
+        <div class="container wf py-4" style="background-color: #fff;">
+            <div> @Html.Raw(Model.Content) </div>
+        </div>
+
+

@@ -1,0 +1,44 @@
+﻿@using Domain.WebHelpers.HtmlHelpers.Grid.SearchFilter.Enum
+@using Domain.Web.Areas.User.Models.IndustrialDesign
+@{
+    ViewBag.Title = "ENDÜSTRİYEL TASARIM BAŞVURULARI";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    ViewBag.IsViewUseDatatable = true;
+}
+@model IndustrialDesignInfoViewModel
+@section filter
+{
+    @using (Html.Domain().FilterContainer("filter"))
+    {
+        @Html.DomainFor().FilterInputFor(model => model.Title).SetInputType(FilterGroupType.Like).SetCustomID("p.Title")
+    }
+}
+
+@(Html.Domain()
+    .Grid("tblIndustralDesignApplication")
+    .SetColumns(columns =>
+    {
+        columns.Add("Buttons").SetTitle("İşlemler").SetClassName("grdIslemler");
+        columns.Add("Title").SetTitle("Tasarım Başlığı").SetSortable(true);
+    })
+    .SetDefaultOrder(0)
+    .SetAjaxUrl(Url.Action("GetIndustrialDesignApplicationPagedList", "IndustrialDesign", new { area = "User" })) //, new { e_UserId = Model.UserId.Encrypt() }
+    .SetHeaderVisible(true).SetTitle("Endüstriyel Tasarım Başvuruları"))
+
+
+
+@section script
+{
+    <script type="text/javascript">
+        $(function () {
+            $("body").on("click", ".grid-btn-download", function (e) {
+                window.location = $(this).data("url");
+                var timeOut = 2000;
+                setTimeout(function () { $("#Yukleniyor").fadeOut("slow"); }, timeOut);
+            });
+        });
+    </script>
+}
+
+

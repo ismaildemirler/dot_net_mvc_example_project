@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.Enumerations" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.Enumerations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="GetDomainListOrderColumn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Id" />
+      <xs:enumeration value="ExternalId" />
+      <xs:enumeration value="TldId" />
+      <xs:enumeration value="StartDate" />
+      <xs:enumeration value="ExpirationDate" />
+      <xs:enumeration value="DomainName" />
+      <xs:enumeration value="Status" />
+      <xs:enumeration value="RemainingDay" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GetDomainListOrderColumn" nillable="true" type="tns:GetDomainListOrderColumn" />
+  <xs:simpleType name="TelWhoIsDetailsPublished">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Y" />
+      <xs:enumeration value="N" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TelWhoIsDetailsPublished" nillable="true" type="tns:TelWhoIsDetailsPublished" />
+  <xs:simpleType name="TelWhoIsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Natural" />
+      <xs:enumeration value="Legal" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TelWhoIsType" nillable="true" type="tns:TelWhoIsType" />
+  <xs:simpleType name="DomainPushTarget">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="transit" />
+      <xs:enumeration value="detagging" />
+      <xs:enumeration value="Billwithdraw" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DomainPushTarget" nillable="true" type="tns:DomainPushTarget" />
+  <xs:simpleType name="RenewalMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AUTORENEW" />
+      <xs:enumeration value="AUTOEXPIRE" />
+      <xs:enumeration value="AUTODELETE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RenewalMode" nillable="true" type="tns:RenewalMode" />
+  <xs:simpleType name="GetTldListOrderColumn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Id" />
+      <xs:enumeration value="Name" />
+      <xs:enumeration value="Country" />
+      <xs:enumeration value="CreatedOn" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GetTldListOrderColumn" nillable="true" type="tns:GetTldListOrderColumn" />
+</xs:schema>

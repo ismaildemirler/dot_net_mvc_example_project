@@ -1,0 +1,29 @@
+﻿@using Domain.Web.Areas.Admin.Model.User
+@model SystemUserViewModel
+@{
+    ViewBag.Title = "Sisteme Kayıtlı Kullanıcılar";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+
+        @Html.AntiForgeryToken()
+
+        @(Html.DomainFor()
+            .Grid("tblList1")
+            .SetColumns(columns =>
+            {
+                columns.Add(c => c.Buttons);
+                columns.Add(c => c.UserType);
+                columns.Add(c => c.UserName);
+                columns.Add(c => c.State);
+                columns.Add(c => c.Email);
+                columns.Add(c => c.PhoneNumber);
+                columns.Add(c => c.CreationDate).SetDateFormat();
+                columns.Add(c => c.LastLoginDate).SetDateFormat();
+            })
+            .SetExportButtonShow(false)
+            .SetAjaxUrl(Url.Action("GetUserPagedList")).SetTitle("Sistemde Kayıtlı Üye Listesi").SetDefaultOrder(4))
+
+    </div>
+</div>

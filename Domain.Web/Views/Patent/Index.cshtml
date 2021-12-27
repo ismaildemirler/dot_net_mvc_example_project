@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+@using Domain.Web.Areas.User.Models.Patent;
+@model PatentApplicationViewModel
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>PATENT BAŞVURU</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home")">Ana Sayfa</a> <i>/</i>
+            Patent
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid wf py-5">
+    <div class="row justify-content-center py-3 px-5">
+        <div class="col-xs-12 col-lg-10 col-xl-8 px-4">
+            Patent başvuru sayfasındasınız. Bu sayfadan hızlıca patent başvurusu yapabilir ve detaylı başvuru sayfasına yönlendirildikten sonra
+            başvuru işlemlerini tamamlayabilirsiniz.
+        </div>
+        <div class="w-100"></div>
+        <div class="col-xs-12 col-lg-10 col-xl-8 mt-4">
+            <form action="@Url.Action("PatentApplication")" method="post">
+                @Html.DomainFor().TextBoxFor(m => m.Beneficiary.PersonName).SetCustomTitle("Adınız Soyadınız").SetLabelWidth(5).SetLayout(LayoutType.horizontal).SetParentCss("col-sm-12 ")
+                @Html.DomainFor().TextBoxFor(m => m.Beneficiary.PhoneNumber).SetMaskType(MaskType.Phone).SetLabelWidth(5).SetLayout(LayoutType.horizontal).SetCustomTitle("Size Ulaşabileceğimiz Telefon Numarası").SetParentCss("col-sm-12 ")
+                @Html.DomainFor().TextBoxFor(m => m.PatentApplicationDetail.Title).SetLabelWidth(5).SetLayout(LayoutType.horizontal).SetCustomTitle("Buluş Başlığı").SetParentCss("col-sm-12 ")
+                <div class="col-sm-12"></div>
+                @Html.DomainFor().TextAreaFor(m => m.PatentApplicationDetail.Summary).SetLabelWidth(5).SetLayout(LayoutType.horizontal).SetCustomTitle("Buluş Özeti").SetParentCss("col-sm-12 ")
+                @Html.DomainFor().TextAreaFor(m => m.PatentApplicationDetail.PresentFeatures).SetLabelWidth(5).SetLayout(LayoutType.horizontal).SetCustomTitle("Buluşu Zorunlu Kılan Sebepler").SetParentCss("col-sm-12")
+                @Html.DomainFor().TextAreaFor(m => m.PatentApplicationDetail.PlannedFeatures).SetLabelWidth(5).SetLayout(LayoutType.horizontal).SetCustomTitle("Buluşun Getirdiği Yenilikler").SetParentCss("col-sm-12")
+                <div class="col-sm-12"></div>
+                <div class="col-sm-12 text-right p-2 mt-3">
+                    <button id="btnApply" type="submit" class="btn btn-primary"> Başvuru Yap </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

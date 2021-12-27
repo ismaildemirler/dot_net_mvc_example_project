@@ -1,0 +1,40 @@
+﻿@using Domain.Web.Models.Blog
+@model BlogContentViewModel
+@{
+    ViewBag.Title = "Blog Yazı Düzenleme";
+}
+
+<style>
+    /*.cke_contents {
+        min-height: 400px;
+    }*/
+</style>
+
+@using (Html.BeginForm("Update", "Blog", FormMethod.Post, new { area = "Admin", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model=> model.BlogContentId)
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-8 col-lg-6">
+            <div class="row">
+
+                @Html.DomainFor().TextBoxFor(model => model.Title).SetParentCss("col-sm-12")
+                @Html.DomainFor().DropDownListFor(model => model.CategoryId).SetParentCss("col-sm-12 col-md-8 col-lg-6").SetSelectList(Model.BlogCategories).SetOptionLabel("Seçiniz")
+                @Html.DomainFor().BSBasicFileUploadFor(model => model.PostImage)
+                @Html.DomainFor().TextAreaFor(model => model.Contents).SetHtmlAttributes(new { @class = "ckeditor" }).SetParentCss("col-sm-12")
+                @Html.DomainFor().TextAreaFor(model => model.ShortContent).SetHtmlAttributes(new { @class = "ckeditor" }).SetParentCss("col-sm-12")
+
+                <div class="col-sm-12 text-right mt-2">
+                    <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section script {
+    <script src="~/App_Themes/assets/ckeditor/ckeditor.js"></script>
+}

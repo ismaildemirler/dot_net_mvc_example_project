@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Blog Listesi";
+    TempData["EditBlogContent"] = true;
+}
+
+<link href="~/App_Themes/assets/airhosting/css/blog.css" rel="stylesheet" />
+
+<div class="mb-1"> <a href="@Url.Action("Update")" class="btn btn-primary"> <i class="fa fa-plus"></i> Yeni Kayıt </a> </div>
+
+<div class="content_left" id="blogs">
+    <div class="row">
+        <div class="col-lg-12 col-xl-8">
+            <div class="clearfix divider_line3"></div>
+            @{ Html.RenderAction("_Blogs", "Common", new { area = "", pageIndex = ViewBag.PageIndex, categoryId = ViewBag.CategoryId }); }
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script>
+        $(function () {
+            $("body").on("click", ".page-link", function () {
+                var pageIndex = parseInt($(this).data("page")) + 1;
+                window.location.href = "@Url.Action("Index", "Blog", new { area="Admin" })" + "?pageIndex=" + pageIndex;
+            });
+        });
+    </script>
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.CommonApiContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Olipso.ExternalApi.Core.DataContracts.CommonApiContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" />
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Data" />
+  <xs:complexType name="GetCurrentBalanceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" base="q1:BaseMethodRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCurrentBalanceRequest" nillable="true" type="tns:GetCurrentBalanceRequest" />
+  <xs:complexType name="GetCurrentBalanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" base="q2:BaseMethodResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Data" minOccurs="0" name="CurrencyInfo" nillable="true" type="q3:CurrencyWithExchangeInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCurrentBalanceResponse" nillable="true" type="tns:GetCurrentBalanceResponse" />
+</xs:schema>

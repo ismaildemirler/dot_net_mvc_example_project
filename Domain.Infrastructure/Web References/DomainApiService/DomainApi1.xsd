@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" />
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" />
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" />
+  <xs:complexType name="ArrayOfDomainAvailabilityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DomainAvailabilityInfo" nillable="true" type="tns:DomainAvailabilityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDomainAvailabilityInfo" nillable="true" type="tns:ArrayOfDomainAvailabilityInfo" />
+  <xs:complexType name="DomainAvailabilityInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" base="q1:BaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClassKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Command" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DomainName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsFee" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Period" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tld" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DomainAvailabilityInfo" nillable="true" type="tns:DomainAvailabilityInfo" />
+  <xs:complexType name="DomainInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" base="q2:BaseData">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AdditionalAttributes" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
+          <xs:element minOccurs="0" name="AdministrativeContactId" type="xs:int" />
+          <xs:element minOccurs="0" name="Auth" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BillingContactId" type="xs:int" />
+          <xs:element minOccurs="0" name="ChildNameServerInfo" nillable="true" type="tns:ArrayOfChildNameServerInfo" />
+          <xs:element minOccurs="0" name="DomainName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IsChildNameServer" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LockStatus" type="xs:boolean" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NameServerList" nillable="true" type="q4:ArrayOfstring" />
+          <xs:element minOccurs="0" name="PrivacyProtectionStatus" type="xs:boolean" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" minOccurs="0" name="RGPStatues" nillable="true" type="q5:ArrayOfRGPStatus" />
+          <xs:element minOccurs="0" name="RegistrantContactId" type="xs:int" />
+          <xs:element minOccurs="0" name="RemainingDay" type="xs:int" />
+          <xs:element minOccurs="0" name="RenewalMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TechnicalContactId" type="xs:int" />
+          <xs:element minOccurs="0" name="TransferDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DomainInfo" nillable="true" type="tns:DomainInfo" />
+  <xs:complexType name="ArrayOfChildNameServerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChildNameServerInfo" nillable="true" type="tns:ChildNameServerInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChildNameServerInfo" nillable="true" type="tns:ArrayOfChildNameServerInfo" />
+  <xs:complexType name="ChildNameServerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChildNameServer" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IpAddress" nillable="true" type="q6:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChildNameServerInfo" nillable="true" type="tns:ChildNameServerInfo" />
+  <xs:complexType name="ContactInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" base="q7:BaseData">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AdditionalAttributes" nillable="true" type="q8:ArrayOfKeyValueOfstringstring" />
+          <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AddressLine3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Auth" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FaxCountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneCountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" minOccurs="0" name="Type" type="q9:ContactType" />
+          <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContactInfo" nillable="true" type="tns:ContactInfo" />
+  <xs:complexType name="ArrayOfDomainInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DomainInfo" nillable="true" type="tns:DomainInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDomainInfo" nillable="true" type="tns:ArrayOfDomainInfo" />
+  <xs:complexType name="ArrayOfTldInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TldInfo" nillable="true" type="tns:TldInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTldInfo" nillable="true" type="tns:ArrayOfTldInfo" />
+  <xs:complexType name="TldInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" base="q10:BaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsDocumentRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsTransferable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxCharacterCount" type="xs:int" />
+          <xs:element minOccurs="0" name="MaxRegistrationPeriod" type="xs:int" />
+          <xs:element minOccurs="0" name="MinCharacterCount" type="xs:int" />
+          <xs:element minOccurs="0" name="MinRegistrationPeriod" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PriceInfoList" nillable="true" type="tns:ArrayOfTldPriceInfo" />
+          <xs:element minOccurs="0" name="RequiredDocumentInfo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TldInfo" nillable="true" type="tns:TldInfo" />
+  <xs:complexType name="ArrayOfTldPriceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TldPriceInfo" nillable="true" type="tns:TldPriceInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTldPriceInfo" nillable="true" type="tns:ArrayOfTldPriceInfo" />
+  <xs:complexType name="TldPriceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrMore" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Period" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" minOccurs="0" name="TradeType" type="q11:TradeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TldPriceInfo" nillable="true" type="tns:TldPriceInfo" />
+  <xs:complexType name="CurrencyWithExchangeInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurrencyInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Exchange" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CurrencyWithExchangeInfo" nillable="true" type="tns:CurrencyWithExchangeInfo" />
+  <xs:complexType name="CurrencyInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts.Bases" base="q12:BaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CurrencyInfo" nillable="true" type="tns:CurrencyInfo" />
+</xs:schema>

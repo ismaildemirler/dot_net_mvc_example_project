@@ -1,0 +1,126 @@
+﻿@using Domain.Entity.Container.Response.Services
+@model ResponseService
+@{
+    ViewBag.Title = "Hizmet İçerik Düzenleme";
+}
+
+<style>
+    .portlet-title {
+        background-color: #525672;
+    }
+
+    .portlet.light > .portlet-title > .caption {
+        color: #fff;
+    }
+
+    .m-checkbox {
+        font-size: 1rem;
+    }
+    .divFile p {
+        font-weight: bold;
+        font-size: 0.9rem !important;
+    }
+</style>
+
+@using (Html.BeginForm("Update", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ServiceID)
+    @Html.HiddenFor(model => model.ImageDeleted)
+    @Html.HiddenFor(model => model.IconDeleted)
+    @Html.HiddenFor(model => model.Icon)
+    @Html.HiddenFor(model => model.ServiceImage)
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-8">
+            <div class="portlet light portlet-fit bordered m-2">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-directions font-green hide"></i>
+                        <span class="caption-subject bold font-dark uppercase "> Hizmet Bilgileri </span>
+                    </div>
+                </div>
+                <div class="portlet-body px-5">
+
+                    <div class="row">
+
+                        @Html.DomainFor().TextBoxFor(model => model.Header).SetParentCss("col-sm-12")
+                        @Html.DomainFor().TextAreaFor(model => model.DescriptionText).SetParentCss("col-sm-12")
+
+                        @if (Model.Icon != null)
+                        {
+                            string base64String = Convert.ToBase64String(Model.Icon);
+
+                            <div class="col col-sm-12 p-2 divFile">
+                                <p> İkon </p>
+                                <img id="imgIcon" src="@String.Format("data:image/png;base64,{0}", base64String)" style=" width: 180px; height: 40px;" />
+                                <a id="btnDeleteIconImage" class="btn btn-danger text-white img-delete"> İkon Sil </a>
+                                <input type="file" id="fileIcon" name="FileIcon" class="d-none" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col col-sm-12 p-2 divFile">
+                                <p> İkon </p>
+                                <input type="file" id="fileIcon" name="FileIcon" />
+                            </div>
+                        }
+
+                        @if (Model.ServiceImage != null)
+                        {
+                            string base64String = Convert.ToBase64String(Model.ServiceImage);
+
+                            <div class="col col-sm-12 p-2 divFile">
+                                <p> Hizmet Detay Resim </p>
+                                <img id="imgImage" src="@String.Format("data:image/png;base64,{0}", base64String)" style="width: 180px; height: 40px;" />
+                                <a id="btnDeleteImage" class="btn btn-danger text-white img-delete"> Resmi Sil </a>
+                                <input type="file" id="fileImage" name="FileImage" class="d-none" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col col-sm-12 p-2 divFile">
+                                <p> Hizmet Detay Resim </p>
+                                <input type="file" id="fileImage" name="FileImage" />
+                            </div>
+                        }
+
+
+                        @Html.DomainFor().TextAreaFor(model => model.ContentText).SetHtmlAttributes(new { @class = "ckeditor" }).SetParentCss("col-sm-12")
+
+                    </div>
+                </div>
+                <div class="text-center portlet-footer">
+                    <div class="col-sm-12 text-right mt-2">
+                        <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section script {
+    <script src="~/App_Themes/assets/ckeditor/ckeditor.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#btnDeleteImage").click(function () {
+                $("#imgImage").hide();
+                $("#btnDeleteImage").hide();
+                $("#fileImage").removeClass("d-none");
+                $("#ImageDeleted").val("true");
+            });
+
+            $("#btnDeleteIconImage").click(function () {
+                $("#imgIcon").hide();
+                $("#btnDeleteIconImage").hide();
+                $("#fileIcon").removeClass("d-none");
+                $("#IconDeleted").val("true");
+            });
+
+        });
+
+    </script>
+}

@@ -1,0 +1,145 @@
+﻿@using Domain.Web.Models.Slider
+@model SliderContentViewModel
+@{
+    ViewBag.Title = "Slider İçerik Düzenleme";
+}
+
+<style>
+    .portlet-title {
+        background-color: #525672;
+    }
+    .portlet.light > .portlet-title > .caption {
+        color: #fff;
+    }
+    .m-checkbox {
+        font-size: 1rem; 
+    }
+</style>
+
+@using (Html.BeginForm("Update", "Slider", FormMethod.Post, new { enctype = "multipart/form-data"  }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.SliderContentId)
+    @Html.HiddenFor(model => model.ImageDeleted)
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-6">
+            <div class="portlet light portlet-fit bordered m-2">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-directions font-green hide"></i>
+                        <span class="caption-subject bold font-dark uppercase "> Slider İçerik Bilgileri </span>
+                    </div>
+                </div>
+                <div class="portlet-body px-5">
+
+                    <div class="row">
+
+                        @Html.DomainFor().TextBoxFor(model => model.Header).SetParentCss("col-sm-12")
+                        @Html.DomainFor().TextBoxFor(model => model.Topic).SetParentCss("col-sm-12")
+
+                        @Html.DomainFor().CheckBoxFor(model => model.HasDetailLink).SetParentCss("col-sm-12 p-2")
+                        @Html.DomainFor().TextBoxFor(model => model.DetailUrl).SetParentCss("col-sm-12").SetDisplayExpression("HasDetailLink", "Source == true", true)
+
+                        @Html.DomainFor().CheckBoxFor(model => model.HasPriceSection).SetParentCss("col-sm-12 p-2")
+                        <div class="col-sm-12" data-display-expression="Source == true" data-display-source-exp="HasPriceSection">
+                            <div class="row">
+                                @Html.DomainFor().TextBoxFor(model => model.Price).SetParentCss("col-sm-12 col-lg-4").SetMaskType(MaskType.Decimal)
+                                @Html.DomainFor().TextBoxFor(model => model.PriceDescription).SetParentCss("col-sm-12 col-lg-8")
+                                @Html.DomainFor().EnumDropDownListFor(model => model.CurrencyTypeId).SetParentCss("col-sm-12 col-lg-6").SetOptionLabel("Seçiniz")
+                                @Html.DomainFor().EnumDropDownListFor(model => model.DurationTypeId).SetParentCss("col-sm-12 col-lg-6").SetOptionLabel("Seçiniz")
+                            </div>
+                        </div>
+
+                        @if (Model.SliderImage != null)
+                        {
+                            string base64String = Convert.ToBase64String(Model.SliderImage);
+
+                            <div class="col col-sm-12 p-2">
+                                <img id="imgSlider" src="@String.Format("data:image/png;base64,{0}", base64String)" style="width: 180px; height: 40px;" />
+                                <a id="btnDeleteImage" class="btn btn-danger text-white img-delete"> Resmi Sil </a>
+                                <input type="file" id="fileSlider" name="FileSlider" class="d-none" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col col-sm-12 p-2">
+                                <input type="file" id="fileSlider" name="FileSlider" />
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <div class="text-center portlet-footer">
+                    <div class="col-sm-12 text-right mt-2">
+                        <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            @if (!ViewBag.NewRecord)
+            {
+                <div class="portlet light portlet-fit bordered m-2">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Slider Detay Bilgileri </span>
+                        </div>
+                        <div class="actions">
+                            <div class="btn-group">
+                                <a data-action="@Url.Action("_UpdateSliderContentDetail", new { sliderContentId = Model.SliderContentId })" class="btn btn btn-default insert grid-btn-custom ml-2" length="0"><i class="fa fa fa-plus xs-rmargin"></i> Yeni Kayıt</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        @(Html.Domain()
+                         .Grid<SliderContentDetailViewModel>("tblList")
+                         .SetPaging(false)
+                         .SetHeaderVisible(false)
+                         .SetColumns(columns =>
+                         {
+                             columns.Add(c => c.Buttons).SetClassName("grdIslemler");
+                             columns.Add(c => c.ContentInfo);
+                             columns.Add(c => c.RankNumber);
+                         })
+                         .SetExportButtonShow(false)
+                         .SetAjaxUrl(Url.Action("GetSliderContentDetailList", new { sliderContentId = Model.SliderContentId })).SetDefaultOrder(2).SetFunctionName("GetDetailList"))
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@section script {
+    <script>
+
+    function RefreshGridAndClosePartial() {
+        GetDetailList();
+        HideModal();
+    }
+
+    $(function () {
+
+        $(".img-delete").click(function () {
+            $("#imgSlider").hide();
+            $("#btnDeleteImage").hide();
+            $("#fileSlider").removeClass("d-none");
+            $("#ImageDeleted").val("true");
+        });
+
+        $("body").on("click", ".insert", function () {
+            var url = $(this).data("action");
+            getPartialViewWithModal(url, null);
+        });
+
+        $("body").on("click", ".update", function () {
+            var url = $(this).data("url");
+            getPartialViewWithModal(url, null);
+        });
+
+    });
+
+    </script>
+}

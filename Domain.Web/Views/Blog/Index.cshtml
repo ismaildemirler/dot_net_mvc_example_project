@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+    string categoryName = "TÜM YAZILAR";
+    if (ViewBag.CategoryId != null)
+    {
+        var category = CacheManager.GetBlogCategories.Where(w => w.BlogCategoryId == ViewBag.CategoryId).FirstOrDefault();
+        if (category != null)
+        {
+            categoryName = category.Description;
+        }
+    }
+}
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+
+    <div class="container">
+        <div class="leaft_title"><h1> @categoryName </h1> </div>
+        <div class="reght_pagenation"><a href="@Url.Action("Index", "Home")">Ana Sayfa</a> <i>/</i> <a href="#">Blog</a> <i>/</i> Yazılar </div>
+    </div>
+
+</div>
+
+<div class="clearfix"></div>
+
+<div class="container" style="background-color: #fff;">
+
+    <div class="content_left" id="blogs">
+        @{ Html.RenderAction("_BLogs", "Common", new { pageIndex = ViewBag.PageIndex, categoryId = ViewBag.CategoryId }); }
+    </div>
+
+    <div class="right_sidebar">
+        @Html.Partial("_BlogCategories")
+        <div class="clearfix mar_top3"></div>
+        @Html.Partial("_RecentBlogsSideBar")
+    </div>
+
+</div>
+
+@section script {
+    <script>
+        $(function () {
+            $("body").on("click", ".page-link", function () {
+                var pageIndex = parseInt($(this).data("page")) + 1;
+                window.location.href = "@Url.Action("Index", "Blog", new { area="" })" + "?pageIndex=" + pageIndex;
+            });
+        });
+    </script>
+}

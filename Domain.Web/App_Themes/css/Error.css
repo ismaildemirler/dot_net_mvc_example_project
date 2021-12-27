@@ -1,0 +1,90 @@
+﻿/*Error Pages*/
+
+body {
+    background: #20232D;
+    color: #000;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 1.5em;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+}
+
+.left-part {
+    background: transparent;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    -moz-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    -ms-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    -o-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+}
+
+    .left-part .content {
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        padding: 0;
+        top: 50vh;
+        width: 100%;
+        padding: 0 10%;
+        -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+        -moz-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+        -ms-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+        -o-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+        transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        text-align: left;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        visibility: visible;
+    }
+
+.error-text {
+    color: #FF1D4D;
+}
+
+.light-btn {
+    background: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 0.7em 2em;
+    color: #2B2D35;
+    margin-right: 10px;
+    border: 2px solid #fff;
+}
+
+    .light-btn:hover {
+        background: transparent;
+        color: #fff;
+        border-color: #fff;
+    }
+
+a, a:hover {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+    line-height: 1.3em;
+    margin: 0px !important;
+}
+
+h2 {
+    font-size: 20px;
+}

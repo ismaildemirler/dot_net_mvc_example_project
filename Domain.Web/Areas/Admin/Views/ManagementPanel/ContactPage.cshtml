@@ -1,0 +1,29 @@
+﻿@using Domain.Web.Areas.Admin.Model.ManagementPanel
+@model ContactPageViewModel
+@{
+    ViewBag.Title = "Yönetim Paneli - İletişim Sayfası";
+}
+
+<div class="ajaxForm">
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+    
+        <div class="row px-5 pb-2">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="row">
+    
+                    @Html.DomainFor().TextBoxFor(model => model.FirmPhoneNumber).SetParentCss("col-sm-12").SetMaskType(MaskType.Phone)
+                    @Html.DomainFor().TextBoxFor(model => model.FirmEMail).SetParentCss("col-sm-12")
+                    @Html.DomainFor().TextAreaFor(model => model.FirmAddress).SetParentCss("col-sm-12")
+    
+                    <div class="col-sm-12 text-right mt-4">
+                        <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

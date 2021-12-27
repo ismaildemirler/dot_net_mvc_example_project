@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols LinesOfCode="8128" PostSharpLinesOfCode="0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect">
+    <Instance Declaration="#2=M:[Domain.Infrastructure]Domain.Infrastructure.DataAccess.EntityFramework.UnitOfWork.Repository{TEntity}::DeleteRange(System.Collections.Generic.IEnumerable{TEntity})" Id="eefd93e1f051a540">
+      <Target>
+        <JoinPoint Description="#3=Wrapped by advice(s) OnEntry, OnSuccess, OnException, OnExit" Ordinal="0" />
+      </Target>
+    </Instance>
+  </Class>
+  <Annotation Target="#4=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnEntry(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#5=2" Description="#6=PostSharp estimates that 2 line(s) of code are saved every time this advice is applied. Use the [LinesOfCodeAvoided] attribute on the aspect or specify the LinesOfCodeAvoided property on the advice attribute to override this value." />
+  <Annotation Target="#7=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnSuccess(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#5" Description="#6" />
+  <Annotation Target="#8=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnExit(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#5" Description="#6" />
+  <Annotation Target="#9=M:[Domain.Infrastructure]Domain.Infrastructure.Aspects.Postsharp.TransactionAspects.TransactionScopeAspect::OnException(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#5" Description="#6" />
+</Symbols>

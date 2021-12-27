@@ -1,0 +1,22 @@
+﻿@using Domain.Web.Models.Slider
+@model SliderContentDetailViewModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("_UpdateSliderContentDetail", "Slider", FormMethod.Post, new { @class = "ajaxForm", ajaxsuccesscallback = "RefreshGridAndClosePartial" }))
+{
+    @Html.HiddenFor(model => model.SliderContentDetailId)
+    @Html.HiddenFor(model => model.SliderContentId)
+
+    <div class="row px-5 pb-2">
+        @Html.DomainFor().TextBoxFor(model => model.ContentInfo).SetParentCss("col-sm-12")
+        @Html.DomainFor().NumericDropDownListFor(model => model.RankNumber).SetParentCss("col-sm-12").SetIncrementValue(1).SetMinValue(1).SetMaxValue(10)
+        <div class="col-sm-12 text-right mt-3">
+            <button type="submit" class="btn btn-success"><span class="fa fa-save"></span> Kaydet </button>
+        </div>
+    </div>
+}
+
+
+

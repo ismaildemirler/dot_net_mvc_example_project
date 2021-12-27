@@ -1,0 +1,69 @@
+﻿@using Domain.Web.Areas.User.Models.Brand
+@{
+    ViewBag.Title = "MARKA İZLEME BAŞVURUSU";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    ViewBag.IsViewUseDatatable = true;
+}
+@model BrandForWatchingApplicationInfoViewModel
+@section filter
+{
+    @using (Html.Domain().FilterContainer("filter"))
+    {
+        @Html.DomainFor().FilterInputFor(model => model.BrandName).SetInputType(FilterGroupType.Text).SetCustomID("b.BrandName")
+        @Html.DomainFor().FilterInputFor(model => model.RegistryNumber).SetInputType(FilterGroupType.Text).SetCustomID("b.RegistryNumber")
+    }
+}
+
+
+@(Html.Domain()
+    .Grid("tblNotCompletedBrandForWatching")
+    .SetColumns(columns =>
+    {
+        columns.Add("Buttons").SetTitle("İşlemler").SetClassName("grdIslemler");
+        columns.Add("ApplicationFirmName").SetTitle("Başvuru Yapan Firma").SetSortable(true);
+        columns.Add("IdentityNumber").SetTitle("T.C. Kimlik Numarası").SetSortable(true);
+        columns.Add("CityTown").SetTitle("İlçe/İl").SetSortable(true);
+        columns.Add("Phone").SetTitle("Telefon").SetSortable(true);
+        columns.Add("Address").SetTitle("Adres").SetSortable(true);
+    })
+    .SetDefaultOrder(0)
+    .SetAjaxUrl(Url.Action("GetNotCompletedBrandForWatchingApplicationPagedList", "Brand", new { area = "User" })) //, new { e_UserId = Model.UserId.Encrypt() }
+    .SetHeaderVisible(true).SetTitle("Yarım Kalan Marka İzleme Başvuruları"))
+
+
+@(Html.Domain()
+    .Grid("tblBrandForWatchingApplicationDetail")
+    .SetColumns(columns =>
+    {
+        columns.Add("Buttons").SetTitle("İşlemler").SetClassName("grdIslemler");
+        columns.Add("BrandName").SetTitle("Marka Adı").SetSortable(true);
+        columns.Add("BrandFirmName").SetTitle("Marka Sahibi Firma").SetSortable(true);
+        columns.Add("ClassesToWatch").SetTitle("Marka Sınıfları").SetSortable(true);
+        columns.Add("RegistryNumber").SetTitle("Tescil Numarası").SetSortable(true);
+        columns.Add("ApplicationFirmName").SetTitle("Başvuru Yapan Firma").SetSortable(true);
+        columns.Add("IdentityNumber").SetTitle("T.C. Kimlik Numarası").SetSortable(true);
+        columns.Add("CityTown").SetTitle("İlçe/İl").SetSortable(true);
+        columns.Add("Phone").SetTitle("Telefon").SetSortable(true);
+        columns.Add("Address").SetTitle("Adres").SetSortable(true);
+    })
+    .SetDefaultOrder(0)
+    .SetAjaxUrl(Url.Action("GetBrandForWatchingApplicationPagedList", "Brand", new { area = "User" })) //, new { e_UserId = Model.UserId.Encrypt() }
+    .SetHeaderVisible(true).SetTitle("Marka İzleme Başvuruları"))
+
+
+
+@section script
+{
+    <script type="text/javascript">
+        $(function () {
+            $("body").on("click", ".grid-btn-download", function (e) {
+                window.location = $(this).data("url");
+                var timeOut = 2000;
+                setTimeout(function () { $("#Yukleniyor").fadeOut("slow"); }, timeOut);
+            });
+        });
+    </script>
+}
+
+

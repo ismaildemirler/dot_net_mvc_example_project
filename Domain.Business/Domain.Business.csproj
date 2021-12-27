@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A42260A-F532-4156-9690-17BA93D7C591}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.Business</RootNamespace>
+    <AssemblyName>Domain.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <DontImportPostSharp>True</DontImportPostSharp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Elasticsearch.Net, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.7.5.0\lib\net461\Elasticsearch.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Nest, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NEST.7.5.0\lib\net461\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.3.0\lib\net45\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Factory.3.3.2\lib\net45\Ninject.Extensions.Factory.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.3.5.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.3.5\lib\net45\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.2\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=4.2.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.4.2.17\lib\net35-client\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\Basket\IBasketService.cs" />
+    <Compile Include="Abstract\Beneficiary\IBeneficiaryService.cs" />
+    <Compile Include="Abstract\Attachment\IAttachmentService.cs" />
+    <Compile Include="Abstract\Contact\IContactService.cs" />
+    <Compile Include="Abstract\Brand\IBrandService.cs" />
+    <Compile Include="Abstract\Common\ISystemUserService.cs" />
+    <Compile Include="Abstract\Customer\ICustomerService.cs" />
+    <Compile Include="Abstract\Domain\IDomainService.cs" />
+    <Compile Include="Abstract\Log\ILogService.cs" />
+    <Compile Include="Abstract\Blog\IBlogService.cs" />
+    <Compile Include="Abstract\Management\IManagementService.cs" />
+    <Compile Include="Abstract\Menus\IMenuService.cs" />
+    <Compile Include="Abstract\Parameter\IParameterService.cs" />
+    <Compile Include="Abstract\IndustrialDesign\IIndustrialDesignService.cs" />
+    <Compile Include="Abstract\Patent\IPatentService.cs" />
+    <Compile Include="Abstract\ReferenceFirm\IReferenceFirmService.cs" />
+    <Compile Include="Abstract\Services\IServicesService.cs" />
+    <Compile Include="Abstract\Slider\ISliderService.cs" />
+    <Compile Include="Concrete\Basket\BasketService.cs" />
+    <Compile Include="Concrete\Beneficiary\BeneficiaryService.cs" />
+    <Compile Include="Concrete\Attachment\AttachmentService.cs" />
+    <Compile Include="Concrete\Contact\ContactService.cs" />
+    <Compile Include="Concrete\Brand\BrandService.cs" />
+    <Compile Include="Concrete\Common\SystemUserService.cs" />
+    <Compile Include="Concrete\Customer\CustomerService.cs" />
+    <Compile Include="Concrete\Domain\DomainService.cs" />
+    <Compile Include="Concrete\IndustrialDesign\IndustrialDesignService.cs" />
+    <Compile Include="Concrete\Log\LogService.cs" />
+    <Compile Include="Concrete\Blog\BlogService.cs" />
+    <Compile Include="Concrete\Management\ManagementService.cs" />
+    <Compile Include="Concrete\Menus\MenuService.cs" />
+    <Compile Include="Concrete\Parameter\ParameterService.cs" />
+    <Compile Include="Concrete\Patent\PatentService.cs" />
+    <Compile Include="Concrete\ReferenceFirm\ReferenceFirmService.cs" />
+    <Compile Include="Concrete\Service\ServicesService.cs" />
+    <Compile Include="Concrete\Slider\SliderService.cs" />
+    <Compile Include="DependencyResolver\Ninject\AutoMapperModule.cs" />
+    <Compile Include="DependencyResolver\Ninject\BusinessModule.cs" />
+    <Compile Include="DependencyResolver\Ninject\DependencyResolver.cs" />
+    <Compile Include="DependencyResolver\Ninject\InstanceFactory.cs" />
+    <Compile Include="DependencyResolver\Ninject\ResolveModule.cs" />
+    <Compile Include="Mapping\AutoMapper\Profiles\AutoMapperProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.DataAccess\Domain.DataAccess.csproj">
+      <Project>{9f775a13-ef38-4400-8c32-a061e3399975}</Project>
+      <Name>Domain.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entity\Domain.Entity.csproj">
+      <Project>{95ea3cb7-a0bb-44e3-bed2-2cbc812590a4}</Project>
+      <Name>Domain.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Infrastructure\Domain.Infrastructure.csproj">
+      <Project>{b9c87fbf-d88b-4303-bd30-1dc8171f41ce}</Project>
+      <Name>Domain.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\PostSharp.4.2.17\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
+</Project>

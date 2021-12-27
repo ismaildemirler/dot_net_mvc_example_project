@@ -1,0 +1,186 @@
+a:hover, a:focus {
+	color: #ff0000;
+}
+
+.site_logo h1 {
+	color: #ff0000;
+}
+
+h4 i {
+	color: #ff0000;
+}
+
+#access .menu ul li a:hover {
+	color: #ff0000;
+} 
+#access .menu ul li a.active {
+	color: #ff0000;
+}
+#access .menu ul li ul li a {
+	background: #454545 url(../../images/spacer.gif) no-repeat center bottom;
+	border-bottom: 1px solid #666;
+}
+	#access .menu ul li ul li a:hover,
+	#access .menu ul li ul li.active a,
+	#access .menu ul li ul li a.selected {
+		background: #666 url(../../images/spacer.gif) no-repeat center bottom;
+		border-bottom: 1px solid #666;
+	}
+#access .menu ul li ul li a.arrow {
+	background: url(../../images/colors/red/menu-drop-arrow.png) no-repeat left top;
+}
+
+.slider_static {
+	background: #ff0000 url(../../images/colors/red/slider-bg.jpg) no-repeat center top;
+}
+
+.gray_bg_but:hover {
+	color: #ff0000;
+}
+.slider_static .right .offer_box .save_big i {
+	color: #ff0000;
+}
+.slider_static .right .offer_box .small_text_two {
+	color: #ff0000;
+}
+
+.whats_included_list li img {
+	background-color: #ff0000;
+}
+
+.what_people_says .jcarousel-skin-tango-two .jcarousel-item {
+	background: url(../../images/colors/red/testi-bg.png) no-repeat left top;
+}
+
+.big_text1 {
+	color: #ff0000;
+}
+.big_text2 i {
+	color: #ff0000;
+}
+
+.our_products li h5 {
+	color: #ff0000;
+}
+
+.our_products li h3 {
+	color: #ff0000;
+}
+
+.punchline_text_box {
+	border-left: 5px solid #ff0000;
+}
+
+.sidebar_widget h3 {
+	background: url(../../images/colors/red/sidebar-title-bg.png) no-repeat left bottom;
+}
+
+.sidebar_widget ul.arrows_list1 li a:hover {
+	color: #ff0000;
+}
+.recent_posts_list li a:hover {
+	color: #ff0000;
+}
+
+a.but_hand_right {
+	background: #ff0000 url(../../images/elements/hand_right.png) no-repeat 16px 12px;
+}
+a.but_hand_right:hover {
+	background-color: #ff5500;
+	color: #fff;
+}
+
+a.knowmore_but {
+	background-color: #ff0000;
+}
+a.knowmore_but:hover {
+	color: #fff;
+	background-color: #ff5500;
+}
+
+a.but_goback {
+	background: #ff0000 url(../../images/arrow_left.png) no-repeat 18px 13px;
+}
+a.but_goback:hover {
+	color: #fff;
+	background-color: #ff5500;
+}
+
+.punchline_text_box2 {
+	border-left: 5px solid #ff0000;
+}
+
+.sideimg_list li a {
+	color: #ff0000;
+}
+
+
+.fullwidthbanner-container .fullwidthbanner {
+	background: url(../../images/colors/red/slider-bg.jpg) no-repeat center top;
+}
+
+.fluidHeight .iosSlider {
+	background: url(../../images/colors/red/slider-bg.jpg) no-repeat center top;
+}
+
+blockquote {
+	border-left: 5px solid #ff0000;
+}
+.accrodation .acc-trigger a { background: url(../../images/colors/red/accordion-ico.png) no-repeat 20px 13px;}
+.accrodation .acc-trigger a:hover { color: #ff0000; border-bottom: 1px solid #fff;  }
+.accrodation .acc-trigger.active a { color: #ff0000; background-position: 20px -58px; cursor: default;	}
+.accrodation_full .acc-trigger a { background: url(../../images/colors/red/accordion-ico.png) no-repeat 20px 13px;}
+.accrodation_full .acc-trigger a:hover { color: #ff0000; border-bottom: 1px solid #fff;  }
+.accrodation_full .acc-trigger.active a { color: #ff0000; background-position: 20px -58px; cursor: default;	}
+html #tabs ul.tabs li.active, html #tabs ul.tabs li.active a,  html #tabs ul.tabs li.active a:hover  { 
+	border-top: 2px solid #ff0000;
+}
+html #tabs-two ul.tabs-two li.active, html #tabs-two ul.tabs-two li.active a,  html #tabs-two ul.tabs-two li.active a:hover  { 
+	color:#ff0000;
+}
+#site-searchform #searchsubmit{
+	background: #ff0000 url(../../images/site-search-icon.png) no-repeat center 9px;
+}
+
+.blog_post h3 a:hover {
+	color: #ff0000;
+}
+.blog_post a.date strong {
+	color: #ff0000;
+}
+.blog_post a.date i {
+	background-color: #ff0000;
+}
+
+.about_author a {
+	color: #ff0000;
+}
+
+.address-info a {
+	color: #ff0000;
+}
+
+.our_support h5 {
+	color: #ff0000;
+}
+
+.pricing-tables-helight .title {
+	background-color: #f30000;
+	border-top: 3px solid #e10000;
+	border-bottom: 1px solid #ff5454;
+}
+.pricing-tables-helight .price {
+	background-color: #ff0000;
+}
+.pricing-tables-helight-two .title {
+	background-color: #f30000;
+	border-top: 3px solid #e10000;
+	border-bottom: 1px solid #ff5454;
+}
+.pricing-tables-helight-two .price {
+	background-color: #ff0000;
+}
+.button.small.colorchan{
+	color: #fff;
+	background-color: #ff0000;
+}

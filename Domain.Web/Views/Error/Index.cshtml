@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Hata";
+    Layout = "~/Views/Shared/_LayoutError.cshtml";
+}
+
+<div class="global-overlay"><div class="overlay skew-part"></div></div>
+<div class="left-part">
+
+    <div class="content">
+        <img src="~/Content/images/logo.png" alt="" class="brand-logo">
+        <h1>Hata! <span class="error-text"></span></h1>
+        <h2>Alınan hata sistem yöneticisine bildirilmek üzere kaydedildi.</h2>
+        <br /><br />
+        <a href="@Url.Action("Index", "Home", new { area = "" })" data-target="right-side" class="action-btn">Ana Sayfaya Dön</a>
+    </div>
+</div>
+

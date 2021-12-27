@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  domain.web:
+    image: domainweb:dev
+    container_name: Domain.Web
+    build:
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Domain.Web"
+    volumes:
+      - C:\PROJECTS\Domain\Domain\Domain.Web:C:\inetpub\wwwroot
+      - :C:\remote_debugger:ro
+    entrypoint: cmd /c "start /B C:\\ServiceMonitor.exe w3svc & C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646"
+

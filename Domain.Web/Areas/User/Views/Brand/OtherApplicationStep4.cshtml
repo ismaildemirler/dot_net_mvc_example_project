@@ -1,0 +1,271 @@
+﻿@using Domain.Web.Areas.User.Models.Brand
+@model OtherBrandApplicationViewModel
+@{
+    ViewBag.Title = CacheManager.GetAllApplicationTypes.FirstOrDefault(f => f.ApplicationTypeId == Model.CustomerApplication.ApplicationTypeId)?.Description.ToUpper();
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    var cities = CacheManager.GetAllCities.Select(p => new SelectListItem
+    {
+        Value = p.CityId.ToString(),
+        Text = p.CityName
+    });
+
+    IEnumerable<SelectListItem> towns = null;
+    if (Model.Contact.CityId > 0)
+    {
+        towns = CacheManager.GetAllTowns.Where(f => f.CityId == Model.Contact.CityId).Select(p => new SelectListItem
+        {
+            Value = p.TownId.ToString(),
+            Text = p.TownName
+        });
+    }
+}
+<style>
+    .m-checkbox > span:after {
+        top: 50%;
+        left: 50%;
+        margin-left: -2px;
+        margin-top: -6px;
+        width: 5px;
+        height: 10px;
+        border-width: 0 2px 2px 0 !important;
+        transform: rotate(45deg);
+    }
+
+    .m-checkbox > span:after {
+        border: solid #4d516d;
+    }
+</style>
+<div class="m-content" style="padding:0">
+    <!--Begin::Main Portlet-->
+    <div class="m-portlet">
+        <!--end: Portlet Head-->
+        <!--begin: Portlet Body-->
+        <div class="m-portlet__body m-portlet__body--no-padding">
+            <!--begin: Form Wizard-->
+            <div class="m-wizard m-wizard--4 m-wizard--brand m-wizard--step-between" id="m_wizard">
+                <div class="row m-row--no-padding">
+                    <div class="col-xl-12 col-lg-12" style="background-color: #4d516d;">
+                        <!--begin: Form Wizard Head -->
+                        <div class="m-wizard__head">
+                            <!--begin: Form Wizard Nav -->
+                            <div class="m-wizard__nav">
+                                <div class="m-wizard__steps">
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--done" style="float:left;" m-wizard-target="m_wizard_form_step_1">
+                                        <div class="m-wizard__step-info">
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                            <a href="@Url.Action("ApplicationStep1")" class="m-wizard__step-number">
+                                                <span><span>1</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                İşlem Bilgileri
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--done" style="float:left;" m-wizard-target="m_wizard_form_step_2">
+                                        <div class="m-wizard__step-info">
+                                            <a href="@Url.Action("OtherApplicationStep2")" class="m-wizard__step-number">
+                                                <span><span>2</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Marka Bilgileri
+                                            </div>
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--done" style="float:left;" m-wizard-target="m_wizard_form_step_3">
+                                        <div class="m-wizard__step-info">
+                                            <a href="@Url.Action("OtherApplicationStep3")" class="m-wizard__step-number">
+                                                <span><span>3</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Marka Sahibine İlişkin Bilgiler
+                                            </div>
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--current" style="float:left;" m-wizard-target="m_wizard_form_step_3">
+                                        <div class="m-wizard__step-info">
+                                            <a href="@Url.Action("OtherApplicationStep3")" class="m-wizard__step-number">
+                                                <span style="background-color: #e7e9f7;"><span>4</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                İletişim
+                                            </div>
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end: Form Wizard Nav -->
+                        </div>
+                        <!--end: Form Wizard Head -->
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12">
+                        @using (Html.BeginForm("OtherApplicationStep4", "Brand", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="m-portlet">
+                                <div class="m-portlet__body">
+                                    <div class="row px-4">
+                                        <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-info w-100" role="alert">
+                                            <div class="m-alert__icon">
+                                                <i class="flaticon-exclamation-1"></i>
+                                                <span></span>
+                                            </div>
+                                            <div class="m-alert__text">
+                                                <strong>Dikkat!</strong><br />
+                                                Bu kayıtta kullanmak istediğiniz iletişimi seçiniz veya yeni iletişim bilgisi ekleyiniz.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row px-4">
+                                        <div id="local_data" class="col-sm-12 m-form p-2 mt-3">
+                                            <table class="table table-striped table-bordered w-100 table-hover">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>
+                                                            <span></span>
+                                                        </th>
+                                                        <th>
+                                                            <span>İletişim Adı</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Adres</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Telefon</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>İlçe/İl</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Kayıt tarihi</span>
+                                                        </th>
+                                                        <th data-field="Edit">
+                                                            <span></span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var contact in Model.Contacts)
+                                                    {
+                                                        <tr data-row="0">
+                                                            <td>
+                                                                @Html.Domain().CheckBox("contactitem").SetHtmlAttributes(new { id = contact.ContactId.ToString() })
+                                                            </td>
+                                                            <td>
+                                                                <span>@contact.NameSurname</span>
+                                                            </td>
+                                                            <td>
+                                                                <span>@contact.Address</span>
+                                                            </td>
+                                                            <td>
+                                                                <span>@contact.PhoneNumber</span>
+                                                            </td>
+                                                            <td>
+                                                                <span>
+                                                                    @CacheManager.GetAllTowns.FirstOrDefault(f => f.TownId == contact.TownId).TownName / @CacheManager.GetAllCities.FirstOrDefault(f => f.CityId == contact.CityId).CityName
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span>@contact.CreationDate.ToShortDateString()</span>
+                                                            </td>
+                                                            <td data-field="Edit">
+                                                                <span style="overflow: visible; position: relative;">
+                                                                    @Html.Domain().Button("btnDelete").SetType(ButtonType.button).SetActionUrl(Url.Action("DeleteContact", "Brand", new { area = "User", contactId = contact.ContactId })).SetStyle(ButtonStyle.danger).SetTitle("Sil").SetCustomClasses("tbl-btn-delete").SetIcon("la la-trash")
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        @Html.HiddenFor(m => m.BrandApplicationDetail.BrandApplicationDetailId)
+                                        @Html.HiddenFor(m => m.Contact.ContactId)
+                                        @Html.DomainFor().TextBoxFor(m => m.Contact.NameSurname).SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        <div class="col-12"></div>
+                                        @Html.DomainFor().TextAreaFor(m => m.Contact.Address).SetParentCss("col-sm-12 col-md-6 col-lg-12")
+                                        <div class="col-12 mt-2"></div>
+                                        @Html.DomainFor().DropDownListFor(m => m.Contact.CityId).SetSelectList(cities).SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        @Html.DomainFor().DropDownListFor(m => m.Contact.TownId).SetSelectList(towns).SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        <div class="col-12 mt-2"></div>
+                                        @Html.DomainFor().TextBoxFor(m => m.Contact.District).SetParentCss("col-12").SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        @Html.DomainFor().TextBoxFor(m => m.Contact.FaxNumber).SetParentCss("col-12").SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        <div class="col-12 mt-2"></div>
+                                        @Html.DomainFor().TextBoxFor(m => m.Contact.PhoneNumber).SetParentCss("col-12").SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        @Html.DomainFor().TextBoxFor(m => m.Contact.PostalCode).SetParentCss("col-12").SetParentCss("col-sm-12 col-md-6 col-lg-6")
+                                        <div class="col-12 mb-4"></div>
+
+                                    </div>
+                                </div>
+                                <div class="m-portlet__foot">
+                                    <div class="text-right">
+                                        @Html.Domain().Button("btnPrevious").SetType(ButtonType.link).SetIcon("fa fa-arrow-circle-left").SetIconAlignment(ButtonIconAlignment.left).SetStyle(ButtonStyle.go_back).SetTitle("Geri").SetActionUrl("/User/Brand/OtherApplicationStep3")
+                                        @Html.Domain().Button("btnSave").SetType(ButtonType.submit).SetIcon("fa fa-save").SetIconAlignment(ButtonIconAlignment.left).SetStyle(ButtonStyle.success).SetTitle("Kaydet")
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!--end: Form Wizard-->
+        </div>
+        <!--end: Portlet Body-->
+    </div>
+    <!--End::Main Portlet-->
+</div>
+<script>
+    $(document).ready(function () {
+        $('#Contact_CityId').change(function () {
+            var selectedCityId = $('#Contact_CityId :selected').val();
+            $('#Contact_TownId').html("")
+            $('#Contact_TownId').append(
+                $('<option></option>').val("-1").html("Seçiniz...")
+            );
+            $.post("/Common/GetTownByCityId", { cityId: selectedCityId }, function (data) {
+                $.each(data.towns, function (index, item) {
+                    $('#Contact_TownId').append(
+                        $('<option></option>').val(JSON.stringify(item.TownId)).html(JSON.parse(JSON.stringify(item.TownName)))
+                    );
+                });
+            });
+        })
+    });
+
+    $('input[name="contactitem"]').change(function () {
+        if (this.checked) {
+            $('input[name="contactitem"]').not(this).each(function () {
+                this.checked = false;
+            });
+
+            $.post("/User/Brand/GetContactInfos", { contactIdString: $(this).attr('id') }, function (data) {
+                $('#Contact_NameSurname').val(JSON.parse(JSON.stringify(data.contact.NameSurname)));
+                $('#Contact_Address').val(JSON.parse(JSON.stringify(data.contact.Address)));
+                $('#Contact_PhoneNumber').val(JSON.parse(JSON.stringify(data.contact.PhoneNumber)));
+                $('#Contact_FaxNumber').val(JSON.parse(JSON.stringify(data.contact.FaxNumber)));
+                $('#Contact_CityId').val(JSON.parse(JSON.stringify(data.contact.CityId))).change();
+                $('#Contact_ContactId').val(JSON.parse(JSON.stringify(data.contact.ContactId)));
+                $('#Contact_District').val(JSON.parse(JSON.stringify(data.contact.District)));
+                $('#Contact_PostalCode').val(JSON.parse(JSON.stringify(data.contact.PostalCode)));
+                $.each(data.towns, function (index, item) {
+                    if (JSON.stringify(item.TownId) == JSON.stringify(data.contact.TownId)) {
+                        $('#Contact_TownId').append(
+                            $('<option></option>').val(JSON.stringify(item.TownId)).html(JSON.parse(JSON.stringify(item.TownName))).prop('selected', JSON.parse(JSON.stringify(data.contact.TownId)))
+                        );
+                    }
+                    else {
+                        $('#Contact_TownId').append(
+                            $('<option></option>').val(JSON.stringify(item.TownId)).html(JSON.parse(JSON.stringify(item.TownName)))
+                        );
+                    }
+                });
+            });
+        }
+    });
+</script>
+

@@ -1,0 +1,97 @@
+﻿@using Domain.Web.Models.Account
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>ÜYE GİRİŞİ</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Home")">
+                Ana Sayfa
+            </a> <i>/</i> <a href="#">Üye Girişi</a> <i>/</i> Giriş
+        </div>
+    </div>
+</div>
+
+<section class="">
+    <div class="container content" style="background-color: #fff;">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-xs-12">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-12 p-2">
+                            <p class="lead">Lütfen kullanıcı adı ve şifrenizi eksiksiz doldurunuz</p>
+                        </div>
+                        @Html.DomainFor().TextBoxFor(model => model.EMail).SetParentCss("col-xs-12").SetPlaceholder("E-Posta").SetTitleHidden(true)
+                        @Html.DomainFor().TextBoxFor(model => model.Password).SetTitleHidden(true).SetPlaceholder("Şifre").SetParentCss("col-xs-12 m-login__form-input--last").SetHtmlAttributes(new { type = "password", autocomplete = "off" })
+
+                        <div class="col-xs-12 m-form p-2 mt-2">
+                            <a style="text-decoration:underline" href="@Url.Action("ForgotPassword","Account")"> Şifremi Unuttum </a>
+                            <br /><br />
+                        </div>
+                        <div class="col-xs-12 col-md-4 m-form p-2">
+                            @Html.Domain().Button("btnLogin").SetType(ButtonType.submit).SetCustomClasses("btn-xl w-100").SetTitle("Giriş Yap").SetStyle(ButtonStyle.success).SetIcon("fa fa-sign-in")
+                        </div>
+                        <div class="col-xs-12 col-md-8 m-form p-2">
+                            @Html.Domain().Button("btnRegister").SetType(ButtonType.link).SetCustomClasses("btn-xl w-100 pull-right").SetTitle("Kayıt Ol (Kullanıcı Kaydım Yok)").SetActionUrl(Url.Action("Register", "Account")).SetStyle(ButtonStyle.@default).SetIcon("fa fa-pencil")
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <div class="col-md-1"></div>
+            @*<div class="col-md-6">
+                    <div class="row">
+                        <h3 class="line-bottom mt-0 ml-15">Giriş Yaparak</h3>
+
+                        <div class="col-xs-12 mt-3">
+                            <div class="icon-box media bg-deep p-30 mb-20">
+                                <a class="media-left pull-left flip" href="#">
+                                    <i class="pe-7s-map-2 text-theme-colored"></i>
+                                </a>
+                                <div class="media-body">
+                                    <h5 class="mt-0">Bizimle</h5>
+                                    <p>iletişime geçebilirsiniz</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div class="icon-box media bg-deep p-30 mb-20">
+                                <a class="media-left pull-left flip" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
+                                <div class="media-body">
+                                    <h5 class="mt-0">Avantajlı Fırsatlardan</h5>
+                                    <p>anında faydalanabilirsiniz</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="icon-box media bg-deep p-30 mb-20">
+                                <a class="media-left pull-left flip" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
+                                <div class="media-body">
+                                    <h5 class="mt-0">Sipariş Verip</h5>
+                                    <p>alışveriş yapabilirsiniz</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="icon-box media bg-deep p-30 mb-20">
+                                <a class="media-left pull-left flip" href="#"> <i class="fa fa-skype text-theme-colored"></i></a>
+                                <div class="media-body">
+                                    <h5 class="mt-0">Marka & Patent</h5>
+                                    <p>başvuruları yapabilirsiniz</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</section>

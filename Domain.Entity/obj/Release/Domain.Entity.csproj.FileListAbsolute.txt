@@ -1,0 +1,2 @@
+C:\PROJECTS\Domain\Domain\Domain.Entity\obj\Release\Domain.Entity.csprojAssemblyReference.cache
+C:\PROJECTS\Domain\Domain\Domain.Entity\obj\Release\Domain.Entity.csproj.CoreCompileInputs.cache

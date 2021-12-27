@@ -1,0 +1,616 @@
+.fluidHeight {
+	width: 100%;
+	height: 500px;
+	padding: 0;
+	margin: 0px 0 0px 0;
+	position: relative;
+	font-family: 'Oswald', sans-serif;
+}
+
+.sliderContainer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+
+.iosSlider {
+	position: relative;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 500px;
+	background: url(../../images/sliders/iosslider/slider-bg.jpg) no-repeat center top;
+}
+
+.iosSlider .slider {
+	width: 100%;
+	height: 100%;
+}
+
+.iosSlider .slider .item {
+	width: 100%;
+	height: 100%;
+	padding: 0px 0 0px 0;
+}
+
+.iosSlider .slider .item .inner {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 1000px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.iosSlider .slider .item .inner .text1 {
+    position: absolute;
+    top: 65px;
+    padding: 0;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.iosSlider .slider .item .inner .text1 span {
+	color: #fff;
+	font-weight: normal;
+	font-size: 45px;
+	line-height: 45px;
+    padding: 0;
+	margin: 0px;
+	text-transform: uppercase;
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.iosSlider .slider .item .inner .text2 {
+    position: absolute;
+    top: 125px;
+    padding: 0;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.iosSlider .slider .item .inner .text2 span {
+	color: #fff;
+	font-weight: normal;
+	font-size: 22px;
+	line-height: 22px;
+    padding: 0;
+	margin: 0px;
+	text-transform: uppercase;
+	text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.iosSlider .slider .item .inner .text3 {
+    position: absolute;
+    top: 125px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+	width: 40%;
+}
+
+.iosSlider .slider .item .inner .text4 {
+    position: absolute;
+    top: 230px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+.iosSlider .slider .item .inner .text4 a {
+	margin-right: 13px;
+}
+
+.iosSlider .slider .item .inner .text5 {
+    position: absolute;
+    top: 50px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.iosSlider .slider .item .inner .text5 div {
+	color: #fff;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.iosSlider .slider .item .inner .text6 {
+    position: absolute;
+    top: 90px;
+	left: 340px;
+    padding: 0;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+.iosSlider .slider .item .inner .text6 span {
+	color: #fff;
+	text-shadow: none;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 18px;
+	font-family: 'Oswald', sans-serif;
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	width: 160px;
+	height: 116px;
+	display: block;
+	text-align: center;
+}
+.iosSlider .slider .item .inner .text6 span i{
+	color: #a3e74d;
+	font-style: normal;
+}
+
+.iosSlider .slider .item .inner .text7 {
+    position: absolute;
+    top: 157px;
+	left: 368px;
+    padding: 0;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+.iosSlider .slider .item .inner .text7 span {
+	color: #666;
+	text-shadow: none;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 27px;
+	font-family: 'Oswald', sans-serif;
+	margin: 0px;
+	padding: 16px 0px 0px 0px;
+	width: 106px;
+	height: 90px;
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	background: url(../../images/sliders/revolution/round-2.png) no-repeat center top;
+}
+.iosSlider .slider .item .inner .text7 span i{
+	font-size: 30px;
+	color: #33c92b;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px 0px 0px 0px;
+	display: block;
+}
+
+
+ul.iosslider_lists {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+.iosslider_lists li {
+	float: left;
+	padding: 0px 0px 0px 25px;
+	margin: 0px;
+	line-height: 30px;
+	background: url(../../images/sliders/iosslider/check.png) no-repeat left 7px;
+}
+
+
+.iosSlider .slider .item1 .inner {
+	background-image: url(../../images/sliders/iosslider/1.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.iosSlider .slider .item2 .inner {
+	background-image: url(../../images/sliders/iosslider/2.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.iosSlider .slider .item3 .inner {
+	background-image: url(../../images/sliders/iosslider/3.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.iosSlider .slider .item4 .inner {
+	background-image: url(../../images/sliders/iosslider/4.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+.sliderContainer .slideSelectors {
+	position: relative;
+	bottom: 35px;
+	left: 0;
+	width: 84px;
+	padding: 7px 7px;
+	margin: 0px 0px 0px 45%;
+	z-index: 1;
+	height: 10px;
+}
+.sliderContainer .slideSelectors .item {
+	float: left;
+	width: 11px;
+	height: 11px;
+	background: #fff;
+	margin: 0 0 0 5px;
+	border-radius: 10px
+}
+
+.sliderContainer .slideSelectors .selected {
+	background: #333;
+	color: #fff;
+}
+
+
+
+
+
+@media only screen and (min-width: 1000px){}
+@media only screen and (min-width: 768px) and (max-width: 999px){
+
+.fluidHeight {
+	height: 400px;
+}
+
+.iosSlider {
+	height: 400px;
+}
+
+.iosSlider .slider .item .inner {
+	width: 767px;
+}
+
+.iosSlider .slider .item .inner .text1 {
+    top: 50px;
+}
+
+.iosSlider .slider .item .inner .text1 span {
+	font-size: 25px;
+	line-height: 25px;
+}
+
+.iosSlider .slider .item .inner .text2 {
+    top: 80px;
+}
+
+.iosSlider .slider .item .inner .text2 span {
+	font-size: 16px;
+}
+
+.iosSlider .slider .item .inner .text3 {
+    position: absolute;
+    top: 90px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+	width: 40%;
+}
+
+.iosSlider .slider .item .inner .text4 {
+    position: absolute;
+    top: 180px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+.iosSlider .slider .item .inner .text4 a {
+	margin-right: 13px;
+}
+
+.iosSlider .slider .item .inner .text5 {
+    position: absolute;
+    top: 35px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.iosSlider .slider .item .inner .text5 div {
+	color: #fff;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.iosSlider .slider .item .inner .text6 {
+    position: absolute;
+    top: 70px;
+	left: 340px;
+    padding: 0;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+.iosSlider .slider .item .inner .text6 span {
+	color: #fff;
+	text-shadow: none;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 18px;
+	font-family: 'Oswald', sans-serif;
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	width: 160px;
+	height: 116px;
+	display: block;
+	text-align: center;
+}
+.iosSlider .slider .item .inner .text6 span i{
+	color: #a3e74d;
+	font-style: normal;
+}
+
+.iosSlider .slider .item .inner .text7 {
+    position: absolute;
+    top: 135px;
+	left: 368px;
+    padding: 0;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+.iosSlider .slider .item .inner .text7 span {
+	color: #666;
+	text-shadow: none;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 27px;
+	font-family: 'Oswald', sans-serif;
+	margin: 0px;
+	padding: 16px 0px 0px 0px;
+	width: 106px;
+	height: 90px;
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	background: url(../../images/sliders/revolution/round-2.png) no-repeat center top;
+}
+.iosSlider .slider .item .inner .text7 span i{
+	font-size: 30px;
+	color: #33c92b;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px 0px 0px 0px;
+	display: block;
+}
+
+.iosslider_lists li {
+	line-height: 23px;
+	background: url(../../images/sliders/iosslider/check.png) no-repeat left 5px;
+}
+
+
+.iosSlider .slider .item1 .inner {
+	background-image: url(../../images/sliders/iosslider/1.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 53%;
+}
+
+.iosSlider .slider .item2 .inner {
+	background-image: url(../../images/sliders/iosslider/2.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 53%;
+}
+
+.iosSlider .slider .item3 .inner {
+	background-image: url(../../images/sliders/iosslider/3.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 53%;
+}
+
+.iosSlider .slider .item4 .inner {
+	background-image: url(../../images/sliders/iosslider/4.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 53%;
+}
+
+.sliderContainer .slideSelectors {
+	margin: 0px 0px 0px 43%;
+}
+
+
+
+	
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+	
+.fluidHeight {
+	height: 300px;
+}
+
+.iosSlider {
+	height: 300px;
+}
+
+.iosSlider .slider .item .inner {
+	width: 479px;
+}
+
+.iosSlider .slider .item .inner .text1 {
+    top: 35px;
+}
+.iosSlider .slider .item .inner .text1 span {
+	font-size: 30px;
+	line-height: 30px;
+}
+
+.iosSlider .slider .item .inner .text2 {
+    top: 70px;
+}
+.iosSlider .slider .item .inner .text2 span {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.iosSlider .slider .item .inner .text3 {
+    top: 57px;
+	line-height: 14px;
+	width: 50%;
+}
+.iosSlider .slider .item .inner .text3 span {
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.iosSlider .slider .item .inner .text4 {
+    top: 140px;
+}
+
+.iosSlider .slider .item .inner .text5 {
+    top: 45px;
+}
+.iosSlider .slider .item .inner .text5 div {
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.iosSlider .slider .item .inner .text6 {
+	display: none;
+}
+
+.iosSlider .slider .item .inner .text7 {
+	display: none;
+}
+
+.iosslider_lists li {
+	padding: 0px 0px 0px 19px;
+	line-height: 18px;
+	background: url(../../images/sliders/iosslider/check.png) no-repeat left 5px;
+	background-size: 4%;
+}
+
+.iosSlider .slider .item1 .inner {
+	background-image: url(../../images/sliders/iosslider/1.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 67%;
+}
+
+.iosSlider .slider .item2 .inner {
+	background-image: url(../../images/sliders/iosslider/2.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 67%;
+}
+
+.iosSlider .slider .item3 .inner {
+	background-image: url(../../images/sliders/iosslider/3.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 67%;
+}
+
+.iosSlider .slider .item4 .inner {
+	background-image: url(../../images/sliders/iosslider/4.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 67%;
+}
+
+.sliderContainer .slideSelectors {
+	margin: 0px 0px 0px 43%;
+}
+
+	
+
+}
+
+
+@media only screen and (max-width: 479px){
+
+.fluidHeight {
+	height: 200px;
+}
+
+.iosSlider {
+	height: 200px;
+}
+
+.iosSlider .slider .item .inner {
+	width: 319px;
+}
+
+.iosSlider .slider .item .inner .text1 {
+    top: 25px;
+}
+.iosSlider .slider .item .inner .text1 span {
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.iosSlider .slider .item .inner .text2 {
+    top: 40px;
+}
+.iosSlider .slider .item .inner .text2 span {
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.iosSlider .slider .item .inner .text3 {
+    top: 40px;
+	line-height: 10px;
+	width: 55%;
+}
+.iosSlider .slider .item .inner .text3 span {
+	font-size: 8px;
+	line-height: 10px;
+}
+
+.iosSlider .slider .item .inner .text4 {
+    top: 95px;
+}
+
+.iosSlider .slider .item .inner .text5 {
+    top: 30px;
+}
+.iosSlider .slider .item .inner .text5 div {
+	font-size: 8px;
+	line-height: 10px;
+}
+
+.iosSlider .slider .item .inner .text6 {
+	display: none;
+}
+
+.iosSlider .slider .item .inner .text7 {
+	display: none;
+}
+
+.iosslider_lists li {
+	padding: 0px 0px 0px 13px;
+	line-height: 13px;
+	background: url(../../images/sliders/iosslider/check.png) no-repeat left 3px;
+	background-size: 4%;
+}
+
+.iosSlider .slider .item1 .inner {
+	background-image: url(../../images/sliders/iosslider/1.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 62%;
+}
+
+.iosSlider .slider .item2 .inner {
+	background-image: url(../../images/sliders/iosslider/2.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 62%;
+}
+
+.iosSlider .slider .item3 .inner {
+	background-image: url(../../images/sliders/iosslider/3.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 62%;
+}
+
+.iosSlider .slider .item4 .inner {
+	background-image: url(../../images/sliders/iosslider/4.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-size: 62%;
+}
+
+.sliderContainer .slideSelectors {
+	margin: 0px 0px 0px 43%;
+	bottom: 25px;
+}
+
+
+}

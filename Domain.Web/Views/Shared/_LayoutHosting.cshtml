@@ -1,0 +1,732 @@
+﻿@using Domain.Infrastructure.MYS.Infrastructure
+@{ 
+    var phoneNumber = CacheManager.GetManagement.FirmPhoneNumber;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One|Archivo+Narrow|Oswald:400,700' rel='stylesheet' type='text/css'>
+    <title></title>
+
+    @Styles.Render("~/Content/css")
+    <link href="@Url.Content("~/App_Themes/assets/bs4/vendors.bundle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/App_Themes/assets/bs4/style.bundle.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/App_Themes/assets/bs4/plugins/jqueryui/css/jquery-ui.min.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/App_Themes/css/Animate.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/App_Themes/assets/bs4/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/App_Themes/css/AutoComplete.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/App_Themes/css/Ortak.css")" rel="stylesheet" />
+
+    <link href="~/App_Themes/assets/bs4/plugins/datatables/datatables.min.css" rel="stylesheet" />
+    <link href="~/App_Themes/assets/bs4/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="@Url.Content("~/App_Themes/assets/airhosting/css/reset.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/App_Themes/assets/airhosting/css/style.css")" type="text/css" />
+    <!-- responsive devices styles -->
+    <link rel="stylesheet" media="screen" href="@Url.Content("~/App_Themes/assets/airhosting/css/responsive-leyouts.css")" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/App_Themes/assets/airhosting/js/jcarousel/skin.css")" />
+    <!-- REVOLUTION SLIDER -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/App_Themes/assets/airhosting/js/revolutionslider/css/fullwidth.css")" media="screen" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/App_Themes/assets/airhosting/js/revolutionslider/rs-plugin/css/settings.css")" media="screen" />
+    <!-- faqs -->
+    <link rel="stylesheet" href="@Url.Content("~/App_Themes/assets/airhosting/js/accordion/accordion.css")" type="text/css" media="all">
+    <!-- jquery jcarousel -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/App_Themes/assets/airhosting/js/jcarousel/skin.css")" />
+    <!-- tabs css -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/App_Themes/assets/airhosting/js/tabs/tabs-style2.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/App_Themes/assets/airhosting/js/tabs/tabs.css")" />
+
+    <link href="@Url.Content("~/App_Themes/assets/airhosting/css/domainquery/main.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/App_Themes/assets/airhosting/css/material-icon/css/material-design-iconic-font.min.css")" rel="stylesheet" />
+
+    <script src="~/App_Themes/assets/bs4/vendors.bundle.js"></script>
+    <script src="~/App_Themes/assets/bs4/scripts.bundle_.js"></script>
+
+    <script src="@Url.Content("~/App_Themes/assets/bs4/plugins/select2/js/select2.full.min.js")"></script>
+    <script src="@Url.Content("~/App_Themes/assets/bs4/plugins/select2/js/tr.js")"></script>
+
+    <script src="@Url.Content("~/App_Themes/assets/bs4/plugins/datetimepicker/js/moment-with-locales.js")"></script>
+    <script src="@Url.Content("~/App_Themes/assets/bs4/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js")"></script>
+    @*<script src="@Url.Content("~/App_Themes/assets/bs4/plugins/portlets/portlet.js")"></script>*@
+
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+
+    @Scripts.Render("~/bundles/dataTableScripts")
+
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/universal/jquery.js")"></script>
+    <script src="@Url.Content("~/Scripts/Site/base.js")"></script>
+    <!-- style switcher -->
+    <script src="@Url.Content("~/App_Themes/assets/airhosting/js/style-switcher/styleselector.js")"></script>
+    <!-- main menu -->
+    @*<script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/mainmenu/ddsmoothmenu.js")"></script>*@
+    @*<script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/mainmenu/selectnav.js")"></script>*@
+    @*<script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/mainmenu/scripts.js")"></script>*@
+    <!-- jquery jcarousel -->
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/jcarousel/jquery.jcarousel.min.js")"></script>
+    <!-- REVOLUTION SLIDER -->
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/revolutionslider/rs-plugin/js/jquery.themepunch.plugins.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/tabs/tabs.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/tabs/tabs-style2.js")"></script>
+
+
+    <!-- scroll up -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollup').fadeIn();
+                } else {
+                    $('.scrollup').fadeOut();
+                }
+            });
+            $('.scrollup').click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 500);
+                return false;
+            });
+        });
+    </script>
+
+    <script src="~/App_Themes/assets/airhosting/js/owl/owl-carousel.js"></script>
+    <!-- jquery jcarousel -->
+    <script>
+        $(document).ready(function () {
+            jQuery(".client-logo-carousel").owlCarousel({
+                loop: false,
+                autoplaySpeed: 3e3,
+                navSpeed: 3e3,
+                paginationSpeed: 3e3,
+                slideSpeed: 3e3,
+                smartSpeed: 3e3,
+                autoplay: 3e3,
+                margin: 30,
+                nav: !0,
+                dots: !1,
+                navText: ['<i class="fa fa-arrow-left"></i>', '<i class="fa fa-arrow-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    480: {
+                        items: 2
+                    },
+                    767: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+    <script type="text/javascript" src="@Url.Content("~/App_Themes/assets/airhosting/js/accordion/custom.js")"></script>
+    <script type="text/javascript">
+        var tpj = jQuery;
+        tpj.noConflict();
+        tpj(document).ready(function () {
+            if (tpj.fn.cssOriginal != undefined)
+                tpj.fn.css = tpj.fn.cssOriginal;
+            tpj('.fullwidthbanner').revolution(
+                {
+                    delay: 9000,
+                    startwidth: 1000,
+                    startheight: 500,
+                    onHoverStop: "on",						// Stop Banner Timet at Hover on Slide on/off
+                    thumbWidth: 100,							// Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                    thumbHeight: 50,
+                    thumbAmount: 3,
+                    hideThumbs: 200,
+                    navigationType: "none",				// bullet, thumb, none
+                    navigationArrows: "solo",				// nexttobullets, solo (old name verticalcentered), none
+                    navigationStyle: "round",				// round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+                    navigationHAlign: "right",				// Vertical Align top,center,bottom
+                    navigationVAlign: "bottom",					// Horizontal Align left,center,right
+                    navigationHOffset: 50,
+                    navigationVOffset: 55,
+                    soloArrowLeftHalign: "left",
+                    soloArrowLeftValign: "center",
+                    soloArrowLeftHOffset: 0,
+                    soloArrowLeftVOffset: 0,
+                    soloArrowRightHalign: "right",
+                    soloArrowRightValign: "center",
+                    soloArrowRightHOffset: 0,
+                    soloArrowRightVOffset: 0,
+                    touchenabled: "on",						// Enable Swipe Function : on/off
+                    stopAtSlide: -1,							// Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                    stopAfterLoops: 0,						// Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+                    fullWidth: "on",
+                    shadow: 0								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
+                });
+        });
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5ef4e30b9e5f694422914f2e/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <script>
+
+        $(window).on('scroll', function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 150) {
+                $('header.fixed-top').addClass('nav-fixed');
+            } else {
+                $('header.fixed-top').removeClass('nav-fixed');
+            }
+
+        });
+
+        //Show Hide dropdown-menu Main navigation
+        $(document).on('ready', function () {
+            $('.dropdown-menu a.dropdown-toggler').on('click', function () {
+                //var $el = $( this );
+                //var $parent = $( this ).offsetParent( ".dropdown-menu" );
+                if (!$(this).next().hasClass('show')) {
+                    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                }
+                var $subMenu = $(this).next(".dropdown-menu");
+                $subMenu.toggleClass('show');
+
+                $(this).parent("li").toggleClass('show');
+
+                $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function () {
+                    $('.dropdown-menu .show').removeClass("show");
+                });
+
+                return false;
+            });
+        });
+
+        //Hide Navbar Dropdown After Click On Links
+        var navBar = $(".header_wrap");
+        var navbarLinks = navBar.find(".navbar-collapse ul li a.page-scroll");
+
+        $.each(navbarLinks, function () {
+
+            var navbarLink = $(this);
+
+            navbarLink.on('click', function () {
+                navBar.find(".navbar-collapse").collapse('hide');
+                $("header").removeClass("active");
+            });
+
+        });
+
+        $(document).on('ready', function () {
+            if ($('.header_wrap').hasClass("fixed-top") && !$('.header_wrap').hasClass("transparent_header") && !$('.header_wrap').hasClass("no-sticky")) {
+                $(".header_wrap").before('<div class="header_sticky_bar d-none"></div>');
+            }
+        });
+
+        $(window).on('scroll', function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 150) {
+                $('.header_sticky_bar').removeClass('d-none');
+                $('header.no-sticky').removeClass('nav-fixed');
+
+            } else {
+                $('.header_sticky_bar').addClass('d-none');
+            }
+
+        });
+
+        var setHeight = function () {
+            var height_header = $(".header_wrap").height();
+            $('.header_sticky_bar').css({ 'height': height_header });
+        };
+
+        $(window).on('load', function () {
+            setHeight();
+        });
+
+        $(window).on('resize', function () {
+            setHeight();
+        });
+
+        $('.sidetoggle').on('click', function () {
+            $(this).addClass('open');
+            $('body').addClass('sidetoggle_active');
+            $('.sidebar_menu').addClass('active');
+            $("body").append('<div id="header-overlay" class="header-overlay"></div>');
+        });
+
+        $(document).on('click', '#header-overlay, .sidemenu_close', function () {
+            $('.sidetoggle').removeClass('open');
+            $('body').removeClass('sidetoggle_active');
+            $('.sidebar_menu').removeClass('active');
+            $('#header-overlay').fadeOut('3000', function () {
+                $('#header-overlay').remove();
+            });
+            return false;
+        });
+
+        $(".categories_btn").on('click', function () {
+            $('.side_navbar_toggler').attr('aria-expanded', 'false');
+            $('#navbarSidetoggle').removeClass('show');
+        });
+
+        $(".side_navbar_toggler").on('click', function () {
+            $('.categories_btn').attr('aria-expanded', 'false');
+            $('#navCatContent').removeClass('show');
+        });
+
+        $(".pr_search_trigger").on('click', function () {
+            $(this).toggleClass('show');
+            $('.product_search_form').toggleClass('show');
+        });
+
+        var rclass = true;
+
+        $("html").on('click', function () {
+            if (rclass) {
+                $('.categories_btn').addClass('collapsed');
+                $('.categories_btn,.side_navbar_toggler').attr('aria-expanded', 'false');
+                $('#navCatContent,#navbarSidetoggle').removeClass('show');
+            }
+            rclass = true;
+        });
+
+        $(".categories_btn,#navCatContent,#navbarSidetoggle .navbar-nav,.side_navbar_toggler").on('click', function () {
+            rclass = false;
+        });
+
+
+    </script>
+
+    <script>
+
+        function UpdateBasketDropDown() {
+            postData("@Url.Action("GetBasketItems", "Basket", new { area = "" })", null, null, null, function (data) {
+                var basketItems = "";
+                var length = 0;
+                var total = 0.0;
+                $.each(data, function (index, element) {
+                    length += 1;
+                    total += element.Price;
+                    var id = element.RedisId;
+                    basketItems += "<li><a data-id='" + id + "' ";
+                    basketItems += "class='item_remove'><i class='fa fa-times'></i></a><a href='#'>";
+                    basketItems += element.ProductName;
+                    basketItems += "</a><span class='cart_quantity'> <span class='price_symbole'>₺</span>";
+                    basketItems += element.Price;
+                    basketItems += "</span></li>";
+                });
+                $("#cart_box .cart_list").html(basketItems);
+                $(".cart_count").html(length);
+                $(".total_amount").html(total);
+            });
+        }
+
+        $(function () {
+            UpdateBasketDropDown();
+
+            $("body").on("click", ".item_remove", function () {
+                var id = $(this).data("id");
+                postDataWithConfirm("@Url.Action("RemoveItemFromTheBasket", "Basket", new { area="" })", { id: id }, null, null, function () {
+                    ShowMessage("Ürün sepetten çıkarıldı.", 3, true);
+                    UpdateBasketDropDown();
+                    getBasketView();
+                }, null, "Seçilen ürün sepetten çıkarılacak. Devam etmek istiyor musunuz?");
+            });
+
+        });
+
+    </script>
+
+    <!--End of Tawk.to Script-->
+
+    @RenderSection("scripts", required: false)
+    <link href="~/App_Themes/css/responsive.css" rel="stylesheet" />
+    <style>
+        .navbar {
+            margin-bottom: 0px;
+        }
+
+        header {
+            border-bottom: 1px solid #ededed;
+        }
+
+        /*.navbar-nav {
+            display: list-item;
+        }*/
+
+        .header_wrap:not([class*="bg_"]):not([class*="bg-"]) {
+            background-color: #fff;
+        }
+
+        .navbar-brand {
+            padding: 10px 0;
+            vertical-align: top;
+            margin: 0;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        nav a {
+            color: #292b2c !important;
+            font-weight: 500 !important;
+            font-size: 0.9rem;
+        }
+
+        .navbar-toggler {
+            float: right;
+            margin: 8px 0 0 3px;
+            font-size: 28px;
+            color: #333;
+            transition: all 0.5s ease 0s;
+            border-radius: 0;
+            height: 35px;
+            width: 35px;
+            padding: 0;
+            line-height: 36px;
+            transition: none;
+        }
+
+        .navbar-nav.attr-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar .navbar-nav li {
+            position: relative;
+            list-style: none;
+            transition: all 0.3s ease 0s;
+        }
+
+        .navbar-nav.attr-nav li .nav-link {
+            padding: 20px 10px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .cart_count, .wishlist_count {
+            position: relative;
+            top: -3px;
+            left: 0;
+            font-size: 11px;
+            background-color: #FF324D;
+            border-radius: 50px;
+            height: 16px;
+            line-height: 16px;
+            color: #fff;
+            min-width: 16px;
+            text-align: center;
+            padding: 0 5px;
+            display: inline-block;
+            vertical-align: top;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .navbar .navbar-nav > li > .nav-link.cart_trigger i {
+            font-size: 20px;
+        }
+
+        .navbar .navbar-nav > li > a.active, .navbar .navbar-nav > li:hover > a, .light_skin.transparent_header.nav-fixed .navbar .navbar-nav > li > a.active, .light_skin.transparent_header.nav-fixed .navbar .navbar-nav > li:hover > a, .transparent_header.nav-fixed .light_skin .navbar .navbar-nav > li > a.active, .transparent_header.nav-fixed .light_skin .navbar .navbar-nav > li:hover > a {
+            color: #FF324D;
+        }
+
+        .navbar-nav .dropdown-menu {
+            background-color: #fff;
+            box-shadow: 0 13px 42px 11px rgba(0,0,0,.05);
+        }
+
+        .dropdown-toggle::after, .dropdown-toggler::after {
+            border: 0 none;
+            font-family: "Ionicons";
+            margin-left: 5px;
+            vertical-align: middle;
+            width: auto;
+        }
+
+        .navbar-nav .dropdown-menu.cart_box.show {
+            -webkit-transform: scale(1) !important;
+            transform: scale(1) !important;
+        }
+
+        .navbar-nav .dropdown-menu.cart_box {
+            width: 320px;
+            position: absolute !important;
+            -webkit-transform: scale(0) !important;
+            transform: scale(0) !important;
+            -webkit-transform-origin: -webkit-calc(100% - 30px) 0;
+            transform-origin: calc(100% - 30px) 0;
+            display: block;
+            transition: all 0.25s ease-in-out;
+            padding: 0;
+            top: 100% !important;
+            left: auto !important;
+            right: 0;
+        }
+
+        .cart_box .cart_list {
+            width: 100%;
+            padding: 0 !important;
+            max-height: 242px;
+            overflow-y: auto;
+        }
+
+        .cart_list li {
+            border-color: #ddd;
+        }
+
+        .cart_list a {
+            font-size: 14px;
+            vertical-align: top;
+            padding: 0 !important;
+            text-transform: capitalize;
+            font-weight: 600;
+        }
+
+        .cart_quantity {
+            color: #333333;
+            display: table;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .cart_list li {
+            border-color: #ddd;
+            display: inline-block;
+            width: 100%;
+            border-bottom: 1px solid #3f3f3f;
+            padding: 15px;
+        }
+
+        .item_remove {
+            float: right;
+            margin-left: 5px;
+            color: #333 !important;
+        }
+
+        .cart_total {
+            margin: 0;
+            padding: 10px 15px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .cart_buttons {
+            margin: 0;
+            padding: 10px 15px 20px;
+            text-align: center;
+        }
+
+            .cart_buttons .view-cart, .cart_buttons .checkout {
+                padding: 8px 20px !important;
+            }
+
+        .btn-fill-line {
+            overflow: hidden;
+            position: relative;
+            transition: all 0.8s ease 0s;
+            z-index: 1;
+        }
+
+        .rounded-0 {
+            border-radius: 0 !important;
+        }
+
+        .btn-fill-line::after {
+            right: 0;
+            left: auto;
+        }
+
+        .btn-fill-out {
+            position: relative;
+            overflow: hidden;
+            color: #fff !important;
+            z-index: 1;
+        }
+
+        .cart_buttons .checkout {
+            padding: 8px 20px !important;
+        }
+
+        .btn + .btn {
+            margin-left: 10px;
+        }
+    </style>
+
+    @RenderSection("script", false)
+
+</head>
+<body>
+    <div class="site_wrapper">
+        @*<div class="header_sticky_bar" style="height: 67px;"></div>*@
+        <header class="header_wrap fixed-top header_with_topbar" style="">
+
+            <div class="bottom_header dark_skin main_menu_uppercase">
+                <div class="container-fluid wf" id="menu-container">
+                        <a href="@Url.Action("Index","Home", new { area="" })" class="site_logo">
+                            <h1>
+                                Marka<i>Patent</i>
+                            </h1>
+                        </a>
+                    <nav class="navbar navbar-expand-lg d-block">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li><a class="nav-link nav_item active" href="@Url.Action("Index","Home", new { area="" })">ANASAYFA</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index","Brand", new { area="" })">MARKA</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index","Patent", new { area="" })">PATENT</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index","Domain", new { area="" })">DOMAIN</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index", "Services", new { area="" })">HİZMETLERİMİZ</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index", "Blog", new { area="" })">YAZILAR</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index", "About", new { area="" })">HAKKIMIZDA</a></li>
+                                <li><a class="nav-link nav_item" href="@Url.Action("Index", "Contact", new { area="" })">İLETİŞİM</a></li>
+                            </ul>
+                        </div>
+                        <ul class="navbar-nav attr-nav align-items-center pull-right">
+
+                            @if (CurrentUser.Identity == null || CurrentUser.Identity.UserId == 0)
+                            {
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index","Home", new { area="User" })"> <i class="fa fa-lock"></i> Giriş Yap </a>
+                                </div>
+                            </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <div style="padding: 5px 15px;"> @CurrentUser.Identity.FirstName @CurrentUser.Identity.LastName </div>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="@Url.Action("Index","Home", new { area="User" })"> <i class="fa fa-list-ul pr-2"></i> Başvuru İşlemleri </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="@Url.Action("Logout", "Account", new { area="" })"> <i class="fa fa-sign-out pr-2"></i> Çıkış Yap </a>
+                                    </div>
+                                </li>
+                            }
+
+                            <li class="dropdown cart_dropdown">
+                                <a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart_count"></span></a>
+                                <div id="cart_box" class="cart_box dropdown-menu dropdown-menu-right">
+                                    <ul class="cart_list">
+                                        
+                                    </ul>
+                                    <div class="cart_footer">
+                                        <p class="cart_total"><strong>Toplam:</strong> <span class="cart_price"> <span class="price_symbole">₺</span></span> <span class="total_amount"></span> </p>
+                                        <p class="cart_buttons">
+                                            <a href="@Url.Action("Index", "Basket", new { area="" })" class="btn btn-secondary btn-fill-line rounded-0 view-cart">Sepete Git</a>
+                                            <a href="#" class="btn btn-success btn-fill-out rounded-0 checkout">Ödeme Yap</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="clearfix"></div>
+
+        @RenderBody()
+
+        <!-- Footer
+    ======================================= -->
+
+        <div class="footer">
+            <div class="footer_center">
+                <div class="container">
+
+                    <div class="row pt-5 pb-5">
+                        <div class="col-xs-12 col-lg-3 lg-border">
+                            <div>
+                                <h3>SİTE HARİTASI</h3>
+                                <ul class="list">
+                                    <li><a href="@Url.Action("Register", "Account", new { area="" })">Üye Olun</a></li>
+                                    <li><a href="@Url.Action("Index", "Contact", new { area="" })">İletişim</a></li>
+                                    <li><a href="@Url.Action("Index", "About", new { area="" })">Hakkımızda</a></li>
+                                    <li><a href="@Url.Action("Index", "Services", new { area="" })">Hizmetlerimiz</a></li>
+                                    <li><a href="@Url.Action("Index", "Brand", new { area="" })">Marka Sorgulama/Başvuru</a></li>
+                                    <li><a href="@Url.Action("Index", "Domain", new { area="" })">Domain Sorgulama/Başvuru</a></li>
+                                    <li><a href="@Url.Action("Index", "Patent", new { area="" })">Patent Başvuru</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-lg-5 lg-border">
+                            <div>
+                                <h3>SİTENİZİ TRANSFER EDİN</h3>
+                                Alan adlarınızı hızlı ve kolay bir şekilde transfer etmenizde yanınızdayız
+                                <div class="mar_top11"></div>
+                                <div class="clearfix"></div>
+                                <ul class="list">
+                                    <li>Ücretsiz Alan Adı Transferi</li>
+                                    <li>Yüksek Güvenilirlik</li>
+                                    <li>Yüksek Memnuniyet</li>
+                                    <li>Paranızı Geri Ödeme Garantisi</li>
+                                    <li>7/24 Destek</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-lg-4">
+                            <div>
+                                <h3>DANIŞMA BÖLÜMÜ</h3>
+                                <div class="any_questions">
+                                    <span class="img_left01 fa fa-phone-square fa-2x"></span>
+                                    <p>Lütfen her konuda aramaktan çekinmeyiniz</p>
+                                    <h3> @phoneNumber </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="copyright_info">
+            <div class="container">
+                <div class="one_half"></div>
+                <div class="one_half last">
+                    <span>
+                        <a href="#">Hizmet Terimleri</a> |
+                        <a href="#">Gizlilik Kuralları</a>
+                    </span>
+                </div>
+            </div>
+        </div><!-- end copyright info -->
+        <a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
+    </div>
+
+    <div id="dialogContainer"></div>
+    @{
+        Html.RenderPartial("_ShowMessageView");
+    }
+
+</body>
+</html>
+
+

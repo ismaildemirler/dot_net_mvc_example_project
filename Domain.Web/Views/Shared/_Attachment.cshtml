@@ -1,0 +1,126 @@
+﻿
+@model AttachmentViewModel
+@{
+    var guid = Guid.NewGuid().ToString().Replace('-', '_');
+}
+
+<style>
+    #divFormAttachments@(guid) {
+        width: 100% !important;
+    }
+</style>
+
+<div id="divContainer@(guid)">
+    @Html.HiddenFor(model => model.RelatedEntity)
+    @Html.HiddenFor(model => model.RelatedEntityId)
+</div>
+
+<div id="divFormAttachments@(guid)">
+</div>
+
+<script type="text/javascript">
+
+    //$('.custom-file-input').addClass('fileUpload')
+
+    function ActivateButtons@(guid)() {
+        $("#divFormAttachments@(guid) .btnUpload").click(function () {
+            var formId = $(this).attr("id").split('_')[1];
+            var data = new FormData();
+            var fileUpload = $('#Attachment' + formId);
+            if (fileUpload != undefined && fileUpload != null) {
+                var files = fileUpload.get(0).files;
+                if (files.length > 0) {
+                    data.append("uploadedFile", files[0]);
+                    data.append("RelatedEntity", $('#divContainer@(guid) #RelatedEntity').val());
+                    data.append("RelatedEntityId", $('#divContainer@(guid) #RelatedEntityId').val());
+                    data.append("formId", formId);
+                    data.append("__RequestVerificationToken", $('[name=__RequestVerificationToken]').val());
+
+                    $.ajax({
+                        url: '@Url.Action("AttachmentUpload", "Common", new { area = "" })',
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        beforeSend: function () {
+                            blockUI('body');
+                        },
+                        success: function (data) {
+                            if (data != null && data) {
+                                if (data.Result != undefined) {
+                                    if (data.Result == 1) {
+                                        if (showMessage) {
+                                            showSuccessNotification("Dosya yükleme işlemi yapılmıştır.", "Bilgi");
+                                            Refresh@(guid)(data.id);
+                                        }
+                                    }
+                                    else {
+                                        showErrorNotification(data.Message);
+                                    }
+                                } else {
+                                    if (data) {
+                                        showSuccessNotification("Dosya yükleme işlemi yapılmıştır.", "Bilgi");
+                                        Refresh@(guid)(data.id);
+                                    }
+                                }
+                            } else {
+                                    showErrorNotification("Kayıt işlemi gerçekleştirilemedi.", "Hata");
+                            }
+
+                        },
+                        error: function (err) {
+                            showErrorNotification("Hata oluştu!", "Hata");
+                        },
+                        complete: function () {
+                            unblockUI('body');
+                        }
+                    });
+                }
+            }
+            else {
+                showWarningNotification("Yüklenecek dosya bulunamamıştır!", "Uyarı");
+            }
+        });
+
+        $("#divFormAttachments@(guid) .btnDelete").click(function () {
+            var attachmentId = $(this).data("attachment-id");
+            swal({
+                title: "Devam etmek istiyor musunuz ?",
+                text: "Seçili kayıt silinecek!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "Evet",
+                cancelButtonText: "Hayır, iptal!",
+                reverseButtons: !0
+            }).then(function (e) {
+                if (e.value) {
+                    postData("@Url.Action("AttachmentDelete", "Common", new { area="" })", {
+                        __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
+                        AttachmentId: attachmentId,
+                        RelatedEntityId: $('#divContainer@(guid) #RelatedEntityId').val()
+                    }, false, "", function () {
+                        showSuccessNotification("Kayıt başarı ile silindi!", "Bilgi");
+                        Refresh@(guid)();
+                    }, function () {
+                        showWarningNotification("Kayıt silinemedi!", "Uyarı");
+                    });
+                }
+            });
+        });
+    }
+
+    function Refresh@(guid)(id) {
+        getPartialView("@Url.Action("AttachmentList", "Common", new { area = "" })", {
+            AttachmentId: id,
+            RelatedEntity: $('#divContainer@(guid) #RelatedEntity').val(),
+            RelatedEntityId: $('#divContainer@(guid) #RelatedEntityId').val()
+        }, "divFormAttachments@(guid)", function () {
+            ActivateButtons@(guid)();
+        });
+    }
+
+    $(function () {
+        Refresh@(guid)();
+    });
+
+</script>

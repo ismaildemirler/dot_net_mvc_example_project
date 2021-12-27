@@ -1,0 +1,147 @@
+div.dataTables_length label {
+    font-size: 11px;
+}
+
+div.dataTables_info {
+    font-size: 11px;
+}
+
+div.dataTables_paginate {
+    font-size: 11px;
+}
+
+.marginLeft10 {
+    margin-left: 10px;
+}
+
+.marginLeftRight10 {
+    margin-left: 10px;
+    margin-right: 10px;    
+}
+
+.marginTop40 {
+    margin-top: 40px;
+}
+
+.floatRight {
+    float: right;
+}
+
+.displayNone {
+    display: none;
+}
+
+.visibilityHidden {
+    visibility: hidden;
+}
+
+.visibilityVisible {
+    visibility: visible;
+}
+
+.smallerFont { 
+    font-size: smaller;
+}
+
+.fontBold {
+font-weight: bold;}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar .navbar-brand {
+  padding-top: 5px;
+}
+
+.navbar .navbar-brand img {
+    width: 120px;
+    height: 40px;
+    display: block;
+}
+
+.panel-body {
+    padding: 0 15px 15px;
+}
+
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   speak for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    10000000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the modal class, we turn
+   the scrollbar off with overflow:hidden */
+body.modalmode {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the modal class, our
+   modal element will be visible */
+body.modalmode .modal {
+    display: block;
+}
+
+/* Center the loader */
+#loader {
+  position: fixed;
+  z-index: 20000000;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -60px 0 0 -60px;
+  border: 24px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 24px solid #337ab7;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*Responsive ReCaptcha*/
+@media screen and (max-height: 479px) {
+    #rc-imageselect, .g-recaptcha-with-ajax {
+        transform: scale(0.77);
+        -webkit-transform: scale(0.77);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        display: block;
+    }
+}
+
+/* Center the reCaptchaDiv */
+#reCaptchaDiv {
+  position: fixed;
+  z-index: 30000000;
+  left: 50%;
+  top: 50%;
+  width: 304px;
+  height: 78px;
+  margin-left:-152px; /* -1/2 width */
+  margin-top:-39px; /* -1/2 height */
+}

@@ -1,0 +1,2 @@
+C:\PROJECTS\Domain\Domain\Domain.WebHelpers\obj\Release\Domain.WebHelpers.csprojAssemblyReference.cache
+C:\PROJECTS\Domain\Domain\Domain.WebHelpers\obj\Release\Domain.WebHelpers.csproj.CoreCompileInputs.cache

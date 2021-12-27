@@ -1,0 +1,56 @@
+﻿@model DomainPriceViewModel
+@{
+    ViewBag.Title = "Domain Fiyatları";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+
+        @Html.AntiForgeryToken()
+
+        @(Html.DomainFor()
+                .Grid("tblList")
+                .SetPaging(false)
+                .SetColumns(columns =>
+                {
+                    columns.Add(c => c.Buttons).SetClassName("grdIslemler");
+                    columns.Add(c => c.TLDTypeDescription);
+                    columns.Add(c => c.RegisterPrice);
+                    columns.Add(c => c.RegisterPriceWithDiscount);
+                    columns.Add(c => c.TransferPrice);
+                    columns.Add(c => c.TransferPriceWithDiscount);
+                    columns.Add(c => c.RefreshPrice);
+                    columns.Add(c => c.RefreshPriceWithDiscount);
+                })
+                .SetToolbarButtons(buttons => {
+                    buttons.Add(GridButtonType.custom).SetTitle("Yeni Kayıt").SetIcon("fa fa-plus").SetCssClass("btn btn-default insert");
+                })
+            .SetExportButtonShow(false)
+            .SetAjaxUrl(Url.Action("GetDomainPriceList")).SetDefaultOrder(0).SetFunctionName("GetDomainPriceList"))
+
+    </div>
+</div>
+
+@section script {
+<script>
+
+    function RefreshGridAndClosePartial() {
+        GetDomainPriceList();
+        HideModal();
+    }
+
+    $(function () {
+      
+        $("body").on("click", ".insert", function () {
+            getPartialViewWithModal("@Url.Action("_Update")", null);
+        });
+
+        $("body").on("click", ".update", function () {
+            var url = $(this).data("url");
+            getPartialViewWithModal(url, null);
+        });
+
+    });
+
+</script>
+}

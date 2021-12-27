@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "MARKA İZLEME";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="m-content" style="padding:0">
+    <!--Begin::Main Portlet-->
+    <div class="m-portlet">
+        <!--end: Portlet Head-->
+        <!--begin: Portlet Body-->
+        <div class="m-portlet__body">
+            <!--begin: Form Wizard-->
+            <div class="col-xl-12 col-lg-12" style="text-align:justify;">
+                Sizinle aynı sektörde faaliyet gösteren diğer firmalar, tescilli markanıza benzer başka markaların tescil başvurularını Türk Patent Enstitüsü’ne yapabilirler.
+
+                Türk Patent Enstitüsü uzmanları markaların karıştırılma ihtimalini kendi bakış açısı ile yorumlamaktadır. Markalar arasında karışıklık yaşanmayacağı, benzerlik olmadığı kanaatine varıldığında, sözkonusu marka başvuruları Resmi markalar bülteninde yayınlanır ve yayınlanan bu markalar kamuoyuna duyrulmuş sayıldığından herhangi bir itiraz gelmemesi halinde tescil edilmesine karar verilir.
+
+                Bu aşamadan sonra tescil edilen benzer markaların iptal edilmesi ancak mahkeme kararı ile mümkündür. Turkticaret.Net, uzun ve maliyetli olan dava süreci öncesinde gerekli itirazların yapılmasını sağlıyor. Böylelikle kuruluşların zaman ve maddi kayıpları önleniyor.
+
+                Türk Patent Enstitüsünün benzer marka başvurularını önceden tescil almış marka sahiplerine bildirme gibi bir görevi bulunmamaktadır. Bu sebeple markanınız korunması için, ilana çıkan markaların her ay yayınlandığı marka bültenlerinden profesyonel bir şekilde benzerlik taramasının yapılması gerekmektedir.
+
+                Turkticaret.NET tarafından özel olarak geliştirilmiş marka izleme programı; Türk Patent Enstitüsünce aylık olarak yayınlanan ve her ay ortalama 6500 marka tescil başvurusunu içeren Resmi Marka Bültenleri’ndeki markaların sağlıklı bir şekilde izlenmesine olanak vermektedir.
+            </div>
+            <!--end: Form Wizard-->
+        </div>
+        <!--end: Portlet Body-->
+        <div class="m-portlet__foot text-right">
+            @Html.Domain().Button("btnNext").SetType(ButtonType.link).SetIcon("fa fa-arrow-circle-right").SetIconAlignment(ButtonIconAlignment.right).SetStyle(ButtonStyle.primary).SetTitle("İleri").SetActionUrl("/User/Brand/WatchingApplicationStep1")
+        </div>
+    </div>
+    <!--End::Main Portlet-->
+</div>
+
+

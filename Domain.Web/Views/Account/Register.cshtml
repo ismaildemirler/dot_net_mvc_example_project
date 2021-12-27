@@ -1,0 +1,42 @@
+﻿@using Domain.Web.Models.Account
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+    <div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>Yeni Üye Kaydı</h1></div>
+    </div>
+</div>
+
+
+<div class="container wf py-4" style="background-color: #fff;">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="line-bottom mt-0 mb-30">KAYIT FORMU</h3>
+
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    @Html.DomainFor().TextBoxFor(model => model.Email).SetParentCss("col-sm-12").SetPlaceholder("E-Posta").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.Password).SetParentCss("col-sm-12").SetParentCss("m-login__form-input--last").SetHtmlAttributes(new { type = "password", autocomplete = "off" }).SetPlaceholder("Şifre").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.PasswordConfirm).SetParentCss("col-sm-12").SetParentCss("m-login__form-input--last").SetHtmlAttributes(new { type = "password", autocomplete = "off" }).SetPlaceholder("Şifre Tekrarı").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.FirstName).SetParentCss("col-sm-12").SetPlaceholder("Ad").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.LastName).SetParentCss("col-sm-12").SetPlaceholder("Soyad").SetTitleHidden(true)
+                    @Html.DomainFor().TextBoxFor(model => model.PhoneNumber).SetParentCss("col-sm-12").SetMaskType(MaskType.Phone).SetPlaceholder("Telefon").SetTitleHidden(true)
+
+                    <div class="col-sm-12 m-form p-2 mt-4">
+                        @Html.Domain().Button("btnRegister").SetType(ButtonType.submit).SetCustomClasses("btn-xl").SetTitle("Kayıt Ol").SetStyle(ButtonStyle.success).SetIcon("fa fa-save")
+                        @Html.Domain().Button("btnLogin").SetType(ButtonType.link).SetCustomClasses("btn-xl pull-right").SetActionUrl(Url.Action("Login", "Account")).SetTitle("Giriş Yap (Kullanıcı Kaydım Var)").SetStyle(ButtonStyle.@default).SetIcon("fa fa-sign-in")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

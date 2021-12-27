@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Olipso.Core.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" />
+  <xs:complexType name="BaseMethodRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseMethodRequest" nillable="true" type="tns:BaseMethodRequest" />
+  <xs:complexType name="BaseMethodResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="OperationMessage" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" minOccurs="0" name="OperationResult" type="q1:ExecutionStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseMethodResponse" nillable="true" type="tns:BaseMethodResponse" />
+  <xs:complexType name="ArrayOfRGPStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RGPStatus" nillable="true" type="tns:RGPStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRGPStatus" nillable="true" type="tns:ArrayOfRGPStatus" />
+  <xs:complexType name="RGPStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RGPStatus" nillable="true" type="tns:RGPStatus" />
+  <xs:complexType name="BasePagedMethodRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseMethodRequest">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Olipso.Core.Enumerations" minOccurs="0" name="OrderDirection" type="q2:OrderDirection" />
+          <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BasePagedMethodRequest" nillable="true" type="tns:BasePagedMethodRequest" />
+  <xs:complexType name="BasePagedMethodResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseMethodResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PageSize" type="xs:long" />
+          <xs:element minOccurs="0" name="TotalCount" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BasePagedMethodResponse" nillable="true" type="tns:BasePagedMethodResponse" />
+</xs:schema>

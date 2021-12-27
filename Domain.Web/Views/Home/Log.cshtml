@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Hostplan - Web Domain Hosting WHMCS HTML5 Template";
+}
+@using Domain.Web.Models.Log;
+@model ErrorLogViewModel
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+
+        @Html.AntiForgeryToken()
+
+        @(Html.DomainFor()
+            .Grid("tblList1")
+            .SetColumns(columns =>
+            {
+                columns.Add(c => c.ErrorTime).SetDateFormat();
+                columns.Add(c => c.ElasticId);
+                columns.Add(c => c.UserId);
+                columns.Add(c => c.Ip);
+                columns.Add(c => c.MethodName);
+                columns.Add(c => c.ErrorMessage);
+                columns.Add(c => c.ErrorDetail);
+                columns.Add(c => c.ServerName);
+            })
+            .SetExportButtonShow(false)
+            .SetAjaxUrl(Url.Action("GetErrorLogList")).SetTitle("Sistemde Alınan Hata Listesi").SetDefaultOrder(0))
+
+    </div>
+</div>

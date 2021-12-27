@@ -1,0 +1,20 @@
+﻿@using Domain.Entity.Container.Response.Services
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Hizmet Listesi";
+    ViewBag.IsViewUseDatatable = true;
+}
+
+@(Html.Domain()
+    .Grid<ResponseService>("tblSlider")
+    .SetColumns(columns =>
+    {
+        columns.Add(c => c.Buttons).SetClassName("grdIslemler");
+        columns.Add(c => c.Header);
+    })
+    .SetToolbarButtons(buttons => {
+        buttons.Add(GridButtonType.insert).SetActionUrl(Url.Action("Update")).SetTitle("Yeni Kayıt").SetIcon("fa fa-plus");
+    })
+    .SetDefaultOrder(1, Enums.EnumSortType.desc).SetFunctionName("GetServicesList")
+    .SetAjaxUrl(Url.Action("GetServicesList", "Services", new { area = "Admin" }))
+    .SetHeaderVisible(true).SetTitle("Kayıtlı Hizmetler"))

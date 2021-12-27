@@ -1,0 +1,32 @@
+﻿@using Domain.Entity.Container.Response.Services
+@model ResponseService
+@{
+    ViewBag.Title = Model.Header;
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+}
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>@Model.Header</h1></div>
+        <div class="reght_pagenation">
+            <a href="@Url.Action("Index", "Services", new { area="" })">Hizmetlerimiz</a> <i>/</i>
+            @Model.Header
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid wf py-5" style="background-color: #fff;">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <img id="imgIcon" style="width:100%;" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.ServiceImage))" />
+            <h2 style="margin-top:2rem;">  @Model.Header </h2>
+            <hr style="border-color: #0595ad;" />
+            @Html.Raw(Model.ContentText)
+
+        </div>
+    </div>
+</div>
+

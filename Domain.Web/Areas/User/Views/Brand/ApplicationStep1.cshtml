@@ -1,0 +1,222 @@
+﻿@using Domain.Web.Areas.User.Models.Brand
+@using Domain.Web.Models.Attachment
+@{
+    ViewBag.Title = "ŞAHIS VEYA ŞAHIS ŞİRKETLER ADINA MARKA TESCİL BAŞVURUSU";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model BrandApplicationViewModel
+<div class="m-content" style="padding:0">
+    <!--Begin::Main Portlet-->
+    <div class="m-portlet">
+        <!--end: Portlet Head-->
+        <!--begin: Portlet Body-->
+        <div class="m-portlet__body m-portlet__body--no-padding">
+            <!--begin: Form Wizard-->
+            <div class="m-wizard m-wizard--4 m-wizard--brand m-wizard--step-between" id="m_wizard">
+                <div class="row m-row--no-padding">
+                    <div class="col-xl-12 col-lg-12" style="background-color: #4d516d;">
+                        <!--begin: Form Wizard Head -->
+                        <div class="m-wizard__head">
+                            <!--begin: Form Wizard Nav -->
+                            <div class="m-wizard__nav">
+                                <div class="m-wizard__steps">
+                                    <div class="col-xl-4 m-wizard__step m-wizard__step--current" style="float:left;" m-wizard-target="m_wizard_form_step_1">
+                                        <div class="m-wizard__step-info">
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                            <a href="@Url.Action("ApplicationStep1")" class="m-wizard__step-number">
+                                                <span style="background-color: #e7e9f7;"><span>1</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Marka İşlem Bilgileri
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step" style="float:left;" m-wizard-target="m_wizard_form_step_2">
+                                        <div class="m-wizard__step-info">
+                                            <a href="#" class="m-wizard__step-number">
+                                                <span><span>2</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Marka Sahibine İlişkin Bilgiler
+                                            </div>
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step" style="float:left;" m-wizard-target="m_wizard_form_step_3">
+                                        <div class="m-wizard__step-info">
+                                            <a href="#" class="m-wizard__step-number">
+                                                <span><span>3</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                İletişim
+                                            </div>
+                                            <div class="m-wizard__step-icon"><i class="la la-check"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 m-wizard__step" style="float:left;" m-wizard-target="m_wizard_form_step_3">
+                                        <div class="m-wizard__step-info">
+                                            <a href="#" class="m-wizard__step-number">
+                                                <span><span>4</span></span>
+                                            </a>
+                                            <div class="m-wizard__step-label">
+                                                Dosya Yükleme
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end: Form Wizard Nav -->
+                        </div>
+                        <!--end: Form Wizard Head -->
+                    </div>
+                    <div class="col-xl-12 col-lg-12">
+                        @using (Html.BeginForm("ApplicationStep1", "Brand", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="m-portlet">
+                                <div class="m-portlet__body">
+                                    <div class="row px-4 mb-3 mt-2">
+                                        <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-info w-100" role="alert">
+                                            <div class="m-alert__icon">
+                                                <i class="flaticon-exclamation-1"></i>
+                                                <span></span>
+                                            </div>
+                                            <div class="m-alert__text">
+                                                <strong>Dikkat!</strong><br />
+                                                Aşağıdaki formu lütfen sizden istenen bilgiler doğrultusunda eksiksiz doldurunuz.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-4">
+                                        @foreach (var item in CacheManager.GetAllBrandApplicationTypes)
+                                        {
+                                            if (item.BrandApplicationTypeId == (byte)EnumBrandApplicationType.Sahis)
+                                            {
+                                                <div id="@item.BrandApplicationTypeId" class="brandapplicationType person">
+                                                    <i class="fa fa-briefcase"></i>
+                                                    @item.Description <br />
+                                                    (@item.HelpText)
+                                                </div>
+                                            }
+                                            else if (item.BrandApplicationTypeId == (byte)EnumBrandApplicationType.Firma)
+                                            {
+                                                <div id="@item.BrandApplicationTypeId" class="brandapplicationType firm">
+                                                    <i class="fa fa-user"></i>
+                                                    @item.Description <br />
+                                                    (@item.HelpText)
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="row px-4 mb-2 mt-2">
+                                        @Html.DomainFor().TextBoxFor(m => m.BrandApplicationDetail.BrandApplicationTypeId).SetParentCss("hiddentextbox").SetTitleHidden(true).SetHidden(true)
+                                        @Html.HiddenFor(m => m.BrandApplicationDetail.BrandApplicationDetailId)
+                                    </div>
+                                    <div class="row px-4 mb-2 mt-2">
+                                        @Html.DomainFor().TextBoxFor(m => m.BrandApplicationDetail.BrandName).SetParentCss("col-12")
+                                    </div>
+                                    <div class="row px-4">
+                                        @Html.DomainFor().TextAreaFor(m => m.BrandClassesArray).SetParentCss("col-12")
+                                    </div>
+                                    <div class="row px-4">
+                                        <div class="brandclasses">
+                                            @{ 
+                                                var subClasses = @CacheManager.GetBrandSubClassesByClassId.OrderBy(f => f.BrandSubClassesIdentification).ToList();
+                                             }
+                                                @foreach (var brandClass in CacheManager.GetAllBrandClasses.OrderBy(f => f.BrandClassesIdentification))
+                                            {
+                                                <div class="col-xl-12" style="font-weight:bold; padding-left:5px;">
+                                                    @Html.Domain().CheckBox(brandClass.BrandClassesIdentification + ".sinif").SetTitle(brandClass.BrandClassesName)
+                                                </div>
+                                                CacheManager.brandClassId = brandClass.BrandClassesId;
+                                                foreach (var brandSubClass in subClasses)
+                                                {
+                                                    <div class="col-xl-12 checkboxes">
+                                                        @Html.Domain().CheckBox(brandSubClass.BrandSubClassesIdentification.ToString()).SetTitle(brandSubClass.BrandSubClassesName)
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4 px-4">
+                                        @Html.DomainFor().TextAreaFor(m => m.BrandApplicationDetail.SpecialClass).SetParentCss("col-sm-12 pl-2")
+                                    </div>
+                                    <div class="row mt-4 px-4 mb-4">
+                                        @Html.DomainFor().CheckBoxFor(m => m.BrandApplicationDetail.SendCoverLetter).SetParentCss("col-sm-12 pl-2")
+                                    </div>
+                                </div>
+                                <div class="m-portlet__foot text-right">
+                                    @Html.Domain().Button("btnSave").SetType(ButtonType.submit).SetIcon("fa fa-arrow-circle-right").SetIconAlignment(ButtonIconAlignment.right).SetStyle(ButtonStyle.submit).SetTitle("İleri")
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!--end: Form Wizard-->
+        </div>
+        <!--end: Portlet Body-->
+    </div>
+    <!--End::Main Portlet-->
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('#BrandClassesArray').val() != "") {
+            var classes = [];
+            classes = $('#BrandClassesArray').val().split(',');
+            for (var i = 0; i < classes.length - 1; i++) {
+                $("input[name='" + classes[i] + "']").attr('checked', true);
+            }
+        }
+
+        if ($('#BrandApplicationDetail_BrandApplicationTypeId').val() == 1) {
+            $('.person').addClass('selected')
+        }
+        else if ($('#BrandApplicationDetail_BrandApplicationTypeId').val() == 2) {
+            $('.firm').addClass('selected')
+        }
+
+        $("input[name$='sinif']").click(function () {
+            var name = $(this).attr('name');
+            var id = name.split('.')[0]
+            $("input[name^=" + id + "]").not(this).prop('checked', this.checked);
+        });
+
+        $("input:checkbox").change(function () {
+            var array = [];
+            $('.checkboxes').find('input[type="checkbox"]:checked').each(function () {
+                array.push($(this).attr('name'));
+            });
+            $('#BrandClassesArray').val(array);
+        });
+
+        $('input[name$="sinif"]').each(function () {
+            var name = $(this).attr('name');
+            var id = name.split('.')[0]
+            if ($("input[name^='" + id + "']:not('input[name$=sinif]'):checked").length === $("input[name^='" + id + "']:not('input[name$=sinif]')").length) {
+                $(this).attr('checked', true);
+            }
+        });
+
+        $('.checkboxes').find('input[type="checkbox"]').change(function () {
+            $('input[name$="sinif"]').each(function () {
+                var name = $(this).attr('name');
+                var id = name.split('.')[0]
+                if ($("input[name^='" + id + "']:not('input[name$=sinif]'):checked").length === $("input[name^='" + id + "']:not('input[name$=sinif]')").length) {
+                    $(this).attr('checked', true);
+                }
+                else {
+                    $(this).attr('checked', false);
+                }
+            });
+        });
+
+        $('.brandapplicationType').click(function () {
+            $(this).addClass("selected");
+            $('#BrandApplicationDetail_BrandApplicationTypeId').val($(this).attr('id'))
+            $('.brandapplicationType').not(this).each(function () {
+                $(this).removeClass("selected");
+            });
+        });
+    });
+</script>

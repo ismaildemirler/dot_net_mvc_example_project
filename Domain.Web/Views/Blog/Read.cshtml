@@ -1,0 +1,41 @@
+﻿@using Domain.Entity.Concrete
+@model BlogContent
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_LayoutHosting.cshtml";
+
+    string imgSrc = Url.Content("~/App_Themes/images/blog.jpg");
+
+    if (Model.PostImage != null)
+    {
+        var base64 = Convert.ToBase64String(Model.PostImage);
+        imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+    }
+}
+
+<div class="container_full menu"></div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="leaft_title"><h1>@Model.Title</h1></div>
+        <div class="reght_pagenation"><a href="@Url.Action("Index", "Home", new { area="" })">Ana Sayfa</a> <i>/</i> @Model.Title </div>
+    </div>
+</div>
+
+<div class="container-fluid wf py-4 mb-3">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-lg-6 offset-lg-1 mb-3">
+            <img src="@imgSrc" class="w-100" style="object-fit: cover; height:250px;" />
+            <div class="c-content">
+                @Html.Raw(Model.Contents)
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-3 offset-lg-1">
+            <div class="right_sidebar pt-0 w-100">
+                @Html.Partial("_BlogCategories")
+                <div class="clearfix mar_top3"></div>
+                @Html.Partial("_RecentBlogsSideBar")
+            </div>
+        </div>
+    </div>
+</div>

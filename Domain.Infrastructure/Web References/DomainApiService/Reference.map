@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd9" filename="DomainApi.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd7" filename="DomainApi0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd6" filename="DomainApi1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd1" filename="DomainApi2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd2" filename="DomainApi3.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd4" filename="DomainApi4.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?disco" filename="DomainApi.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd5" filename="DomainApi5.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd3" filename="DomainApi6.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd8" filename="DomainApi7.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?xsd=xsd0" filename="DomainApi8.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://api-ote.domainnameapi.com/DomainApi.svc?wsdl" filename="DomainApi.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,42 @@
+﻿@model MultipleAttachmentListViewModel
+
+<div class="m-content" style="padding:0; margin-top:10px;">
+    <!--Begin::Main Portlet-->
+    <div class="m-portlet">
+        <!--end: Portlet Head-->
+        <!--begin: Portlet Body-->
+        <div class="m-portlet__body m-portlet__body--no-padding">
+            <!--begin: Form Wizard-->
+            <div class="row m-row--no-padding">
+                <div class="col-xl-12 col-lg-12" style="padding:20px;">
+                    <div class="m-portlet">
+                        <div class="m-portlet__body" style="padding-top:10px !important; padding-bottom:5px;">
+                            <h4 style="text-align:center; font-weight:bold;">
+                                Ek Dosyalar
+                            </h4>
+                        </div>
+                    </div>
+                    @{ int i = 0; }
+                    @foreach (var item in Model.Items)
+                    {
+                        i++;
+                        <div style="float:left; padding-bottom:10px; width: 20%;
+                                            margin-right:1%; margin-left:1%; margin-bottom:5px;
+                                            height:200px; background-color:black;
+                                            padding:5px; margin-top:5px;">
+                            <img id="image@(i)" src="data:image;base64,@System.Convert.ToBase64String(item.AttachmentData)"
+                                 style="max-width: 100%; max-height: 190px; margin-left: auto;
+                                                margin-right: auto;" />
+                            <div style="width:100%; height:20px; margin-top:-40px;">
+                                @Html.Domain().Button("deletefile " + i).SetType(ButtonType.button).SetIcon("fa fa-trash-o").SetIconAlignment(ButtonIconAlignment.left).SetStyle(ButtonStyle.submit).SetTitle("Fotoğrafı Sil").SetHtmlAttributes(new { data_attachment_id = item.AttachmentId }).SetCustomClasses("btnDelete")
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!--end: Form Wizard-->
+        </div>
+        <!--end: Portlet Body-->
+    </div>
+    <!--End::Main Portlet-->
+</div>
